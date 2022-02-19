@@ -27,7 +27,7 @@ export default function CustomSelect() {
           onChange={handleChange}
         >
           <MenuItem value={1}><Link to={'/view-profile'} style={{ textDecoration: 'none' }}>View Profile</Link></MenuItem>
-        <MenuItem value={2}><Link to={'/signin'} style={{ textDecoration: 'none' }}>Edit Profile</Link></MenuItem>
+        <MenuItem value={2}><Link to={'/edit-profile'} style={{ textDecoration: 'none' }}>Edit Profile</Link></MenuItem>
         </Select>
       </FormControl>
     </Box>

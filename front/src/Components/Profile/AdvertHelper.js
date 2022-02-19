@@ -2,7 +2,7 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import StarIcon from "@mui/icons-material/StarBorderOutlined"
@@ -12,6 +12,9 @@ import AtomIcon from '@mui/icons-material/VerifiedUserOutlined'
 import FamilyIcon from '@mui/icons-material/PeopleOutline'
 import FriendsIcon from '@mui/icons-material/ContactsOutlined'
 import ProfessionIcon from '@mui/icons-material/LocalPostOfficeOutlined'
+import { CardHeader } from '@mui/material';
+import { CardMedia } from '@mui/material';
+import image from '../../assets/images.jpg'
 
 export default function SectionHelper() {
     const Sections = [
@@ -56,34 +59,25 @@ export default function SectionHelper() {
         
       <Card sx={{ maxWidth: 500, marginTop:'50px', padding:'20px',
          borderRadius: '2px 35px 2px 35px' ,
-          position:'fixed' ,top:'80px' , boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)' , left:10 }}>
-        <CardActions style={{flexDirection:'column' , alignItems:'flex-start' }}> 
-        {Sections.map((item) => (
-                <div>
-                {item.title==='Deen'? (<div><StarIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button> </div>)
-                : item.title==='Lifestyle'?( <div><CompassIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
-                :item.title==='Basics'?( <div><FilesIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
-            :item.title==='Apearance'?( <div><AtomIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
-        :item.title==='Family'?( <div><FamilyIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
-    :item.title==='Friendships'?( <div><FriendsIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
-:item.title==='Profession'?( <div><ProfessionIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>):null}
-              
-               </div>
-            ))}  
-        </CardActions>
-        <Typography style={{fontSize:15 , color:'#666' , fontWeight:'bold'}}>Interested in this Profile?</Typography>
-        <CardActions>
+          position:'fixed' ,top:'80px' , boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)' , right:0 }}>
+            <CardHeader style={{fontSize:5 , color:'#666' , fontWeight:'bold'}} title={'Support Pure Muslim Match'}></CardHeader>
+             <CardMedia component="img"
+        height="140"
+        image={image}
+        alt="green iguana"></CardMedia>
+        <CardActions style={{justifyContent:'center'}}>
           <Button style={{color: '#ffff',
     borderWidth: '1px!important',
     borderColor: '#ff4a83',
     fontSize: '12px',
-    backgroundColor: '#ff4a83'}} size="small">Yes</Button>
+    backgroundColor: '#ff4a83'}} size="small">Shop</Button>
           <Button style={{color: '#ffff',
     borderWidth: '1px!important',
     borderColor: '#ff4a83',
     fontSize: '12px',
-    backgroundColor: '#ff4a83'}} size="small">No</Button>
+    backgroundColor: '#ff4a83'}} size="small">donate</Button>
         </CardActions>
+        <Typography style={{fontSize:15 , color:'#666' , fontWeight:'bold' , textAlign:'center'}}>Choose from hundreds of products, buy a loved one a special gift or donate.</Typography>
         
       </Card>
       

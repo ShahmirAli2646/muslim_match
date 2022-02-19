@@ -25,6 +25,8 @@ import Stack from '@mui/material/Stack';
 import { width } from '@mui/system';
 import SectionHelper from './SectionHelper';
 import DataBlock from './DataBlock'
+import AdvertHelper from './AdvertHelper'
+import Promotion from '../CommonContent/Promotion'
 
 
 
@@ -152,6 +154,12 @@ And whoso obeys Allah and the Messenger, then they will be with those on whom Al
 </Container>
 <SectionHelper/>
    <DataBlock/>
+   <AdvertHelper/>
+   <br>
+   </br>
+   <br>
+   </br>
+
          </div>
         )
     }
