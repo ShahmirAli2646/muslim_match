@@ -21,6 +21,7 @@ import ProductLogo  from '../assets/PMM-Logo-Banner-300x72-1.png'
 import CustomSelect from './customSelect';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import {Link} from "react-router-dom"
 
 
 
@@ -150,7 +151,7 @@ export default function PrimarySearchAppBar() {
               </Box>    
              
               <Stack spacing={0} direction="row">
-      <Button variant="text">My Matches</Button>
+      <Button variant="text"><Link to={'/my-matches'} style={{ textDecoration: 'none' }}>My Matches</Link></Button>
       <Button variant="text">Donate</Button>
       </Stack>
          

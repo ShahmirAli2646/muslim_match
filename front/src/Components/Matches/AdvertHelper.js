@@ -60,7 +60,7 @@ export default function SectionHelper() {
       <Card sx={{ maxWidth: 500, marginTop:'50px', padding:'20px',
          borderRadius: '2px 35px 2px 35px' ,
           position:'fixed' ,top:'80px' , boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)' , right:0 }}>
-            <CardHeader style={{fontSize:5 , color:'#666' , fontWeight:'bold'}} title={'Proceeds Help Pure Muslim Match'}></CardHeader>
+            <CardHeader style={{fontSize:5 , color:'#666' , fontWeight:'bold'}} title={'Support Pure Muslim Match'}></CardHeader>
              <CardMedia component="img"
         height="140"
         image={image}
