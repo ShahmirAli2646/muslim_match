@@ -22,6 +22,10 @@ import CustomSelect from './customSelect';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import {Link} from "react-router-dom"
+import Drawer from '@mui/material/Drawer';
+
+import Settings from './Settings/Settings'
+
 
 
 
@@ -30,6 +34,12 @@ import {Link} from "react-router-dom"
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [open , setOpen] = React.useState(false)
+  const handleClickAway = () => {
+    setOpen(false);
+  };
+ 
+ 
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -46,10 +56,14 @@ export default function PrimarySearchAppBar() {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
-
+ const openSettingsPane = () =>{
+   setOpen(true);
+  
+ }
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+  
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -91,6 +105,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem >
+        
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
@@ -99,15 +114,18 @@ export default function PrimarySearchAppBar() {
         <p>Messages</p>
       </MenuItem>
       <MenuItem>
+      
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
-        >
+          
+        > 
           <Badge badgeContent={17} color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
+       
         <p>Notifications</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
@@ -127,6 +145,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <Settings open={open} handleClickAway={handleClickAway } />
       <AppBar position="static" style={{background:'white'}}>
         <Toolbar>
           <IconButton
@@ -167,6 +186,7 @@ export default function PrimarySearchAppBar() {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              onClick={openSettingsPane}
             >
               <Badge badgeContent={17} color="error">
                 <NotificationsIcon />
