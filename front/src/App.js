@@ -6,6 +6,7 @@ import SignUp from "./Components/Register";
 import Profile from './Components/Profile/Profile'
 import EditProfile from "./Components/Profile/EditProfile/EditProfile";
 import Matches from './Components/Matches/Matches'
+import AdminPanel from './adminPanel/Admin'
 
 import './App.css';
 
@@ -20,7 +21,7 @@ function App() {
           <Route path="/view-profile" element={<Profile/>}/>
           <Route path="/edit-profile" element={<EditProfile/>}/>
           <Route path ='/my-matches' element={<Matches/>}/>
-          
+          <Route path ='/admin-panel' element={<AdminPanel/>}/> 
         </Routes>
       </div>
     </Router>
