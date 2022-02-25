@@ -57,7 +57,7 @@ class EditProfile extends React.Component {
           ];
         return(
         <div>
-            <Container maxWidth="1600px" disableGutters={true}>
+            <Container maxWidth="xl" disableGutters={true}>
          
 
              
@@ -70,9 +70,7 @@ class EditProfile extends React.Component {
 </Container>
 
 
-<Container maxWidth="1600px" disableGutters={true}>
-   
-</Container>
+
    <EditHelper/>
    <Forms/>
    <AdvertHelper/>

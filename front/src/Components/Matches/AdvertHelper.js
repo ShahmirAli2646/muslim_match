@@ -14,7 +14,7 @@ import FriendsIcon from '@mui/icons-material/ContactsOutlined'
 import ProfessionIcon from '@mui/icons-material/LocalPostOfficeOutlined'
 import { CardHeader } from '@mui/material';
 import { CardMedia } from '@mui/material';
-import image from '../../assets/images.jpg'
+import image from '../../assets/Resized-1200.jpg'
 
 export default function SectionHelper() {
     const Sections = [
@@ -57,9 +57,9 @@ export default function SectionHelper() {
       ];
     return (
         
-      <Card sx={{ maxWidth: 500, marginTop:'50px', padding:'20px',
+      <Card sx={{ maxWidth: 400, marginTop:'50px', padding:'20px',
          borderRadius: '2px 35px 2px 35px' ,
-          position:'fixed' ,top:'80px' , boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)' , right:0 }}>
+          position:'fixed' ,top:'80px' , boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)' , right:15 }}>
             <CardHeader style={{fontSize:5 , color:'#666' , fontWeight:'bold'}} title={'Support Pure Muslim Match'}></CardHeader>
              <CardMedia component="img"
         height="140"

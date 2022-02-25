@@ -75,51 +75,36 @@ class ProfileSnippetCard extends React.Component{
             
             <Container maxWidth="sm" component="main">
                 {tiers.map((item)=>(
-                    <Card style={{backgroundColor:'#efefef' , boxShadow:'none' , marginBottom:'50px'}}>
-                <CardHeader
-                style={{background:'#efefef',textAlign:'center' , fontSize:20 , color:'rgba(163, 19, 19, 0.65)'}}
-                title={item.title}
-                  sx={{
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === 'light'
-                        ? theme.palette.grey[2]
-                        : theme.palette.grey[700],
-                  }}
-                />
-                <CardContent>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'baseline',
-                      mb: 2,
-                    }}
-                  >
-                   
-                  </Box>
-                  <Typography>
-                      {item.description}
-                      {'dwoiaoiwafifwahfewafeaceacbewqoieawdadbawnbwaonaw'}
-                  </Typography>
-                 
-                </CardContent>
-                <CardActions style={{background:'#efefef',justifyContent:'center'}}>
+                     <Card style={{backgroundColor:'#fff' , border: '1px solid #ededed' , boxShadow:'0px 2px 6px 0px rgb(0 0 0 / 30%)' , marginBottom:'20px'}}>
+                     <CardHeader
+                     style={{background:'rgb(255 215 215)',textAlign:'center' , fontSize:20 , color:'rgba(163, 19, 19, 0.65)'}}
+                     title={item.title}
+                       sx={{
+                         backgroundColor: (theme) =>
+                           theme.palette.mode === 'light'
+                             ? theme.palette.grey[2]
+                             : theme.palette.grey[700],
+                       }}
+                     />
+                     <CardContent>
+                       <Typography>
+                           {item.description}
+                           {'dwoiaoiwafifwahfewafeaceacbewqoieawdadbawnbwaonaw'}
+                       </Typography>
+                      
+                     </CardContent>
+                     <CardActions style={{justifyContent:'center'}}>
+                         
+               <Button style={{color: '#ffff',
+                 borderWidth: '1px!important',
+                 borderColor: '#ff4a83',
+                 fontSize: '12px',
+                 backgroundColor: '#ff4a83' }} size="large">
+                 View Profile</Button>
+             </CardActions>
+             
                     
-          <Button style={{color: '#ffff',
-    borderWidth: '1px!important',
-    borderColor: '#ff4a83',
-    fontSize: '12px',
-    backgroundColor: '#ff4a83' }} size="large">View Profile</Button>
-          <Button style={{color: '#ffff',
-    borderWidth: '1px!important',
-    borderColor: '#ff4a83',
-    fontSize: '12px',
-    backgroundColor: '#ff4a83'}} size="large">Like Profile</Button>
-    
-        </CardActions>
-        
-               
-              </Card>
+                   </Card>
 
                 ))}
         

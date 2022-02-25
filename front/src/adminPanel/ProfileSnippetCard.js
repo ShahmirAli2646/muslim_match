@@ -76,12 +76,11 @@ class ProfileSnippetCard extends React.Component{
                 <CardActions style={{justifyContent:'center'}}>
                     
           <Button style={{color: '#ffff',
-    borderWidth: '1px!important',
-    borderColor: '#ff4a83',
-    fontSize: '12px',
-    backgroundColor: '#ff4a83' }} size="large">View Profile</Button>
-          
-    
+            borderWidth: '1px!important',
+            borderColor: '#ff4a83',
+            fontSize: '12px',
+            backgroundColor: '#ff4a83' }} size="large">
+            View Profile</Button>
         </CardActions>
         
                

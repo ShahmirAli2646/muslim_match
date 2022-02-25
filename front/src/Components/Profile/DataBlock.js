@@ -57,16 +57,16 @@ const DataBlock = ()=>{
         },
       ];
     return(
-        <Container maxWidth='sm' disableGutters={true}>
+        <Container maxWidth='md' disableGutters={true}>
           {Sections.map((item)=>(
             <div>
-            <Card sx={{ maxWidth: 500, height:300, marginTop:'50px',
+            <Card sx={{ maxWidth: 980, height:300, marginTop:'50px',
             borderRadius: '20px' ,
              boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)'  }}>
             <CardHeader style={{fontFamily:'fantasy' , fontSize:30 , color:'rgba(21, 135, 135, 0.8)'}} title={item.title}></CardHeader>
             <CardContent>{item.description}</CardContent>
           </Card>
-          <Card sx={{ maxWidth: 500, height:80, marginTop:'50px',
+          <Card sx={{ maxWidth: 980, height:150, marginTop:'50px',
           borderRadius: '20px' ,
            boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)'  }}>
           

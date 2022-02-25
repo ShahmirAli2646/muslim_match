@@ -67,37 +67,40 @@ class Profile extends React.Component {
             },
           ];
         return(
-            <div style={{background:'#efefef'}}>
+            <div style={{background:'#f9f9f9'}}>
                 <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
      
         <Container maxWidth='md' component="main" style={{padding:'100px'}}>
      
              
-             <Card style={{backgroundColor:'#fff' , boxShadow:'0px 2px 13px 0px rgb(0 0 0 / 4%)' , marginBottom:'30px'}}>
+             <Card style={{backgroundColor:'#fff' , boxShadow:'0px 2px 6px 0px rgb(0 0 0 / 30%)' , marginBottom:'30px'}}>
                 <CardHeader
-                style={{ fontSize:15 , color:'rgba(163, 19, 19, 0.65)'}}
+                style={{ fontSize:15 , color:'rgba(163, 19, 19, 0.65)' , textTransform:'capitalize' , fontWeigth:'bold'}}
                 title={'SUPPORT ADVISER MESSAGE'}
+
                   sx={{
                     backgroundColor: (theme) =>
                       theme.palette.mode === 'light'
                         ? theme.palette.grey[2]
                         : theme.palette.grey[700],
+                        fontSize:5,
                   }}
                 />
                 <CardContent>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'baseline',
-                      mb: 2,
-                    }}
-                  >
-                  </Box>
-                  <Typography>
-                      {'Assalamu alaikum {User Name},Pure Muslim Match is on a mission to find you the best matches and get you married!  Potential matches are selected for you based on what you say you are looking for in your profile, so its good to be as flexible as possible with your search criteria so that more potentials are found for you to consider.  If you have any questions or need assistance send an email to support@puremuslimmatch.comJazak’Allahu khairan'}
+                  
+                     <Typography style={{color:'#666' , fontSize:'14px'}}>
+                      {'Assalamu alaikum {User Name}'}
                   </Typography>
+                  <p style={{color:'#666' , fontSize:'14px'}}>
+
+                
+                    {'Pure Muslim Match is on a mission to find you the best matches and get you married!  Potential matches are selected for you based on what you say you are looking for in your profile, so its good to be as flexible as possible with your search criteria so that more potentials are found for you to consider.  If you have any questions or need assistance send an email to support@puremuslimmatch.com'}
+                    </p>
+                  
+                 <p style={{color:'#666' , fontSize:'14px'}}>
+                   {'Jazak’Allahu khairan'}
+                 </p>
                   
                 </CardContent>
                
@@ -107,15 +110,16 @@ class Profile extends React.Component {
               {tiers.map((tier) => (
                
                   
-                      <Card style={{backgroundColor:'#fff' , boxShadow:'0px 2px 13px 0px rgb(0 0 0 / 4%)' ,marginBottom:'30px'}}>
+                      <Card style={{backgroundColor:'#fff' , boxShadow:'0px 2px 6px 0px rgb(0 0 0 / 30%)' ,marginBottom:'30px'}}>
                       <CardHeader
-                      style={{ fontSize:15 , color:'rgba(163, 19, 19, 0.65)'}}
+                      style={{ color:'rgba(21, 135, 135, 0.8)'}}
                       title={tier.title}
                         sx={{
                           backgroundColor: (theme) =>
                             theme.palette.mode === 'light'
                               ? theme.palette.grey[2]
                               : theme.palette.grey[700],
+                              fontSize:'20px'
                         }}
                       />
                       <CardContent>

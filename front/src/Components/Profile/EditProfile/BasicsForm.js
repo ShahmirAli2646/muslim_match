@@ -36,7 +36,7 @@ const BasicsForm = ()=>{
     const [value, setValue] = React.useState(null);
 
     return(
-        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <FormControl variant="filled" sx={{ m: 1, width:'100%' }}>
         <Typography>Are you filling this form out for yourself or someone else?</Typography>
     
     <Select
@@ -74,8 +74,10 @@ const BasicsForm = ()=>{
     <TextareaAutosize style={{height:80}}></TextareaAutosize>
     <div style={{display:'flex' , justifyContent:'center'}}>
     <Button style={{background:'#e5598f' , fontSize:'18px' , border:'5px solid white' ,
-     borderRadius:'0px' , color:'#fff' , textTransform:'lowercase' ,
-      textDecoration:'none'}} variant="outlined">Save</Button>
+     borderRadius:'36px' , color:'#fff' , textTransform:'capitalize' ,
+      textDecoration:'none' , boxShadow:'0px 2px 14px 0px rgb(0 0 0 / 30%)', 
+      position:'relative' , left:'25px' , top:'10px'
+    }} variant="outlined">Save</Button>
       </div>
    
     {/* <LocalizationProvider dateAdapter={AdapterDateFns}>

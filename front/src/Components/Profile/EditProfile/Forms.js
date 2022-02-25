@@ -28,7 +28,7 @@ import FriendShipsForm from './FriendShipsForm';
 import LifeStyleForm from './LifeStyleForm';
 import ProfessionForm from './ProfessionForm';
 import StartForm from './StartForm';
-
+import { Grid } from '@mui/material';
 
 
 
@@ -91,8 +91,8 @@ const Forms = ()=>{
       },
       ];
     return(
-        <Container maxWidth='sm' disableGutters={true}>
-             <Card sx={{ maxWidth: 500, height:300, marginTop:'50px',
+        <Container maxWidth='md' disableGutters={true}>
+             <Card sx={{ maxWidth: 980, height:300, marginTop:'50px',
             borderRadius: '20px' ,
              boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)'  }}>
             <CardHeader style={{fontFamily:'fantasy' , fontSize:30 , color:'rgba(21, 135, 135, 0.8)'}} title={'Suport Advisor Message:'}></CardHeader>
@@ -105,12 +105,12 @@ const Forms = ()=>{
            </div>
           {Sections.map((item)=>(
             <div>
-            <Card sx={{ maxWidth: 500, height:'auto', marginTop:'50px',
+            <Card sx={{ maxWidth: 980, height:'auto', marginTop:'50px',
             borderRadius: '20px' ,
              boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)'  }}>
             <CardHeader style={{fontFamily:'fantasy' , fontSize:30 , color:'rgba(21, 135, 135, 0.8)'}} title={item.title}></CardHeader>
             <CardContent>
-                <div>
+                <div style={{maxWidth:800}}>
                     {item.title==='Start'?
                     ( <StartForm/>  ):
                     item.title==='Appearance'?
@@ -135,7 +135,7 @@ const Forms = ()=>{
                 </div>
             </CardContent>
           </Card>
-          <Card sx={{ maxWidth: 500, height:80, marginTop:'50px',
+          <Card sx={{ maxWidth: 980, height:80, marginTop:'50px',
           borderRadius: '20px' ,
            boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)'  }}>
           

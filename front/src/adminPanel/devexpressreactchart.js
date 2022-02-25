@@ -5,6 +5,8 @@ import {
   ValueAxis,
   Chart,
   LineSeries,
+  Legend,
+  Title
 } from '@devexpress/dx-react-chart-material-ui';
 
 const data = [
@@ -18,7 +20,11 @@ const Devexpressreactchart =  () => {
     <Paper>
     <Chart
       data={data}
-    >
+    > 
+    <Legend position="top"
+                    horizontalAlignment="center"
+                    verticalAlignment="top" />
+         
       <ArgumentAxis />
       <ValueAxis />
 

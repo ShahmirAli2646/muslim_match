@@ -46,26 +46,30 @@ export default function SectionHelper() {
       ];
     return (
         
-      <Card sx={{ maxWidth: 800, marginTop:'50px', padding:'20px',
+      <Card sx={{ maxWidth: 800, marginTop:'50px', padding:'20px', width:'20%',background:'#f7f7f7',
          borderRadius: '20px' ,
           position:'fixed' ,top:'80px' , boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)' , left:10 }}>
-        <CardActions style={{background:'cadetblue' ,flexDirection:'column' , alignItems:'center' , borderRadius:'10px'  }}> 
+        <CardActions style={{display:'block', borderRadius:'10px'  }}> 
         {Sections.map((item) => (
-                <div>
+                <div style={{display:'flex' , justifyContent:'center' , marginBottom:'20px'}}> 
                 {
-                   <Button style={{color:'#ffff'   }} size="small">{item.title}</Button>
+                   <Button style={{color:'#ffff' ,width:'50%', background:'rgba(32,157,170,0.54) 45%' , textTransform:'capitalize' , border:'2px solid'  }} size="small">{item.title}</Button>
                 }
                </div>
             ))}  
             
         </CardActions>
        
-        <CardActions>
+        <CardActions style={{display:'block'}}>
+          <div style={{display:'flex' , justifyContent:'center'}}>
+
+        
         <Button style={{background: 'rgb(255, 74, 131)',
                     color: '#fff',
                     textTransform: 'capitalize',
                     borderRadius: '20px',
-                    width: '100%',  }} size="small">{'Edit Profile'}</Button>
+                    width: '50%', boxShadow:'0px 2px 13px 0px rgb(0 0 0 / 30%)' , border:'2px solid' }} size="small">{'Edit Profile'}</Button>
+                      </div>
         </CardActions>
         
       </Card>

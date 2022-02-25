@@ -148,16 +148,7 @@ export default function PrimarySearchAppBar() {
       <Settings open={open} handleClickAway={handleClickAway } />
       <AppBar position="static" style={{background:'white'}}>
         <Toolbar>
-          <IconButton
-            style={{color:'black'}}
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          
          
               
           <a >
@@ -176,24 +167,14 @@ export default function PrimarySearchAppBar() {
          
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" style={{color:'black'}} color="inherit">
+            <IconButton size="large" aria-label="show 4 new mails" style={{color:'#666'}} color="inherit">
               <Badge badgeContent={4} color="error">
-                <MailIcon />
+                <MailIcon style={{fontSize:'30px'}} />
               </Badge>
             </IconButton>
+            
             <IconButton
-            style={{color:'black'}}
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-              onClick={openSettingsPane}
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-            style={{color:'black'}}
+            style={{color:'#666'}}
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -202,7 +183,7 @@ export default function PrimarySearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <AccountCircle style={{fontSize:'30px'}} />
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

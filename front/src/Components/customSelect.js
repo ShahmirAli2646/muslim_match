@@ -26,7 +26,7 @@ export default function CustomSelect() {
           label="My Profile"
           onChange={handleChange}
         >
-          <MenuItem value={1}><Link to={'/view-profile'} style={{ textDecoration: 'none' }}>View Profile</Link></MenuItem>
+        <MenuItem value={1}><Link to={'/view-profile'} style={{ textDecoration: 'none' }}>View Profile</Link></MenuItem>
         <MenuItem value={2}><Link to={'/edit-profile'} style={{ textDecoration: 'none' }}>Edit Profile</Link></MenuItem>
         <MenuItem value={3}><Link to={'/admin-panel'} style={{ textDecoration: 'none' }}>Admin Panel</Link></MenuItem>
         </Select>
