@@ -3,23 +3,30 @@ import {
     Redirect 
   } from 'react-router-dom';
   
-  function PrivateRoute({ children, isAuthenticated, ...rest }) {
+  function PrivateRoute({ children, isAuthenticated , user, ...rest }) {
     return (
       <Route
         {...rest}
         render={
           ({ location }) => (
-            isAuthenticated
+            isAuthenticated && user.role!=='admin'
               ? (
                 children
-              ) : (
+              ):isAuthenticated && user.role==='admin'?(
                 <Redirect
-                  to={{
-                    pathname: '/signin',
-                    state: { from: location }
-                  }}
-                />
-              ))
+              to={{
+                pathname: '/admin/admin-panel',
+                state: { from: location }
+              }}
+            />
+              ):
+              
+              <Redirect
+              to={{
+                pathname: '/signin',
+                state: { from: location }
+              }}
+            />)
         }
       />
     );

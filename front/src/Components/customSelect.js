@@ -41,9 +41,9 @@ export default function CustomSelect() {
         }}
       > 
         <div style={{padding:'20px' , display:'flex'  , flexDirection:'column' , paddingRight:'100px'}}>
-        <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={'/view-profile'} style={{ textDecoration: 'none' , color:'#666' }}>View Profile</Link></Typography>
-        <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={'/edit-profile'} style={{ textDecoration: 'none' , color:'#666' }}>Edit Profile</Link></Typography>
-        <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={'/admin-panel'} style={{ textDecoration: 'none' , color:'#666' }}>Admin Panel</Link></Typography>
+        <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={'/user-profile/view-profile'} style={{ textDecoration: 'none' , color:'#666' }}>View Profile</Link></Typography>
+        <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={'/user-profile/edit-profile'} style={{ textDecoration: 'none' , color:'#666' }}>Edit Profile</Link></Typography>
+        <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={'/admin/admin-panel'} style={{ textDecoration: 'none' , color:'#666' }}>Admin Panel</Link></Typography>
         </div>
       </Popover>
       </FormControl>

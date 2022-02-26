@@ -8,8 +8,10 @@ import AdminPanel from './adminPanel/Admin'
 import { lazy, Suspense } from 'react';
 import Loader from './Components/CommonContent/Loader'
 import ProtectedRoutes from "./Components/AuthRoutes/ProtectedRoutes";
+import AdminProtectedRoute from './Components/AuthRoutes/AdminProtectedRoute'
 import PublicRoute from "./Components/AuthRoutes/PublicRoute";
 import PrivateRoute from "./Components/AuthRoutes/PrivateRoute";
+import AdminPrivateRoute from "./Components/AuthRoutes/AdminPrivateRoute";
 import { useSelector } from 'react-redux'
 // const SignIn =  lazy(() => import('./Components/SignIn'));
 // const SignUp =  lazy(() => import('./Components/Register'));
@@ -38,6 +40,7 @@ const SignUp = React.lazy(() =>
 
 function App() {
   const isAuthenticated = useSelector(state => state.auth.isLoggedIn)
+  const user = useSelector(state => state.auth.user)
   return (
 
     <Router>
@@ -49,12 +52,14 @@ function App() {
         <PublicRoute
             path="/signin"
             isAuthenticated={isAuthenticated}
+            user={user}
           >
             <SignIn />
           </PublicRoute>
           <PublicRoute
             path="/signup"
             isAuthenticated={isAuthenticated}
+            user={user}
           >
             <SignUp />
           </PublicRoute>
@@ -65,11 +70,19 @@ function App() {
             <ForgotPassword />
           </PublicRoute> */}
           <PrivateRoute
-            path="/"
+            path="/user-profile"
             isAuthenticated={isAuthenticated}
+            user={user}
           >
             <ProtectedRoutes />
           </PrivateRoute>
+          <AdminPrivateRoute
+            path="/admin"
+            isAuthenticated={isAuthenticated}
+            user={user}
+          >
+            <AdminProtectedRoute />
+          </AdminPrivateRoute>
         </Switch>
         </Suspense>
         </Fragment> 

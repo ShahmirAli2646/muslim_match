@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt from 'jwt-decode'
 const API_URL = "http://localhost:4001/";
 const register = (first_name,last_name ,  email, password) => {
   return axios.post(API_URL + "register", {
@@ -21,7 +22,7 @@ const login = (email, password) => {
       password,
     })
     .then((response) => {
-      if (response.data.token) {
+      if (response.data.token) {  
         localStorage.setItem("user", JSON.stringify(response.data));
       }
       return response.data;
