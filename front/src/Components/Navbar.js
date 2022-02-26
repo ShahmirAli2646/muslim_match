@@ -169,8 +169,8 @@ export default function PrimarySearchAppBar() {
               </Box>    
              
               <Stack spacing={0} direction="row">
-      <Button variant="text"><Link to={'/my-matches'} style={{ textDecoration: 'none' }}>My Matches</Link></Button>
-      <Button variant="text">Donate</Button>
+      <Button variant="text"><Link to={'/my-matches'} style={{color:'rgb(137 134 134)' ,textDecoration:'none', textTransform:'capitalize' , fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'15px'}}>My Matches</Link></Button>
+      <Button style={{color:'rgb(137 134 134)' , textTransform:'capitalize' , fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'15px'}} variant="text">Donate</Button>
       </Stack>
          
           <Box sx={{ flexGrow: 1 }} />

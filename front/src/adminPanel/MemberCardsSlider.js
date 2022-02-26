@@ -14,16 +14,17 @@ import ProfileSnippetCard from './ProfileSnippetCard';
 
 export default function BasicCard() {
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 275  }}>
         <CardHeader style={{textAlign:'center' , fontSize:20 , color:'rgba(163, 19, 19, 0.65)'}}title={'Member Cards'}></CardHeader>
       <CardContent>
       <CarouselProvider
+        
         naturalSlideWidth={100}
         naturalSlideHeight={20}
         totalSlides={3}
       >
           
-          <Slider>
+          <Slider style={{paddingBottom:'100px'}}>
           <Slide index={0}>
           <ProfileSnippetCard/>
           </Slide>
@@ -34,7 +35,7 @@ export default function BasicCard() {
           <ProfileSnippetCard/>
           </Slide>
         </Slider>
-        <div style={{display:'flex' , justifyContent:'space-between'}}>
+        <div style={{display:'flex' , justifyContent:'space-between' , marginTop:'30px'}}>
         <ButtonBack>Back</ButtonBack>
         <ButtonNext>Next</ButtonNext>
         </div>
