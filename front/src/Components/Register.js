@@ -16,6 +16,9 @@ import background from '../assets/Fotolia_118824623_M-PAID-FOR-IMAGE-RESIZED-JPE
 import Description from '../Components/CommonContent/Description'
 import AgencyProcess from '../Components/CommonContent/AgencyProcess'
 import Promotion from '../Components/CommonContent/Promotion'
+import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { register } from '../actions/auth';
 
 function Copyright(props) {
   return (
@@ -33,14 +36,13 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const dispatch = useDispatch()
+  const handleSubmit = (event) => {    
+      dispatch(register(firstName , lastName , email , password))
   };
 
   return (
@@ -68,10 +70,14 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box  sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  value={firstName}
+                  onChange={(event)=>{
+                    setFirstName(event.target.value)
+                  }}
                   autoComplete="given-name"
                   name="firstName"
                   required
@@ -83,6 +89,10 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  value={lastName}
+                  onChange={(event)=>{
+                    setLastName(event.target.value)
+                  }}
                   required
                   fullWidth
                   id="lastName"
@@ -93,6 +103,10 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  value={email}
+                  onChange={(event)=>{
+                    setEmail(event.target.value)
+                  }}
                   required
                   fullWidth
                   id="email"
@@ -103,6 +117,10 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  value={password}
+                  onChange={(event)=>{
+                    setPassword(event.target.value)
+                  }}
                   required
                   fullWidth
                   name="password"
@@ -120,6 +138,7 @@ export default function SignUp() {
               </Grid>
             </Grid>
             <Button
+              onClick={handleSubmit}
               type="submit"
               fullWidth
               variant="contained"

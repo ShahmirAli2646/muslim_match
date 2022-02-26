@@ -1,3 +1,10 @@
+const User = require("../model/user");
+const Profile = require("../model/profile")
+const auth = require("../middleware/auth");
+const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+require("dotenv").config();
+
 module.exports={
      registerUser :async (req, res) => {
 

@@ -6,20 +6,22 @@ require("./config/database").connect();
 const express = require("express");
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const cors = require('cors')
 const controller = require("./controllers/mainController")
 
 const app = express();
 
 app.use(express.json());
-app.post("/register",controller.registerUser );
+app.use(cors())
+app.post("/register", controller.registerUser );
 app.post("/login", controller.loginUser );
 app.post("/welcome", auth, (req, res) => {
         res.status(200).send("Welcome 🙌 ");
       });
-app.post("/submit-profile-data", controller.submitProfile );
-app.get('/my-matches/full-matches/:userId/:page',controller.fullMatches);
-app.get('/my-matches/partial-matches/:userId/:page',controller.partialMatches );
-app.get('/my-matches/potential-matches/:userId/:page', controller.potentialMatches);
+app.post("/submit-profile-data", auth, controller.submitProfile );
+app.get('/my-matches/full-matches/:userId/:page',auth,controller.fullMatches);
+app.get('/my-matches/partial-matches/:userId/:page',auth,controller.partialMatches );
+app.get('/my-matches/potential-matches/:userId/:page',auth, controller.potentialMatches);
 
 
 module.exports = app;

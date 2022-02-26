@@ -16,6 +16,10 @@ import background from '../assets/Fotolia_118824623_M-PAID-FOR-IMAGE-RESIZED-JPE
 import Description from '../Components/CommonContent/Description'
 import AgencyProcess from '../Components/CommonContent/AgencyProcess'
 import Promotion from '../Components/CommonContent/Promotion'
+import { login } from '../actions/auth';
+import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+
 
 function Copyright(props) {
   return (
@@ -33,15 +37,12 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    dispatch(login(email, password))
   };
 
   return (
@@ -70,8 +71,15 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box   noValidate sx={{ mt: 1 , marginTop: 0.3,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',}}>
             <TextField
+              value={email}
+              onChange={(event)=>{
+                setEmail(event.target.value)
+              }}
               margin="normal"
               required
               fullWidth
@@ -82,6 +90,10 @@ export default function SignIn() {
               autoFocus
             />
             <TextField
+              value={password}
+              onChange={(event)=>{
+                setPassword(event.target.value)
+              }}
               margin="normal"
               required
               fullWidth
@@ -91,14 +103,7 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-           <Box
-          sx={{
-            marginTop: 0.3,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
-            <Button
+            <Button onClick={handleSubmit}
               style={{color: 'rgb(255, 255, 255)',
                 borderColor: 'rgb(255, 255, 255)',
                 borderWidth: '2px',
@@ -113,7 +118,7 @@ export default function SignIn() {
             >
               Sign In
             </Button>
-            </Box>
+       
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

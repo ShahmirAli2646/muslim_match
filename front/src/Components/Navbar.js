@@ -23,6 +23,8 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import {Link} from "react-router-dom"
 import Drawer from '@mui/material/Drawer';
+import { logout } from '../actions/auth';
+import { useDispatch, useSelector } from "react-redux";
 
 import Settings from './Settings/Settings'
 
@@ -35,6 +37,7 @@ export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [open , setOpen] = React.useState(false)
+  const dispatch = useDispatch()
   const handleClickAway = () => {
     setOpen(false);
   };
@@ -54,6 +57,7 @@ export default function PrimarySearchAppBar() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+   
     handleMobileMenuClose();
   };
  const openSettingsPane = () =>{
@@ -82,8 +86,12 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={()=>{
+        dispatch(logout())
+        handleMenuClose()
+
+      }}>logout</MenuItem>
+      
     </Menu>
   );
 
