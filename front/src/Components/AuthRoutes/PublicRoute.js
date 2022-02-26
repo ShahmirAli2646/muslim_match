@@ -2,8 +2,10 @@ import {
     Route,
     Redirect
   } from 'react-router-dom';
-  
-  function PublicRoute({ children, isAuthenticated, ...rest }) {
+  import jwt from 'jwt-decode'
+  function PublicRoute({ children, isAuthenticated , user, ...rest }) {
+    
+    // console.log('admin toke' , use)
     return (
       <Route
         {...rest}
@@ -11,14 +13,21 @@ import {
           ({ location }) => (
             !isAuthenticated ? (
               children
-            ) : (
+            ) : isAuthenticated && user.role==='admin'?(
               <Redirect
                 to={{
-                  pathname: '/view-profile',
+                  pathname: '/admin/admin-panel',
                   state: { from: location }
                 }}
               />
-            ))
+            ): 
+            <Redirect
+                to={{
+                  pathname: '/user-profile/view-profile',
+                  state: { from: location }
+                }}
+              />
+            )
         }
       />
     );
