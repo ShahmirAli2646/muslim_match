@@ -21,57 +21,71 @@ import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import { TextareaAutosize } from '@mui/material';
 
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DatePicker from '@mui/lab/DatePicker';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import PhoneInput from 'mui-phone-input';
 
 
 
 const StartForm = ()=>{
-    const [age, setAge] = React.useState('');
+    const [purpose, setPurpose] = React.useState('');
+    const [gender, setGender] = React.useState('');
+    const [startDate, setStartDate] = React.useState(new Date());
       
-        const handleChange = (event) => {
-          setAge(event.target.value);
+        const handlePurposeChange = (event) => {
+          setPurpose(event.target.value);
         }
-    const [value, setValue] = React.useState(null);
+        const handleGenderChange = (event) => {
+          setGender(event.target.value);
+        }
+    const [phone, setPhone] = React.useState(null);
 
     return(
         <FormControl variant="filled" sx={{ m: 2 , width:'100%' }}>
+        <Typography>Please enter your phone number accurately - This will not be shown on your profile</Typography>  
+        <PhoneInput onChange={setPhone} />
+        <br></br>
         <Typography>Are you filling this form out for yourself or someone else?</Typography>
+        <br></br>
+        
+        
     
     <Select
       labelId="demo-simple-select-standard-label"
       id="demo-simple-select-standard"
-      value={age}
-      onChange={handleChange}
-      label="Age"
+      value={purpose}
+      onChange={handlePurposeChange}
+      label="Purpose"
     >
       <MenuItem value="">
         <em>None</em>
       </MenuItem>
-      <MenuItem value={10}>Ten</MenuItem>
-      <MenuItem value={20}>Twenty</MenuItem>
-      <MenuItem value={30}>Thirty</MenuItem>
+      <MenuItem value={'I am filling the form out for myself'}>I am filling the form out for myself</MenuItem>
+      <MenuItem value={'I am filling the form out for someone who is related to me (and I have their permission)'}>I am filling the form out for someone who is related to me (and I have their permission)</MenuItem>
+      <MenuItem value={'I am filling the form out for a friend (and I have their permission)'}>I am filling the form out for a friend (and I have their permission)</MenuItem>
     </Select>
+    <br></br>
     <Typography>Are you male or female?</Typography>
-    
+    <br></br>
     <Select
       labelId="demo-simple-select-standard-label"
       id="demo-simple-select-standard"
-      value={age}
-      onChange={handleChange}
-      label="Age"
+      value={gender}
+      onChange={handleGenderChange}
+      label="Gender"
     >
       <MenuItem value="">
         <em>None</em>
       </MenuItem>
-      <MenuItem value={10}>Ten</MenuItem>
-      <MenuItem value={20}>Twenty</MenuItem>
-      <MenuItem value={30}>Thirty</MenuItem>
+      <MenuItem value={'Male'}>Male</MenuItem>
+      <MenuItem value={'Female'}>Female</MenuItem>
     </Select>
-    <Typography>How many of the 5 prayers a day do you usually pray in the masjid?</Typography>
-    <TextField id="standard-basic"  variant="standard" />
-    <TextareaAutosize  style={{height:80}}></TextareaAutosize>
+    <br></br>
+    <Typography>Date Of Birth</Typography>
+    <br></br>
+    <DatePicker  selected={startDate} onChange={(date) => setStartDate(date)} />
+    
     <div style={{display:'flex' , justifyContent:'center'}}>
     <Button style={{background:'#e5598f' , fontSize:'18px' , border:'5px solid white' ,
      borderRadius:'36px' , color:'#fff' , textTransform:'capitalize' ,
