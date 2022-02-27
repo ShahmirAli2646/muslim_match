@@ -9,7 +9,7 @@ import {
         {...rest}
         render={
           ({ location }) => (
-            isAuthenticated && user.role==='admin'
+            isAuthenticated && user?.role==='admin'
               ? (
                 children
               ):<Redirect
