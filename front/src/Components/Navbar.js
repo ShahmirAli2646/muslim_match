@@ -165,7 +165,7 @@ export default function PrimarySearchAppBar({ isAuthenticated, user }) {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {isAuthenticated && user?.role !== 'admin' ? (
-              <CustomSelect />
+              <CustomSelect user={user}/>
             ) : ''}
 
 
