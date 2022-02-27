@@ -9,10 +9,10 @@ import {
         {...rest}
         render={
           ({ location }) => (
-            isAuthenticated && user.role!=='admin'
+            isAuthenticated && user?.role!=='admin'
               ? (
                 children
-              ):isAuthenticated && user.role==='admin'?(
+              ):isAuthenticated && user?.role==='admin'?(
                 <Redirect
               to={{
                 pathname: '/admin/admin-panel',
