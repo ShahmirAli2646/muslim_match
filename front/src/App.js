@@ -46,7 +46,7 @@ function App() {
     <Router>
       
        <Fragment>
-      <Navbar/>
+      <Navbar isAuthenticated={isAuthenticated} user={user}/>
       <Suspense fallback={<Loader />}>
         <Switch>
         <PublicRoute
