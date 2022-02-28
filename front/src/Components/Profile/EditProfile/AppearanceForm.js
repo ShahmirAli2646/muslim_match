@@ -464,11 +464,6 @@ const AppearanceForm = ()=>{
      
     </Select>
     <br></br>
-
-
-
-
-
     <div style={{display:'flex' , justifyContent:'center'}}>
     <Button style={{background:'#e5598f' , fontSize:'18px' , border:'5px solid white' ,
      borderRadius:'36px' , color:'#fff' , textTransform:'capitalize' ,

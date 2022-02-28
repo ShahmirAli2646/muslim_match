@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
-import  CardHeader  from '@mui/material/CardHeader';
+import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
@@ -27,60 +27,72 @@ import DatePicker from '@mui/lab/DatePicker';
 
 
 
-const FinishForm = ()=>{
-    const [age, setAge] = React.useState('');
-      
-        const handleChange = (event) => {
-          setAge(event.target.value);
-        }
-    const [value, setValue] = React.useState(null);
+const FinishForm = () => {
+  const [husbandrole, setHusbandRole] = React.useState('');
+  const [news, setNews] = React.useState('');
+  const [addinformation, setAddInformation] = React.useState('');
+  const [suggestions, setSuggestions] = React.useState('');
+  const handleAddInformationChange = (event) => {
+    setAddInformation(event.target.value);
+  }
+  const handleNewsChange = (event) => {
+    setNews(event.target.value);
+  }
+  const handleHusbandRoleChange = (event) => {
+    setHusbandRole(event.target.value);
+  }
+  const handleSuggestionsChange = (event) => {
+    setSuggestions(event.target.value);
+  }
+  return (
+    <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
+      <Typography>What do you believe the role of the husband is? What do you believe the role of the
+        wife is? and how would you fulfil your role?</Typography>
+        <br></br>
+      <TextField value={husbandrole} onChange={handleHusbandRoleChange} variant="filled" />
+      <br></br>
+      <Typography>Is there any additional information you want to add about yourself or the marriage
+        partner you are looking for</Typography>
+        <br></br>
+      <TextField value={addinformation} onChange={handleAddInformationChange} variant="filled" />
+      <br></br>
+      <Typography>Do you have any suggestions on how we could improve this registration form? Are
+        there any features you would like us to add to the service if we haven't added them already?
+        (this does not get shown on your profile)</Typography>
+        <br></br>
 
-    return(
-        <FormControl variant="filled" sx={{ m: 1, width:'100%'}}>
-        <Typography>Are you filling this form out for yourself or someone else?</Typography>
-    
-    <Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={age}
-      onChange={handleChange}
-      label="Age"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={10}>Ten</MenuItem>
-      <MenuItem value={20}>Twenty</MenuItem>
-      <MenuItem value={30}>Thirty</MenuItem>
-    </Select>
-    <Typography>Are you male or female?</Typography>
-    
-    <Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={age}
-      onChange={handleChange}
-      label="Age"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={10}>Ten</MenuItem>
-      <MenuItem value={20}>Twenty</MenuItem>
-      <MenuItem value={30}>Thirty</MenuItem>
-    </Select>
-    <Typography>How many of the 5 prayers a day do you usually pray in the masjid?</Typography>
-    <TextField id="standard-basic"  variant="standard" />
-    <TextareaAutosize style={{height:80}}></TextareaAutosize>
-    <div style={{display:'flex' , justifyContent:'center'}}>
-    <Button style={{background:'#e5598f' , fontSize:'18px' , border:'5px solid white' ,
-     borderRadius:'36px' , color:'#fff' , textTransform:'capitalize' ,
-      textDecoration:'none' , boxShadow:'0px 2px 14px 0px rgb(0 0 0 / 30%)', 
-      position:'relative' , left:'25px' , top:'10px'
-    }} variant="outlined">Save</Button>
+      <TextField value={suggestions} onChange={handleSuggestionsChange} variant="filled" />
+      <br></br>
+      <Typography>Is it ok for us to send you our free newsletter from time to time?</Typography>
+      <br></br>
+
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={news}
+        onChange={handleNewsChange}
+
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={'Yes - once a fortnight (if a new edition is available)'}>Yes - once a fortnight (if a new edition is available)</MenuItem>
+        <MenuItem value={'Yes - once a month (if a new edition is available)'}>Yes - once a month (if a new edition is available)</MenuItem>
+        <MenuItem value={'Yes - once every 3 months (if a new edition is available)'}>Yes - once every 3 months (if a new edition is available)</MenuItem>
+        <MenuItem value={'No'}>No</MenuItem>
+      </Select>
+      <br></br>
+
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Button style={{
+          background: '#e5598f', fontSize: '18px', border: '5px solid white',
+          borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
+          textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
+          position: 'relative', left: '25px', top: '10px'
+        }} variant="outlined">Save</Button>
       </div>
-    
-    {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+
+      {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
         label="Basic example"
         value={value}
@@ -90,9 +102,9 @@ const FinishForm = ()=>{
         renderInput={(params) => <TextField {...params} />}
       />
     </LocalizationProvider> */}
-    
-  </FormControl>
-    )
+
+    </FormControl>
+  )
 }
 export default FinishForm
 

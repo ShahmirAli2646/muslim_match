@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
-import  CardHeader  from '@mui/material/CardHeader';
+import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
@@ -27,60 +27,112 @@ import DatePicker from '@mui/lab/DatePicker';
 
 
 
-const FriendShipsForm = ()=>{
-    const [age, setAge] = React.useState('');
-      
-        const handleChange = (event) => {
-          setAge(event.target.value);
-        }
-    const [value, setValue] = React.useState(null);
+const FriendShipsForm = () => {
+  const [timefriends, setTimeFriends] = React.useState('');
+  const [freemixwomen, setFreeMixWomen] = React.useState('');
+  const [freemixmen, setFreeMixMen] = React.useState('');
+  const [religiousfriends, setReligiousFriends] = React.useState('');
+  const [sectfriends, setSectFriends] = React.useState('');
+  const [personality, setPersonality] = React.useState('');
+  const handleFreeMixWomenChange = (event) => {
+    setFreeMixWomen(event.target.value);
+  }
+  const handleFreeMixMenChange = (event) => {
+    setFreeMixMen(event.target.value);
+  }
+  return (
+    <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
+      <Typography>Do you spend a lot of time with friends What activities do you do with your friends</Typography>
+      <br></br>
+      <TextField value={timefriends} onChange={(event) => {
+        setTimeFriends(event.target.value)
+      }} variant="filled" />
+      <br></br>
+      <Typography>
+        Are your friends religious
+      </Typography>
+      <br></br>
 
-    return(
-        <FormControl variant="filled" sx={{ m: 1, width:'100%'}}>
-        <Typography>Are you filling this form out for yourself or someone else?</Typography>
-    
-    <Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={age}
-      onChange={handleChange}
-      label="Age"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={10}>Ten</MenuItem>
-      <MenuItem value={20}>Twenty</MenuItem>
-      <MenuItem value={30}>Thirty</MenuItem>
-    </Select>
-    <Typography>Are you male or female?</Typography>
-    
-    <Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={age}
-      onChange={handleChange}
-      label="Age"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={10}>Ten</MenuItem>
-      <MenuItem value={20}>Twenty</MenuItem>
-      <MenuItem value={30}>Thirty</MenuItem>
-    </Select>
-    <Typography>How many of the 5 prayers a day do you usually pray in the masjid?</Typography>
-    <TextField id="standard-basic"  variant="standard" />
-    <TextareaAutosize style={{height:70}}></TextareaAutosize>
-    <div style={{display:'flex' , justifyContent:'center'}}>
-    <Button style={{background:'#e5598f' , fontSize:'18px' , border:'5px solid white' ,
-     borderRadius:'36px' , color:'#fff' , textTransform:'capitalize' ,
-      textDecoration:'none' , boxShadow:'0px 2px 14px 0px rgb(0 0 0 / 30%)', 
-      position:'relative' , left:'25px' , top:'10px'
-    }} variant="outlined">Save</Button>
+      <TextField value={religiousfriends} onChange={(event) => {
+        setReligiousFriends(event.target.value)
+      }} variant="filled" />
+      <br></br>
+      <Typography>What sect/following of Islam do your friends practice</Typography>
+      <br></br>
+      <TextField value={sectfriends} onChange={(event) => {
+        setSectFriends(event.target.value)
+      }} variant="filled" />
+      <br></br>
+      <Typography>How might your friends describe your personality</Typography>
+      <br></br>
+      <TextField value={personality} onChange={(event) => {
+        setPersonality(event.target.value)
+      }} variant="filled" />
+      <br></br>
+      <Typography>Would you want your future husband to free-mix with your friends</Typography>
+      <br></br>
+
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={freemixwomen}
+        onChange={handleFreeMixWomenChange}
+
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={'No I would want them to try to avoid each other at all times'}>No I would want them to try to avoid each other at all times</MenuItem>
+        <MenuItem value={'Yes'}>Yes</MenuItem>
+        <MenuItem value={'I am happy for my future husband and my female friends having a chat when they see each other'}>
+        I am happy for my future husband and my female friends 
+        having a chat when they see each other
+        </MenuItem>
+        <MenuItem value={'I would want my husband to come out with me and my friends ( i.e go for a meal and sit together)'}>
+        I would want my husband to come out with me and my friends 
+        ( i.e go for a meal and sit together)
+        </MenuItem>
+      </Select>
+      <br></br>
+      <Typography>Would you want your future wife to free-mix with your friends</Typography>
+      <br></br>
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={freemixmen}
+        onChange={handleFreeMixMenChange}
+
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={'No - I would want them to try to avoid each other at all times'}>No I would want them to try to avoid each other at all times</MenuItem>
+        <MenuItem value={'Yes'}>Yes</MenuItem>
+        <MenuItem value={'I am happy for my future wife and my male friends having a chat when they see each other'}>
+        I am happy for my future wife and my male friends having a 
+chat when they see each other
+
+        </MenuItem>
+        <MenuItem value={'I would want my wife to come out with me and my friends (i.e go for a meal and sit together)'}>
+        I would want my wife to come out with me and my friends (i.e 
+go for a meal and sit together)
+
+        </MenuItem>
+      </Select>
+      <br></br>
+
+      
+      
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Button style={{
+          background: '#e5598f', fontSize: '18px', border: '5px solid white',
+          borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
+          textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
+          position: 'relative', left: '25px', top: '10px'
+        }} variant="outlined">Save</Button>
       </div>
-    
-    {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+
+      {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
         label="Basic example"
         value={value}
@@ -90,9 +142,9 @@ const FriendShipsForm = ()=>{
         renderInput={(params) => <TextField {...params} />}
       />
     </LocalizationProvider> */}
-    
-  </FormControl>
-    )
+
+    </FormControl>
+  )
 }
 export default FriendShipsForm
 
