@@ -34,6 +34,7 @@ const StartForm = ()=>{
     const [startDate, setStartDate] = React.useState(new Date());
       
         const handlePurposeChange = (event) => {
+          
           setPurpose(event.target.value);
         }
         const handleGenderChange = (event) => {
