@@ -24,6 +24,8 @@ import { TextareaAutosize } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
+import { useDispatch, useSelector } from "react-redux";
+import { SubmitProfessionForm } from '../../../actions/formActions';
 
 
 
@@ -33,6 +35,16 @@ const ProfessionForm = () => {
   const [husbandprofession, setHusbandProfession] = React.useState('');
   const [partnereducation, setPartnerEducation] = React.useState('');
   const [myeducation, setMyEducation] = React.useState('');
+  const dispatch = useDispatch();
+  const handleSubmitProfessionForm = (event) => {
+    dispatch(SubmitProfessionForm(
+      wifeprofession,
+      husbandprofession,
+      partnereducation,
+      myprofession,
+      myeducation,
+    ))
+  };
 
   const handleWifeProfessionChange = (event) => {
     setWifeProfession(event.target.value);
@@ -51,7 +63,7 @@ const ProfessionForm = () => {
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Typography>Which profession status describe what you want your future wife to have (select all that apply)</Typography>
-       <br></br>
+      <br></br>
 
       <Select
         labelId="demo-simple-select-standard-label"
@@ -110,7 +122,7 @@ const ProfessionForm = () => {
         id="demo-simple-select-standard"
         value={partnereducation}
         onChange={handlePartnerEducationChange}
-        
+
       >
         <MenuItem value="">
           <em>None</em>
@@ -123,8 +135,8 @@ const ProfessionForm = () => {
       <br></br>
       <Typography>What is your profession</Typography>
       <br></br>
-      <TextField value={myprofession} onChange={(event)=>{
-       setMyProfession(event.target.value)
+      <TextField value={myprofession} onChange={(event) => {
+        setMyProfession(event.target.value)
       }} variant="filled" />
       <br></br>
       <Typography>What is your level of education</Typography>
@@ -134,7 +146,7 @@ const ProfessionForm = () => {
         id="demo-simple-select-standard"
         value={myeducation}
         onChange={handleMyEducationChange}
-        
+
       >
         <MenuItem value="">
           <em>None</em>
@@ -145,14 +157,14 @@ const ProfessionForm = () => {
       </Select>
       <br></br>
 
-      
+
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Button style={{
           background: '#e5598f', fontSize: '18px', border: '5px solid white',
           borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
           textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
           position: 'relative', left: '25px', top: '10px'
-        }} variant="outlined">Save</Button>
+        }} onClick={handleSubmitProfessionForm} variant="outlined">Save</Button>
       </div>
 
       {/* <LocalizationProvider dateAdapter={AdapterDateFns}>

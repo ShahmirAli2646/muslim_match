@@ -24,7 +24,8 @@ import { TextareaAutosize } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
-
+import { useDispatch, useSelector } from "react-redux";
+import { SubmitFriendshipsForm } from '../../../actions/formActions';
 
 
 const FriendShipsForm = () => {
@@ -34,6 +35,19 @@ const FriendShipsForm = () => {
   const [religiousfriends, setReligiousFriends] = React.useState('');
   const [sectfriends, setSectFriends] = React.useState('');
   const [personality, setPersonality] = React.useState('');
+  const dispatch = useDispatch();
+  const handleSubmitFriendshipsForm = (event) => {
+    dispatch(SubmitFriendshipsForm(
+      timefriends,
+      religiousfriends,
+      sectfriends,
+      personality,
+      freemixmen, freemixwomen,
+
+    ))
+  };
+
+
   const handleFreeMixWomenChange = (event) => {
     setFreeMixWomen(event.target.value);
   }
@@ -85,12 +99,12 @@ const FriendShipsForm = () => {
         <MenuItem value={'No I would want them to try to avoid each other at all times'}>No I would want them to try to avoid each other at all times</MenuItem>
         <MenuItem value={'Yes'}>Yes</MenuItem>
         <MenuItem value={'I am happy for my future husband and my female friends having a chat when they see each other'}>
-        I am happy for my future husband and my female friends 
-        having a chat when they see each other
+          I am happy for my future husband and my female friends
+          having a chat when they see each other
         </MenuItem>
         <MenuItem value={'I would want my husband to come out with me and my friends ( i.e go for a meal and sit together)'}>
-        I would want my husband to come out with me and my friends 
-        ( i.e go for a meal and sit together)
+          I would want my husband to come out with me and my friends
+          ( i.e go for a meal and sit together)
         </MenuItem>
       </Select>
       <br></br>
@@ -109,27 +123,27 @@ const FriendShipsForm = () => {
         <MenuItem value={'No - I would want them to try to avoid each other at all times'}>No I would want them to try to avoid each other at all times</MenuItem>
         <MenuItem value={'Yes'}>Yes</MenuItem>
         <MenuItem value={'I am happy for my future wife and my male friends having a chat when they see each other'}>
-        I am happy for my future wife and my male friends having a 
-chat when they see each other
+          I am happy for my future wife and my male friends having a
+          chat when they see each other
 
         </MenuItem>
         <MenuItem value={'I would want my wife to come out with me and my friends (i.e go for a meal and sit together)'}>
-        I would want my wife to come out with me and my friends (i.e 
-go for a meal and sit together)
+          I would want my wife to come out with me and my friends (i.e
+          go for a meal and sit together)
 
         </MenuItem>
       </Select>
       <br></br>
 
-      
-      
+
+
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Button style={{
           background: '#e5598f', fontSize: '18px', border: '5px solid white',
           borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
           textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
           position: 'relative', left: '25px', top: '10px'
-        }} variant="outlined">Save</Button>
+        }} onClick={handleSubmitFriendshipsForm} variant="outlined">Save</Button>
       </div>
 
       {/* <LocalizationProvider dateAdapter={AdapterDateFns}>

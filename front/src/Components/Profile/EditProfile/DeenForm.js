@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
-import  CardHeader  from '@mui/material/CardHeader';
+import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
@@ -26,10 +26,12 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
+import { useDispatch, useSelector } from "react-redux";
+import { SubmitDeenForm } from '../../../actions/formActions';
 
 
 
-const DeenForm = ()=>{
+const DeenForm = () => {
 
   const [followings, setFollowings] = React.useState([]);
   const [sect, setSect] = React.useState('');
@@ -38,6 +40,15 @@ const DeenForm = ()=>{
   const [hijra, setHijra] = React.useState('');
   const [fast, setFast] = React.useState('');
   const [quran, setQuran] = React.useState('');
+  const dispatch = useDispatch();
+
+  const handleSubmitDeenForm = (event) => {
+    dispatch(SubmitDeenForm(followings, WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted,
+      sect, Whichscholarsdoyoutakeknowledgefrom, AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails,
+      prayers, dua,
+      hijra, fast, CanyoureadandorunderstandanyArabic, quran,
+      MemorizedanyQuranifsohowmuch))
+  };
 
   const handleFollowingsChange = (event) => {
     const {
@@ -66,189 +77,190 @@ const DeenForm = ()=>{
   const handleQuranChange = (event) => {
     setQuran(event.target.value);
   }
-    return(
-        <FormControl variant="filled" sx={{ m: 1, width:'100%'}}>
-        <Typography>
-          Which followings of Islam match with what you're looking for in a spouse - Please select all that apply
-          </Typography>
-          <br></br>
-    <Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={followings}
-      multiple
-      onChange={handleFollowingsChange}
-      input={<OutlinedInput label="Name" />}
-      label="Followings"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={"Any - I don't mind"}>Any - I don't mind</MenuItem>
-      <MenuItem value={'Just Sunni'}>Just Sunni</MenuItem>
-      <MenuItem value={"Qur'an and Sunnah as understood by the sahaba and the salaf saliheen"}>Qur'an and Sunnah as understood by the sahaba and the salaf saliheen</MenuItem>
-      <MenuItem value={"Hanaf"}>Hanaf</MenuItem>
-      <MenuItem value={"Tablighi Jamaat"}>Tablighi Jamaat</MenuItem>
-      <MenuItem value={"Barelvi"}>Barelvi</MenuItem>
-      <MenuItem value={"Sufi"}>Sufi</MenuItem>
-    </Select>
-    <br></br>
-    <Typography>
-    What type and level of Islamic studying would you want a marriage match to have 
-    completed
-    </Typography>
-    <br></br>
-    <TextField id="standard-basic"  variant="filled" />
-    <br></br>
-    <Typography>
-    The Islamic teachings / sect that you follow
-    </Typography>
-    <br></br>
-    <Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={sect}
-      onChange={handleSectChange}
-      label="Sect"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={'Just Sunni'}>Just Sunni</MenuItem>
-      <MenuItem value={'Salafi'}>Salafi</MenuItem>
-      <MenuItem value={"Qur'an and Sunnah as understood by the sahaba and the salaf saliheen"}>Qur'an and Sunnah as understood by the sahaba and the salaf saliheen</MenuItem>
-      <MenuItem value={'Hanafi'}>Hanafi</MenuItem>
-      <MenuItem value={'Tablighi jamaat'}>Tablighi jamaat</MenuItem>
-      <MenuItem value={'Barelvi'}>Barelvi</MenuItem>
-      <MenuItem value={'Sufi'}>Sufi</MenuItem>
-    </Select>
-    <br></br>
-    <Typography>Which scholars do you take knowledge from</Typography>
-    <br></br>
-    <TextField id="standard-basic"  variant="filled" />
-    <br></br>
-    <Typography>Are you currently studying Islam, or have you in the past? Do you have the intention to study
-Islamic studies in the future? If yes to any of these questions please provide details 
-insha'Allah</Typography>
-<br></br>
-    <TextField id="standard-basic"  variant="filled" />
-    <br></br>
-    <Typography>How many of the 5 prayers a day do you usually pray in the masjid</Typography>
-    <br></br>
-    <Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={prayers}
-      onChange={handlePrayerChange}
-      label="Prayer"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={'All 5'}>All 5</MenuItem>
-      <MenuItem value={'4'}>4</MenuItem>
-      <MenuItem value={'3'}>3</MenuItem>
-      <MenuItem value={'2'}>2</MenuItem>
-      <MenuItem value={'1'}>1</MenuItem>
-      <MenuItem value={'I pray all the prayers in the Masjid when I am not in work'}>I pray all the prayers in the Masjid when I am not in work</MenuItem>
-      <MenuItem value={'I pray all the prayers in the Masjid when I am not in college'}>I pray all the prayers in the Masjid when I am not in college</MenuItem>
-      <MenuItem value={'I pray all the prayers in the Masjid when I am not in university'}>I pray all the prayers in the Masjid when I am not in university</MenuItem>
-    </Select>
-    <br></br>
-    <Typography>Do you make dua TO the Prophet (SAW) or dua to pirs or saints (there is strong evidence 
-that this type of dua is sinful shirk) </Typography>
-<br></br>
-<Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={dua}
-      onChange={handleDuaChange}
-      label="Dua"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={'Yes - I make dua TO the prophet (SAW)'}>Yes - I make dua TO the prophet (SAW)</MenuItem>
-      <MenuItem value={'No - I do not make dua TO the prophet'}>No - I do not make dua TO the prophet</MenuItem>
-    </Select>
-    <br></br>
-<Typography>Do you want to make hijra one day insha'Allah</Typography>
-<br></br>
-<Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={hijra}
-      onChange={handleHijraChange}
-      label="Hijra"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={'No'}>No</MenuItem>
-      <MenuItem value={'Yes'}>Yes</MenuItem>
-      <MenuItem value={'Yes – To a Muslim country'}>Yes – To a Muslim country</MenuItem>
-      <MenuItem value={'Yes – To a non-Muslim country'}>Yes – To a non-Muslim country</MenuItem>
-      <MenuItem value={'Yes – To a Muslim or a non-Muslim country'}>Yes – To a Muslim or a non-Muslim country</MenuItem>
-      <MenuItem value={'Maybe'}>Maybe</MenuItem>
-    </Select>
-    <br></br>
-    <Typography>Do you voluntary Fast</Typography>
-    <br></br>
-    <Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={fast}
-      onChange={handleFastChange}
-      label="Fast"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={'No'}>No</MenuItem>
-      <MenuItem value={'Yes'}>Yes</MenuItem>
-      <MenuItem value={'Yes – Usually every week'}>Yes – Usually every week</MenuItem>
-      <MenuItem value={'Yes – Usually every month'}>Yes – Usually every month</MenuItem>
-      <MenuItem value={'Yes – A few times a year'}>Yes – A few times a year</MenuItem>
-      <MenuItem value={'Maybe'}>Maybe</MenuItem>
-    </Select>
-    <br></br>
-    <Typography>Can you read and/or understand any Arabic</Typography>
-    <br></br>
-    <TextField id="standard-basic"  variant="filled" />
-    <br></br>
-    <Typography>Do you read Qur’an</Typography>
-    <br></br>
-    <Select
-      labelId="demo-simple-select-standard-label"
-      id="demo-simple-select-standard"
-      value={quran}
-      onChange={handleQuranChange}
-      label="Quran"
-    >
-      <MenuItem value="">
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={'No'}>No</MenuItem>
-      <MenuItem value={'Yes – Usually every day'}>Yes – Usually every day</MenuItem>
-      <MenuItem value={'Yes – Almost every day'}>Yes – Almost every day</MenuItem>
-      <MenuItem value={'Yes – 2-3 times a week'}>Yes – 2-3 times a week</MenuItem>
-      <MenuItem value={'Yes – Usually every week'}>Yes – Usually every week</MenuItem>
-      <MenuItem value={'Yes – Usually every month'}>Yes – Usually every month</MenuItem>
-    </Select>
-    <br></br>
-    <Typography> Memorized any Qur’an - if so how much</Typography>
-    <br></br>
-    <TextField id="standard-basic"  variant="filled" />
+  return (
+    <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
+      <Typography>
+        Which followings of Islam match with what you're looking for in a spouse - Please select all that apply
+      </Typography>
+      <br></br>
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={followings}
+        multiple
+        onChange={handleFollowingsChange}
+        input={<OutlinedInput label="Name" />}
+        label="Followings"
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={"Any - I don't mind"}>Any - I don't mind</MenuItem>
+        <MenuItem value={'Just Sunni'}>Just Sunni</MenuItem>
+        <MenuItem value={"Qur'an and Sunnah as understood by the sahaba and the salaf saliheen"}>Qur'an and Sunnah as understood by the sahaba and the salaf saliheen</MenuItem>
+        <MenuItem value={"Hanaf"}>Hanaf</MenuItem>
+        <MenuItem value={"Tablighi Jamaat"}>Tablighi Jamaat</MenuItem>
+        <MenuItem value={"Barelvi"}>Barelvi</MenuItem>
+        <MenuItem value={"Sufi"}>Sufi</MenuItem>
+      </Select>
+      <br></br>
+      <Typography>
+        What type and level of Islamic studying would you want a marriage match to have
+        completed
+      </Typography>
+      <br></br>
+      <TextField id="standard-basic" variant="filled" />
+      <br></br>
+      <Typography>
+        The Islamic teachings / sect that you follow
+      </Typography>
+      <br></br>
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={sect}
+        onChange={handleSectChange}
+        label="Sect"
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={'Just Sunni'}>Just Sunni</MenuItem>
+        <MenuItem value={'Salafi'}>Salafi</MenuItem>
+        <MenuItem value={"Qur'an and Sunnah as understood by the sahaba and the salaf saliheen"}>Qur'an and Sunnah as understood by the sahaba and the salaf saliheen</MenuItem>
+        <MenuItem value={'Hanafi'}>Hanafi</MenuItem>
+        <MenuItem value={'Tablighi jamaat'}>Tablighi jamaat</MenuItem>
+        <MenuItem value={'Barelvi'}>Barelvi</MenuItem>
+        <MenuItem value={'Sufi'}>Sufi</MenuItem>
+      </Select>
+      <br></br>
+      <Typography>Which scholars do you take knowledge from</Typography>
+      <br></br>
+      <TextField id="standard-basic" variant="filled" />
+      <br></br>
+      <Typography>Are you currently studying Islam, or have you in the past? Do you have the intention to study
+        Islamic studies in the future? If yes to any of these questions please provide details
+        insha'Allah</Typography>
+      <br></br>
+      <TextField id="standard-basic" variant="filled" />
+      <br></br>
+      <Typography>How many of the 5 prayers a day do you usually pray in the masjid</Typography>
+      <br></br>
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={prayers}
+        onChange={handlePrayerChange}
+        label="Prayer"
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={'All 5'}>All 5</MenuItem>
+        <MenuItem value={'4'}>4</MenuItem>
+        <MenuItem value={'3'}>3</MenuItem>
+        <MenuItem value={'2'}>2</MenuItem>
+        <MenuItem value={'1'}>1</MenuItem>
+        <MenuItem value={'I pray all the prayers in the Masjid when I am not in work'}>I pray all the prayers in the Masjid when I am not in work</MenuItem>
+        <MenuItem value={'I pray all the prayers in the Masjid when I am not in college'}>I pray all the prayers in the Masjid when I am not in college</MenuItem>
+        <MenuItem value={'I pray all the prayers in the Masjid when I am not in university'}>I pray all the prayers in the Masjid when I am not in university</MenuItem>
+      </Select>
+      <br></br>
+      <Typography>Do you make dua TO the Prophet (SAW) or dua to pirs or saints (there is strong evidence
+        that this type of dua is sinful shirk) </Typography>
+      <br></br>
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={dua}
+        onChange={handleDuaChange}
+        label="Dua"
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={'Yes - I make dua TO the prophet (SAW)'}>Yes - I make dua TO the prophet (SAW)</MenuItem>
+        <MenuItem value={'No - I do not make dua TO the prophet'}>No - I do not make dua TO the prophet</MenuItem>
+      </Select>
+      <br></br>
+      <Typography>Do you want to make hijra one day insha'Allah</Typography>
+      <br></br>
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={hijra}
+        onChange={handleHijraChange}
+        label="Hijra"
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={'No'}>No</MenuItem>
+        <MenuItem value={'Yes'}>Yes</MenuItem>
+        <MenuItem value={'Yes – To a Muslim country'}>Yes – To a Muslim country</MenuItem>
+        <MenuItem value={'Yes – To a non-Muslim country'}>Yes – To a non-Muslim country</MenuItem>
+        <MenuItem value={'Yes – To a Muslim or a non-Muslim country'}>Yes – To a Muslim or a non-Muslim country</MenuItem>
+        <MenuItem value={'Maybe'}>Maybe</MenuItem>
+      </Select>
+      <br></br>
+      <Typography>Do you voluntary Fast</Typography>
+      <br></br>
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={fast}
+        onChange={handleFastChange}
+        label="Fast"
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={'No'}>No</MenuItem>
+        <MenuItem value={'Yes'}>Yes</MenuItem>
+        <MenuItem value={'Yes – Usually every week'}>Yes – Usually every week</MenuItem>
+        <MenuItem value={'Yes – Usually every month'}>Yes – Usually every month</MenuItem>
+        <MenuItem value={'Yes – A few times a year'}>Yes – A few times a year</MenuItem>
+        <MenuItem value={'Maybe'}>Maybe</MenuItem>
+      </Select>
+      <br></br>
+      <Typography>Can you read and/or understand any Arabic</Typography>
+      <br></br>
+      <TextField id="standard-basic" variant="filled" />
+      <br></br>
+      <Typography>Do you read Qur’an</Typography>
+      <br></br>
+      <Select
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        value={quran}
+        onChange={handleQuranChange}
+        label="Quran"
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value={'No'}>No</MenuItem>
+        <MenuItem value={'Yes – Usually every day'}>Yes – Usually every day</MenuItem>
+        <MenuItem value={'Yes – Almost every day'}>Yes – Almost every day</MenuItem>
+        <MenuItem value={'Yes – 2-3 times a week'}>Yes – 2-3 times a week</MenuItem>
+        <MenuItem value={'Yes – Usually every week'}>Yes – Usually every week</MenuItem>
+        <MenuItem value={'Yes – Usually every month'}>Yes – Usually every month</MenuItem>
+      </Select>
+      <br></br>
+      <Typography> Memorized any Qur’an - if so how much</Typography>
+      <br></br>
+      <TextField id="standard-basic" variant="filled" />
 
-    
-    <div style={{display:'flex' , justifyContent:'center'}}>
-    <Button style={{background:'#e5598f' , fontSize:'18px' , border:'5px solid white' ,
-     borderRadius:'36px' , color:'#fff' , textTransform:'capitalize' ,
-      textDecoration:'none' , boxShadow:'0px 2px 14px 0px rgb(0 0 0 / 30%)', 
-      position:'relative' , left:'25px' , top:'10px'
-    }} variant="outlined">Save</Button>
+
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Button style={{
+          background: '#e5598f', fontSize: '18px', border: '5px solid white',
+          borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
+          textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
+          position: 'relative', left: '25px', top: '10px'
+        }} onClick={handleSubmitDeenForm} variant="outlined">Save</Button>
       </div>
-    {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+      {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
         label="Basic example"
         value={value}
@@ -258,9 +270,9 @@ that this type of dua is sinful shirk) </Typography>
         renderInput={(params) => <TextField {...params} />}
       />
     </LocalizationProvider> */}
-    
-  </FormControl>
-    )
+
+    </FormControl>
+  )
 }
 export default DeenForm
 

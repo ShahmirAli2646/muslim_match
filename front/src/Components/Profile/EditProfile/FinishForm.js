@@ -24,7 +24,8 @@ import { TextareaAutosize } from '@mui/material';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
-
+import { useDispatch, useSelector } from "react-redux";
+import { SubmitFinishForm } from '../../../actions/formActions';
 
 
 const FinishForm = () => {
@@ -32,6 +33,16 @@ const FinishForm = () => {
   const [news, setNews] = React.useState('');
   const [addinformation, setAddInformation] = React.useState('');
   const [suggestions, setSuggestions] = React.useState('');
+  const dispatch = useDispatch();
+  const handleSubmitFinishForm = (event) => {
+    dispatch(SubmitFinishForm(
+      husbandrole,
+      addinformation,
+      suggestions,
+      news,
+    ))
+  };
+
   const handleAddInformationChange = (event) => {
     setAddInformation(event.target.value);
   }
@@ -48,18 +59,18 @@ const FinishForm = () => {
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Typography>What do you believe the role of the husband is? What do you believe the role of the
         wife is? and how would you fulfil your role?</Typography>
-        <br></br>
+      <br></br>
       <TextField value={husbandrole} onChange={handleHusbandRoleChange} variant="filled" />
       <br></br>
       <Typography>Is there any additional information you want to add about yourself or the marriage
         partner you are looking for</Typography>
-        <br></br>
+      <br></br>
       <TextField value={addinformation} onChange={handleAddInformationChange} variant="filled" />
       <br></br>
       <Typography>Do you have any suggestions on how we could improve this registration form? Are
         there any features you would like us to add to the service if we haven't added them already?
         (this does not get shown on your profile)</Typography>
-        <br></br>
+      <br></br>
 
       <TextField value={suggestions} onChange={handleSuggestionsChange} variant="filled" />
       <br></br>
@@ -89,7 +100,7 @@ const FinishForm = () => {
           borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
           textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
           position: 'relative', left: '25px', top: '10px'
-        }} variant="outlined">Save</Button>
+        }} onClick={handleSubmitFinishForm} variant="outlined">Save</Button>
       </div>
 
       {/* <LocalizationProvider dateAdapter={AdapterDateFns}>

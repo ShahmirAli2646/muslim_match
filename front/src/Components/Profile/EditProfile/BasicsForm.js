@@ -25,9 +25,15 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import NumericTextboxComponent from 'react-numeric-textbox'
-
 import OutlinedInput from '@mui/material/OutlinedInput';
+import {
 
+  BASICS_FORM,
+
+} from "../../../actions/types";
+
+import { useDispatch, useSelector } from "react-redux";
+import { SubmitBasicForm } from '../../../actions/formActions';
 const BasicsForm = () => {
   const [minage, setMinAge] = React.useState('');
   const [maxage, setMaxAge] = React.useState('');
@@ -50,6 +56,22 @@ const BasicsForm = () => {
   const [hijabtype, setHijabType] = React.useState([]);
   const [menmaritalstatus, setMenMaritalStatus] = React.useState([]);
   const [womenmaritalstatus, setWomenMaritalStatus] = React.useState([]);
+  const dispatch = useDispatch();
+  const handleSubmitBasicForm = (event) => {
+    dispatch(SubmitBasicForm(minage, maxage,
+      hijabtype, consider,
+      malemaritalstatus, femalemaritalstatus,
+      marriageconsider, childrenconsider, mentalhealth,
+      disability, living,
+      Doyouhavespecificrequirementswithregardstotheethnicityofafuturemarriagepartner, WhatisyourpreferencewhenitcomestomarryingaMuslimwhofoundIslamlateroninlife,
+      Whichcountryorcountriesdoyoulivein, Whichcitytownvillagedoyoulivein, Whichcountryorcountriesdoyouholdcitizenship,
+      menmaritalstatus, womenmaritalstatus, dailyprayers, coverhair,
+      Whatareyourpreferredlivingarrangementsaftermarriage, mydisabilty, mymentalhealth, mychildren,
+      childrenconsider, relocate, revertconvert))
+  };
+
+
+
   const handleMinAgeChange = (event) => {
     setMinAge(event.target.value);
   }
@@ -131,6 +153,10 @@ const BasicsForm = () => {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+
+
+
+
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Typography>Please enter the youngest age you are looking for (taking into account legal restrictions we need to stick to)
@@ -806,14 +832,14 @@ const BasicsForm = () => {
           No
         </MenuItem>
       </Select>
-    
+
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Button style={{
           background: '#e5598f', fontSize: '18px', border: '5px solid white',
           borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
           textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
           position: 'relative', left: '25px', top: '10px'
-        }} variant="outlined">Save</Button>
+        }} onClick={handleSubmitBasicForm} variant="outlined">Save</Button>
       </div>
 
       {/* <LocalizationProvider dateAdapter={AdapterDateFns}>

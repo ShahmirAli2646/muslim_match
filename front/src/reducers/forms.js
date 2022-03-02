@@ -107,7 +107,7 @@ export default function (state = initialState, action) {
                 phone: payload.phone,
                 purpose: payload.purpose,
                 gender: payload.gender,
-                birthdate: payload.gender
+                birthdate: payload.birthdate
 
             };
         case APPEARANCE_FORM:
@@ -161,7 +161,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 followingforspouse: payload.followingforspouse,
-                WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted: payload.followingforspouse,
+                WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted: payload.WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted,
                 TheIslamicteachingssectthatyoufollow: payload.TheIslamicteachingssectthatyoufollow,
                 Whichscholarsdoyoutakeknowledgefrom: payload.Whichscholarsdoyoutakeknowledgefrom,
                 AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails: payload.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails,
@@ -196,7 +196,7 @@ export default function (state = initialState, action) {
                 Areyourfamilyreligious: payload.Areyourfamilyreligious,
                 WhatsectfollowingofIslamareyourfamilypractising: payload.WhatsectfollowingofIslamareyourfamilypractising,
                 Howisyourrelationshipwithyourfamily: payload.Howisyourrelationshipwithyourfamily,
-                WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah: payload.hatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah,
+                WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah: payload.WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah,
             };
         case FRIENDSHIPS_FORM:
             return {
