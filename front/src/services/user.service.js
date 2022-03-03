@@ -1,6 +1,6 @@
 import axios from "axios";
 import authHeader from "./auth-header";
-const API_URL = "http://localhost:8080/";
+const API_URL = "http://localhost:4001/";
 
 const getfullMatches = () => {
   return axios.get(API_URL + "my-matches/full-matches/:userId/:page", { headers: authHeader() });
@@ -11,12 +11,11 @@ const getpartialMatches = () => {
   const getpotentialMatches = () => {
     return axios.get(API_URL + "my-matches/potential-matches/:userId/:page", { headers: authHeader() });
   };
-const submitProfileData = () => {
+const submitProfileData = (formdata) => {
     return axios
-    .post(API_URL + "submit-profile-data", {
-      email,
-      password,
-    })
+    .post(API_URL + "submit-profile-data", 
+      formdata
+    )
     };
 const getAdminPanel = () => {
   return axios.get(API_URL + "admin", { headers: authHeader() });

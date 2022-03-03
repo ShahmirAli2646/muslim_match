@@ -25,7 +25,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
-import { SubmitProfessionForm } from '../../../actions/formActions';
+import { SubmitProfressionForm } from '../../../actions/formActions';
 
 
 
@@ -37,7 +37,7 @@ const ProfessionForm = () => {
   const [myeducation, setMyEducation] = React.useState('');
   const dispatch = useDispatch();
   const handleSubmitProfessionForm = (event) => {
-    dispatch(SubmitProfessionForm(
+    dispatch(SubmitProfressionForm(
       wifeprofession,
       husbandprofession,
       partnereducation,

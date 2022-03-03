@@ -26,6 +26,9 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import NumericTextboxComponent from 'react-numeric-textbox'
 import OutlinedInput from '@mui/material/OutlinedInput';
+import MYSelect from 'react-select'
+import countryList from 'react-select-country-list'
+
 import {
 
   BASICS_FORM,
@@ -33,17 +36,24 @@ import {
 } from "../../../actions/types";
 
 import { useDispatch, useSelector } from "react-redux";
-import { SubmitBasicForm } from '../../../actions/formActions';
+import { SubmitBasicsForm } from '../../../actions/formActions';
 const BasicsForm = () => {
   const [minage, setMinAge] = React.useState('');
   const [maxage, setMaxAge] = React.useState('');
   const [consider, setConsider] = React.useState('');
   const [mychildren, setMyChildren] = React.useState('');
+  const [wantchildren, setWantChildren] = React.useState('');
   const [revertconvert, setRevertConvert] = React.useState('');
   const [relocate, setRelocate] = React.useState('');
   const [revert, setRevert] = React.useState('');
   const [mymentalhealth, setMyMentalHealth] = React.useState('');
   const [mydisabilty, setMyDisability] = React.useState('');
+  const [partnercountries, setPartnerCountry] = React.useState('')
+  const [yourcountry, setYourCountry] = React.useState('')
+  const [yourcity, setYourCity] = React.useState('')
+  const [yourcitizenship, setYourCitizenship] = React.useState('')
+  const [partnerethnicity, setPartnerEthnicity] = React.useState('')
+  const options = React.useMemo(() => countryList().getData(), [])
   const [living, setLiving] = React.useState('');
   const [coverhair, setCoverHair] = React.useState('');
   const [dailyprayers, setDailyPrayer] = React.useState('');
@@ -58,22 +68,32 @@ const BasicsForm = () => {
   const [womenmaritalstatus, setWomenMaritalStatus] = React.useState([]);
   const dispatch = useDispatch();
   const handleSubmitBasicForm = (event) => {
-    dispatch(SubmitBasicForm(minage, maxage,
-      hijabtype, consider,
-      malemaritalstatus, femalemaritalstatus,
-      marriageconsider, childrenconsider, mentalhealth,
-      disability, living,
-      Doyouhavespecificrequirementswithregardstotheethnicityofafuturemarriagepartner, WhatisyourpreferencewhenitcomestomarryingaMuslimwhofoundIslamlateroninlife,
-      Whichcountryorcountriesdoyoulivein, Whichcitytownvillagedoyoulivein, Whichcountryorcountriesdoyouholdcitizenship,
-      menmaritalstatus, womenmaritalstatus, dailyprayers, coverhair,
-      Whatareyourpreferredlivingarrangementsaftermarriage, mydisabilty, mymentalhealth, mychildren,
-      childrenconsider, relocate, revertconvert))
+    dispatch(SubmitBasicsForm(minage , maxage , hijabtype , consider , menmaritalstatus , womenmaritalstatus , 
+      marriageconsider , childrenconsider , mentalhealth ,  disability , partnercountries , partnerethnicity , revert , 
+      yourcountry , yourcity , yourcitizenship , malemaritalstatus , femalemaritalstatus , dailyprayers , coverhair , 
+      living , mydisabilty , mymentalhealth , mychildren , wantchildren ,relocate , revertconvert ))
   };
 
 
 
   const handleMinAgeChange = (event) => {
-    setMinAge(event.target.value);
+    console.log('minage' , event )
+    setMinAge(event.value);
+  }
+  const handleYourCityChangeHandler = value => {
+    setYourCity(value)
+  }
+  const handleYourCitizenshipChangeHandler = value => {
+    setYourCitizenship(value)
+  }
+  const handleYourCountryChangeHandler = value => {
+    setYourCountry(value)
+  }
+  const handlePartnerCountryChangeHandler = value => {
+    setPartnerCountry(value)
+  }
+  const handlePartnerEthnicityChangeHandler = value => {
+    setPartnerEthnicity(value)
   }
   const handleMyMentalHealthChange = (event) => {
     setMyMentalHealth(event.target.value);
@@ -83,6 +103,9 @@ const BasicsForm = () => {
   }
   const handleMyChildrenChange = (event) => {
     setMyChildren(event.target.value);
+  }
+  const handleWantChildrenChange = (event) => {
+    setWantChildren(event.target.value);
   }
   const handleRevertConvertChange = (event) => {
     setRevertConvert(event.target.value);
@@ -109,7 +132,7 @@ const BasicsForm = () => {
     setMaleMaritalStatus(event.target.value);
   }
   const handleMaxAgeChange = (event) => {
-    setMaxAge(event.target.value);
+    setMaxAge(event.value);
   }
   const handleRevertChange = (event) => {
     setRevert(event.target.value);
@@ -170,10 +193,7 @@ const BasicsForm = () => {
         onChange={(event) => {
           handleMinAgeChange(event)
         }}
-        onFocus={(event) => this.onFocus(event)}
-        onBlur={(event) => this.onBlur(event)}
-        onEnter={(event) => this.onEnter(event)}
-        onEscape={(event) => this.onEscape(event)}
+     
 
       />
       <br></br>
@@ -384,51 +404,13 @@ const BasicsForm = () => {
       <br></br>
       <Typography>Which countries would you prefer your marriage partner to hold citizenship</Typography>
       <br></br>
-      <Select
-        labelId="demo-simple-select-standard-label"
-        id="demo-simple-select-standard"
-        value={disability}
-        onChange={handleDisabiltyChange}
-        label="Disability"
-      >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={'Yes'}>
-          Yes
-        </MenuItem>
-        <MenuItem value={'No'}>
-          No
-        </MenuItem>
-        <MenuItem value={'Maybe'}>
-          Maybe
-        </MenuItem>
-      </Select>
+      <MYSelect options={options} value={partnercountries} onChange={handlePartnerCountryChangeHandler } />
       <br></br>
       <Typography>
         Do you have specific requirements with regards to the ethnicity of a future marriage partner?
       </Typography>
       <br></br>
-      <Select
-        labelId="demo-simple-select-standard-label"
-        id="demo-simple-select-standard"
-        value={disability}
-        onChange={handleDisabiltyChange}
-        label="Disability"
-      >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={'Yes'}>
-          Yes
-        </MenuItem>
-        <MenuItem value={'No'}>
-          No
-        </MenuItem>
-        <MenuItem value={'Maybe'}>
-          Maybe
-        </MenuItem>
-      </Select>
+      <MYSelect options={options} value={partnerethnicity} onChange={handlePartnerEthnicityChangeHandler } />
       <br></br>
       <Typography>
         What is your preference when it comes to marrying a Muslim who found Islam later on in
@@ -467,93 +449,15 @@ const BasicsForm = () => {
         Which country, or countries do you live in?
       </Typography>
       <br></br>
-      <Select
-        labelId="demo-simple-select-standard-label"
-        id="demo-simple-select-standard"
-        value={revert}
-        onChange={handleRevertChange}
-        label="Revert"
-      >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={'Yes - I would marry them'}>
-          Yes - I would marry them
-        </MenuItem>
-        <MenuItem value={"No - I wouldn't want to marry them"}>
-          No - I wouldn't want to marry them
-
-        </MenuItem>
-        <MenuItem value={'Maybe'}>
-          Maybe
-        </MenuItem>
-        <MenuItem value={"Only if they were the same ethnicity as me (My parents won't accept me marrying outside of my ethnicity)"}>
-          Only if they were the same ethnicity as me (My parents won't
-          accept me marrying outside of my ethnicity)
-
-        </MenuItem>
-
-      </Select>
+      <MYSelect options={options} value={yourcountry} onChange={handleYourCountryChangeHandler } />
       <br></br>
       <Typography>Which city/town/village do you live in?</Typography>
       <br></br>
-      <Select
-        labelId="demo-simple-select-standard-label"
-        id="demo-simple-select-standard"
-        value={revert}
-        onChange={handleRevertChange}
-        label="Revert"
-      >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={'Yes - I would marry them'}>
-          Yes - I would marry them
-        </MenuItem>
-        <MenuItem value={"No - I wouldn't want to marry them"}>
-          No - I wouldn't want to marry them
-
-        </MenuItem>
-        <MenuItem value={'Maybe'}>
-          Maybe
-        </MenuItem>
-        <MenuItem value={"Only if they were the same ethnicity as me (My parents won't accept me marrying outside of my ethnicity)"}>
-          Only if they were the same ethnicity as me (My parents won't
-          accept me marrying outside of my ethnicity)
-
-        </MenuItem>
-
-      </Select>
+      <MYSelect options={options} value={yourcity} onChange={handleYourCityChangeHandler } />
       <br></br>
       <Typography>Which country, or countries do you hold citizenship</Typography>
       <br></br>
-      <Select
-        labelId="demo-simple-select-standard-label"
-        id="demo-simple-select-standard"
-        value={revert}
-        onChange={handleRevertChange}
-        label="Revert"
-      >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={'Yes - I would marry them'}>
-          Yes - I would marry them
-        </MenuItem>
-        <MenuItem value={"No - I wouldn't want to marry them"}>
-          No - I wouldn't want to marry them
-
-        </MenuItem>
-        <MenuItem value={'Maybe'}>
-          Maybe
-        </MenuItem>
-        <MenuItem value={"Only if they were the same ethnicity as me (My parents won't accept me marrying outside of my ethnicity)"}>
-          Only if they were the same ethnicity as me (My parents won't
-          accept me marrying outside of my ethnicity)
-
-        </MenuItem>
-
-      </Select>
+      <MYSelect options={options} value={yourcitizenship} onChange={handleYourCitizenshipChangeHandler } />
       <br></br>
       <Typography>What is your marital status</Typography>
       <br></br>
@@ -768,8 +672,8 @@ const BasicsForm = () => {
       <Select
         labelId="demo-simple-select-standard-label"
         id="demo-simple-select-standard"
-        value={mychildren}
-        onChange={handleMyChildrenChange}
+        value={wantchildren}
+        onChange={handleWantChildrenChange}
         label="MyChildren"
       >
         <MenuItem value="">

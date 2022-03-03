@@ -9,6 +9,7 @@ import {
   FRIENDSHIPS_FORM,
   LIFESTYLE_FORM,
 } from "./types";
+import UserService from '../services/user.service'
 
 export const SubmitStartForm = (phone, purpose, gender, birthdate) => (dispatch) => {
   dispatch({
@@ -23,7 +24,7 @@ export const SubmitStartForm = (phone, purpose, gender, birthdate) => (dispatch)
 };
 
 export const SubmitAppearanceForm = (Whatistheshortestheightyoufindcompatible, Whatsthetallestheightyoufindcompatible, WhatisyourpreferencewhenitcomestothewaistsizeofyourfuturehusbandinshaAllahininches,
-  Whatsthetallestheightyoufindcompatiblefemale, Smallestdresssizethatmeetsyourrequirementsforawife,
+  Smallestdresssizethatmeetsyourrequirementsforawife,
   Largestdresssizethatmeetsyourrequirementsforawife, Whichbuildmatchesyourpreference, Whatisyourheight, Yourdresssize,
   Yourwaistsizeininches, Whichbuildbestdescribesyou, Whichstyleofbearddoyouhave, Whatisyourethnicity
 ) => (dispatch) => {
@@ -33,7 +34,6 @@ export const SubmitAppearanceForm = (Whatistheshortestheightyoufindcompatible, W
       Whatistheshortestheightyoufindcompatible: Whatistheshortestheightyoufindcompatible,
       Whatsthetallestheightyoufindcompatible: Whatsthetallestheightyoufindcompatible,
       WhatisyourpreferencewhenitcomestothewaistsizeofyourfuturehusbandinshaAllahininches: WhatisyourpreferencewhenitcomestothewaistsizeofyourfuturehusbandinshaAllahininches,
-      Whatsthetallestheightyoufindcompatiblefemale: Whatsthetallestheightyoufindcompatiblefemale,
       Smallestdresssizethatmeetsyourrequirementsforawife: Smallestdresssizethatmeetsyourrequirementsforawife,
       Largestdresssizethatmeetsyourrequirementsforawife: Largestdresssizethatmeetsyourrequirementsforawife,
       Whichbuildmatchesyourpreference: Whichbuildmatchesyourpreference,
@@ -50,12 +50,12 @@ export const SubmitAppearanceForm = (Whatistheshortestheightyoufindcompatible, W
 
 export const SubmitBasicsForm = (youngestageyouarelookingfor, oldestageyouarelookingfor,
   Whattypeofhijabmatcheswithwhatyourelookingforinawife, WouldyouconsidermarragetoaMuslimawhodoesnotwearNiqaab,
-  Whichmaritalstatusmatchwithwhatyouarelookingfor, Whichmaritalstatusmatchwithwhatyouarelookingforfemale,
+  Whichmaritalstatusmatchwithwhatyouarelookingformen, Whichmaritalstatusmatchwithwhatyouarelookingforwomen,
   Wouldyouconsidermarryingsomeonewhoisalreadymarried, Wouldyoumarrysomeonewhoalreadyhaschildren, Wouldyoumarrysomeonewhohadmentalhealthproblems,
   Wouldyoumarrysomeonewhohadphysicaldisabilities, Whichcountrieswouldyoupreferyourmarriagepartnertoholdcitizenship,
   Doyouhavespecificrequirementswithregardstotheethnicityofafuturemarriagepartner, WhatisyourpreferencewhenitcomestomarryingaMuslimwhofoundIslamlateroninlife,
   Whichcountryorcountriesdoyoulivein, Whichcitytownvillagedoyoulivein, Whichcountryorcountriesdoyouholdcitizenship,
-  Whatisyourmaritalstatus, Whatisyourmaritalstatusfemale, Doyouprayallofthe5dailyprayers, Doyoucoveryourhairfromnonmahrams,
+  Whatisyourmaritalstatusmen, Whatisyourmaritalstatuswomen, Doyouprayallofthe5dailyprayers, Doyoucoveryourhairfromnonmahrams,
   Whatareyourpreferredlivingarrangementsaftermarriage, Doyouhaveanyphysicaldisabilities, Doyouhaveanymentalhealthproblems, Doyouhaveanychildren,
   Doyouwantchildrenaftermarriage, Areyouwillingtorelocateaftermarriage, DidyourevertconverttoIslam
 
@@ -67,8 +67,8 @@ export const SubmitBasicsForm = (youngestageyouarelookingfor, oldestageyouareloo
       oldestageyouarelookingfor: oldestageyouarelookingfor,
       Whattypeofhijabmatcheswithwhatyourelookingforinawife: Whattypeofhijabmatcheswithwhatyourelookingforinawife,
       WouldyouconsidermarragetoaMuslimawhodoesnotwearNiqaab: WouldyouconsidermarragetoaMuslimawhodoesnotwearNiqaab,
-      Whichmaritalstatusmatchwithwhatyouarelookingfor: Whichmaritalstatusmatchwithwhatyouarelookingfor,
-      Whichmaritalstatusmatchwithwhatyouarelookingforfemale: Whichmaritalstatusmatchwithwhatyouarelookingforfemale,
+      Whichmaritalstatusmatchwithwhatyouarelookingformen: Whichmaritalstatusmatchwithwhatyouarelookingformen,
+      Whichmaritalstatusmatchwithwhatyouarelookingforwomen: Whichmaritalstatusmatchwithwhatyouarelookingforwomen,
       Wouldyouconsidermarryingsomeonewhoisalreadymarried: Wouldyouconsidermarryingsomeonewhoisalreadymarried,
       Wouldyoumarrysomeonewhoalreadyhaschildren: Wouldyoumarrysomeonewhoalreadyhaschildren,
       Wouldyoumarrysomeonewhohadmentalhealthproblems: Wouldyoumarrysomeonewhohadmentalhealthproblems,
@@ -79,8 +79,8 @@ export const SubmitBasicsForm = (youngestageyouarelookingfor, oldestageyouareloo
       Whichcountryorcountriesdoyoulivein: Whichcountryorcountriesdoyoulivein,
       Whichcitytownvillagedoyoulivein: Whichcitytownvillagedoyoulivein,
       Whichcountryorcountriesdoyouholdcitizenship: Whichcountryorcountriesdoyouholdcitizenship,
-      Whatisyourmaritalstatus: Whatisyourmaritalstatus,
-      Whatisyourmaritalstatusfemale: Whatisyourmaritalstatusfemale,
+      Whatisyourmaritalstatusmen: Whatisyourmaritalstatusmen,
+      Whatisyourmaritalstatuswomen: Whatisyourmaritalstatuswomen,
       Doyouprayallofthe5dailyprayers: Doyouprayallofthe5dailyprayers,
       Doyoucoveryourhairfromnonmahrams: Doyoucoveryourhairfromnonmahrams,
       Whatareyourpreferredlivingarrangementsaftermarriage: Whatareyourpreferredlivingarrangementsaftermarriage,
@@ -198,4 +198,23 @@ export const SubmitLifestyleForm = (Whatstyleofmensclothingwouldyoupreferyourfut
         Doyouwearmakeupinfrontofnonmahrams: Doyouwearmakeupinfrontofnonmahrams,
       },
     });
+  };
+
+  export const FinishAndSubmitForm = (formdata) => (dispatch) => {
+    return UserService.submitProfileData(formdata).then(
+      (response) => {
+        console.log('response' , response)
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+       console.log('message' , message)
+        return Promise.reject();
+      }
+    );
   };

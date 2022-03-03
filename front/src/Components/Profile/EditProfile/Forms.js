@@ -29,17 +29,30 @@ import LifeStyleForm from './LifeStyleForm';
 import ProfessionForm from './ProfessionForm';
 import StartForm from './StartForm';
 import { Grid } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { useDispatch } from "react-redux";
+import {FinishAndSubmitForm} from '../../../actions/formActions'
 
 
 
 
 const Forms = ()=>{
-    
+  const formData = useSelector(state => state.forms)
+  const Dispatch = useDispatch();
+
         const [age, setAge] = React.useState('');
       
         const handleChange = (event) => {
           setAge(event.target.value);
         }
+        React.useEffect(()=>{
+             console.log('formdata' , formData)
+        })
+
+        const SubmitHandler = ()=>{
+           Dispatch(FinishAndSubmitForm(formData))
+        }
+       
        
     const Sections = [
         {  title:'Start',
@@ -133,8 +146,10 @@ const Forms = ()=>{
                     
                 }
                 </div>
+                
             </CardContent>
           </Card>
+         
           <Card sx={{ maxWidth: 980, height:80, marginTop:'50px',
           borderRadius: '20px' ,
            boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)'  }}>
@@ -144,6 +159,14 @@ const Forms = ()=>{
         </div>
 
           ))}
+           <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Button style={{
+          background: '#e5598f', fontSize: '18px', border: '5px solid white',
+          borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
+          textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
+          position: 'relative',left:'-9px' ,top: '33px'
+        }}  variant="outlined" onClick={SubmitHandler}>Finish and Submit Form</Button>
+      </div>
         
         
         </Container>

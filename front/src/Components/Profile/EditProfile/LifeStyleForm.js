@@ -26,7 +26,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
-import { SubmitLifeStyleForm } from '../../../actions/formActions';
+import { SubmitLifestyleForm } from '../../../actions/formActions';
 
 
 
@@ -45,12 +45,12 @@ const LifeStyleForm = () => {
   const [nonmahrammen, setNonMahramMen] = React.useState('');
   const dispatch = useDispatch();
   const handleSubmitLifeStyleForm = (event) => {
-    dispatch(SubmitLifeStyleForm(
+    dispatch(SubmitLifestyleForm(
       menclothing,
       nonmahramwomenclothing,
       beard,
       nonmahrammakeup,
-      DoyoueatharamdrinkalcoholsmokecigarettessmokeshishaoruseecigarettesSelectallthatapply, nonmahramwomen,
+      haram, nonmahramwomen,
       nonmahrammen,
       nonmahrammenclothing,
       nonmahramwomenclothing,

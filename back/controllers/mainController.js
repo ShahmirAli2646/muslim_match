@@ -94,28 +94,7 @@ module.exports={
         // Our register logic ends here
       } , 
 
-     submitProfile:  async (req, res) => {
-        try {
-            const {  purpose, 
-                gender,
-                dateofbirth,
-                prayers,
-                islamicInterest, user_id  } = req.body;
-                const profile = await Profile.create({
-                purpose, 
-                gender,
-                dateofbirth,
-                prayers,
-                islamicInterest,
-                user:user_id
-                  });
-                  res.status(201).json(profile);
-        }catch(err){
-            console.log(err);
-        }
-       
-      },
-
+    
      fullMatches: async (req, res) => {
         const userId = req.params.userId;
         var perPage = 5

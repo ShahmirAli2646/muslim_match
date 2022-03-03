@@ -40,15 +40,22 @@ const DeenForm = () => {
   const [hijra, setHijra] = React.useState('');
   const [fast, setFast] = React.useState('');
   const [quran, setQuran] = React.useState('');
+  const [islamicstudying, setIslamicStuding] = React.useState('');
+  const [scholars, setScholarChange] = React.useState('');
+  const [currentstudy, setCurrentStudyChange] = React.useState('');
+  const [arabic, setArabicChange] = React.useState('');
+  const [memorizedquran, setMemorizedQuran] = React.useState('');
   const dispatch = useDispatch();
 
   const handleSubmitDeenForm = (event) => {
-    dispatch(SubmitDeenForm(followings, WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted,
-      sect, Whichscholarsdoyoutakeknowledgefrom, AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails,
-      prayers, dua,
-      hijra, fast, CanyoureadandorunderstandanyArabic, quran,
-      MemorizedanyQuranifsohowmuch))
+    dispatch(SubmitDeenForm(followings , islamicstudying, sect ,scholars, currentstudy,prayers , dua,hijra ,fast, arabic ,  quran , memorizedquran ))
   };
+  const handleArabicChange = (event) => {
+    setArabicChange(event.target.value);
+  }
+  const handleMemorizedQuranChange = (event) => {
+    setMemorizedQuran(event.target.value);
+  }
 
   const handleFollowingsChange = (event) => {
     const {
@@ -59,8 +66,17 @@ const DeenForm = () => {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+  const handleCurrentStudyChange = (event) => {
+    setCurrentStudyChange(event.target.value);
+  }
   const handleSectChange = (event) => {
     setSect(event.target.value);
+  }
+  const handleScholarChange = (event) => {
+    setScholarChange(event.target.value);
+  }
+  const handleIslamicStudyingChange = (event) => {
+    setIslamicStuding(event.target.value);
   }
   const handlePrayerChange = (event) => {
     setPrayers(event.target.value);
@@ -109,7 +125,7 @@ const DeenForm = () => {
         completed
       </Typography>
       <br></br>
-      <TextField id="standard-basic" variant="filled" />
+      <TextField value={islamicstudying} onChange={handleIslamicStudyingChange} variant="filled" />
       <br></br>
       <Typography>
         The Islamic teachings / sect that you follow
@@ -136,13 +152,13 @@ const DeenForm = () => {
       <br></br>
       <Typography>Which scholars do you take knowledge from</Typography>
       <br></br>
-      <TextField id="standard-basic" variant="filled" />
+      <TextField value={scholars} onChange={handleScholarChange} variant="filled" />
       <br></br>
       <Typography>Are you currently studying Islam, or have you in the past? Do you have the intention to study
         Islamic studies in the future? If yes to any of these questions please provide details
         insha'Allah</Typography>
       <br></br>
-      <TextField id="standard-basic" variant="filled" />
+      <TextField value={currentstudy} onChange={handleCurrentStudyChange} variant="filled" />
       <br></br>
       <Typography>How many of the 5 prayers a day do you usually pray in the masjid</Typography>
       <br></br>
@@ -225,7 +241,7 @@ const DeenForm = () => {
       <br></br>
       <Typography>Can you read and/or understand any Arabic</Typography>
       <br></br>
-      <TextField id="standard-basic" variant="filled" />
+      <TextField value={arabic} onChange={handleArabicChange} id="standard-basic" variant="filled" />
       <br></br>
       <Typography>Do you read Qur’an</Typography>
       <br></br>
@@ -249,7 +265,7 @@ const DeenForm = () => {
       <br></br>
       <Typography> Memorized any Qur’an - if so how much</Typography>
       <br></br>
-      <TextField id="standard-basic" variant="filled" />
+      <TextField value={memorizedquran} onChange={handleMemorizedQuranChange} id="standard-basic" variant="filled" />
 
 
       <div style={{ display: 'flex', justifyContent: 'center' }}>
