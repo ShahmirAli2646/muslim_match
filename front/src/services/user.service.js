@@ -8,6 +8,9 @@ const getfullMatches = () => {
 const getpartialMatches = () => {
     return axios.get(API_URL + "my-matches/partial-matches/:userId/:page", { headers: authHeader() });
   };
+  const getuserProfile = (userId) => {
+    return axios.get(API_URL + "myprofile/"+userId);
+  };
   const getpotentialMatches = () => {
     return axios.get(API_URL + "my-matches/potential-matches/:userId/:page", { headers: authHeader() });
   };
@@ -24,5 +27,6 @@ export default {
     getfullMatches,
     getpartialMatches,
     getpotentialMatches,
-    submitProfileData
+    submitProfileData,
+    getuserProfile
 };

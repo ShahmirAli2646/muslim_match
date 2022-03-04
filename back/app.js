@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors())
 app.post("/register", controller.registerUser );
 app.post("/login", controller.loginUser );
-app.get('/view-profile/:userId' , FetchUserProfile.FetchUserProfile)
+app.get('/myprofile/:userId' , FetchUserProfile.FetchUserProfile)
 app.post("/submit-profile-data",ProfileSubmit.submitProfile );
 app.get('/my-matches/full-matches/:userId/:page',auth,controller.fullMatches);
 app.get('/my-matches/partial-matches/:userId/:page',auth,controller.partialMatches );

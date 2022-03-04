@@ -15,9 +15,34 @@ import FriendsIcon from '@mui/icons-material/ContactsOutlined'
 import ProfessionIcon from '@mui/icons-material/LocalPostOfficeOutlined'
 import { Container } from '@mui/material';
 import SectionHelper from './SectionHelper';
+import UserService from '../../services/user.service'
+import { useSelector } from 'react-redux';
+
 
 
 const DataBlock = ()=>{
+  const [profiledata, setProfileData] = React.useState('');
+  const user = useSelector(state => state.auth.user)
+  React.useEffect(()=>{
+    const result =  UserService.getuserProfile(user?._id).then(
+      (response) => {
+        console.log('response' , response)
+        return response;
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+       console.log('message' , message)
+        
+      }
+     )
+     setProfileData(result)
+
+  },[])
     const Sections = [
         {  title:'Deen',
           description: [
@@ -63,8 +88,10 @@ const DataBlock = ()=>{
             <Card sx={{ maxWidth: 980, height:300, marginTop:'50px',
             borderRadius: '20px' ,
              boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)'  }}>
-            <CardHeader style={{fontFamily:'fantasy' , fontSize:30 , color:'rgba(21, 135, 135, 0.8)'}} title={item.title}></CardHeader>
-            <CardContent>{item.description}</CardContent>
+            <CardHeader style={{fontFamily:'fantasy' , fontSize:30 , color:'rgba(21, 135, 135, 0.8)'}} 
+            title={item.title}></CardHeader>
+            {item.title}
+            <CardContent>{profiledata.description}</CardContent>
           </Card>
           <Card sx={{ maxWidth: 980, height:150, marginTop:'50px',
           borderRadius: '20px' ,
