@@ -61,6 +61,30 @@ export default function SectionHelper() {
       ],
     },
   ];
+  
+  const scrollToDeen = ()=>{
+    document.querySelector("#Deen").scrollIntoView({ behavior: 'smooth'});
+  }
+  const scrollToLifestyle = ()=>{
+    document.querySelector("#Lifestyle").scrollIntoView({ behavior: 'smooth'});
+  }
+  const scrollToBasics = ()=>{
+    document.querySelector("#Basics").scrollIntoView({ behavior: 'smooth'});
+  }
+  const scrollToApearance = ()=>{
+    document.querySelector("#Apearance").scrollIntoView({ behavior: 'smooth'});
+  }
+  const scrollToFamily = ()=>{
+    document.querySelector("#Family").scrollIntoView({ behavior: 'smooth'});
+  }
+  const scrollToFriendships = ()=>{
+    document.querySelector("#Friendships").scrollIntoView({ behavior: 'smooth'});
+  }
+  const scrollToProfession = ()=>{
+    document.querySelector("#Profession").scrollIntoView({ behavior: 'smooth'});
+  }
+
+
   return (
 
     <Card sx={{
@@ -71,13 +95,13 @@ export default function SectionHelper() {
       <CardActions style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
         {Sections.map((item) => (
           <div>
-            {item.title === 'Deen' ? (<div><StarIcon /><Button style={{ color: '#ff4a83' }} size="small">{item.title}</Button> </div>)
-              : item.title === 'Lifestyle' ? (<div><CompassIcon /><Button style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>)
-                : item.title === 'Basics' ? (<div><FilesIcon /><Button style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>)
-                  : item.title === 'Apearance' ? (<div><AtomIcon /><Button style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>)
-                    : item.title === 'Family' ? (<div><FamilyIcon /><Button style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>)
-                      : item.title === 'Friendships' ? (<div><FriendsIcon /><Button style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>)
-                        : item.title === 'Profession' ? (<div><ProfessionIcon /><Button style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>) : null}
+            {item.title === 'Deen' ? (<div><StarIcon /><Button onClick={scrollToDeen} style={{ color: '#ff4a83' }} size="small">{item.title}</Button> </div>)
+              : item.title === 'Lifestyle' ? (<div><CompassIcon /><Button onClick={scrollToLifestyle} style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>)
+                : item.title === 'Basics' ? (<div><FilesIcon /><Button onClick={scrollToBasics} style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>)
+                  : item.title === 'Apearance' ? (<div><AtomIcon /><Button onClick={scrollToApearance} style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>)
+                    : item.title === 'Family' ? (<div><FamilyIcon /><Button onClick={scrollToFamily} style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>)
+                      : item.title === 'Friendships' ? (<div><FriendsIcon /><Button onClick={scrollToFriendships} style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>)
+                        : item.title === 'Profession' ? (<div><ProfessionIcon /><Button onClick={scrollToProfession} style={{ color: '#ff4a83' }} size="small">{item.title}</Button></div>) : null}
 
           </div>
         ))}

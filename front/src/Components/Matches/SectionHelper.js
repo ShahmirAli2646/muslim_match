@@ -20,30 +20,47 @@ export default function SectionHelper() {
           description: [
             '30'
           ],
+          function: ()=>{
+            document.querySelector("#Matched").scrollIntoView({ behavior: 'smooth'});
+          }
          
         },
         {  title:'Potentials',
           description: [
            'Mobeen'
           ],
+          function: ()=>{
+            document.querySelector("#Potentials").scrollIntoView({ behavior: 'smooth'});
+          }
         },
         { title:'Nearly Matched',
           description: [
             'Birmingham Uk'
           ],
+          function: ()=>{
+            document.querySelector("#Nearly-Matched").scrollIntoView({ behavior: 'smooth'});
+          }
         },
         { title:'Liked',
           description: [
             'Birmingham Uk'
           ],
+          function: ()=>{
+            document.querySelector("#Liked").scrollIntoView({ behavior: 'smooth'});
+          }
         },
         { title:'Didnt Like',
           description: [
             'Birmingham Uk'
           ],
+          function: ()=>{
+            document.querySelector("#Didnt-Like").scrollIntoView({ behavior: 'smooth'});
+          }
         },
         
       ];
+      
+      
     return (
         
       <Card sx={{ maxWidth: 800, marginTop:'50px', padding:'20px', width:'20%',background:'#f7f7f7',
@@ -53,7 +70,7 @@ export default function SectionHelper() {
         {Sections.map((item) => (
                 <div style={{display:'flex' , justifyContent:'center' , marginBottom:'20px'}}> 
                 {
-                   <Button style={{color:'#ffff' ,width:'50%', background:'rgba(32,157,170,0.54) 45%' , textTransform:'capitalize' , border:'2px solid'  }} size="small">{item.title}</Button>
+                   <Button onClick={item.function} style={{color:'#ffff' ,width:'50%', background:'rgba(32,157,170,0.54) 45%' , textTransform:'capitalize' , border:'2px solid'  }} size="small">{item.title}</Button>
                 }
                </div>
             ))}  

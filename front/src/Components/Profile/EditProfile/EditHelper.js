@@ -66,6 +66,33 @@ export default function EditHelper() {
         ],
       },
       ];
+      const scrollToStart = ()=>{
+        document.querySelector("#Start").scrollIntoView({ behavior: 'smooth'});
+      }
+      const scrollToDeen = ()=>{
+        document.querySelector("#Deen").scrollIntoView({ behavior: 'smooth'});
+      }
+      const scrollToLifestyle = ()=>{
+        document.querySelector("#LifeStyle").scrollIntoView({ behavior: 'smooth'});
+      }
+      const scrollToBasics = ()=>{
+        document.querySelector("#Basics").scrollIntoView({ behavior: 'smooth'});
+      }
+      const scrollToApearance = ()=>{
+        document.querySelector("#Appearance").scrollIntoView({ behavior: 'smooth'});
+      }
+      const scrollToFamily = ()=>{
+        document.querySelector("#Family").scrollIntoView({ behavior: 'smooth'});
+      }
+      const scrollToFriendships = ()=>{
+        document.querySelector("#Friendships").scrollIntoView({ behavior: 'smooth'});
+      }
+      const scrollToProfession = ()=>{
+        document.querySelector("#Profession").scrollIntoView({ behavior: 'smooth'});
+      }
+      const scrollToFinish = ()=>{
+        document.querySelector("#Finish").scrollIntoView({ behavior: 'smooth'});
+      }
     return (
         
       <Card sx={{ maxWidth: 500, marginTop:'50px', padding:'20px',
@@ -75,22 +102,22 @@ export default function EditHelper() {
         {Sections.map((item) => (
                 <div>
                 {  item.title==='Finish'? 
-                (<div><CheckIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button> </div>): item.title==='Start'? 
-                (<div><EditIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button> </div>)  
+                (<div><CheckIcon/><Button onClick={scrollToFinish } style={{color:'#ff4a83'}} size="small">{item.title}</Button> </div>): item.title==='Start'? 
+                (<div><EditIcon/><Button onClick={scrollToStart} style={{color:'#ff4a83'}} size="small">{item.title}</Button> </div>)  
                 : item.title==='Deen'? 
-                (<div><StarIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button> </div>)
+                (<div><StarIcon/><Button onClick={scrollToDeen} style={{color:'#ff4a83'}} size="small">{item.title}</Button> </div>)
                 : item.title==='Lifestyle'?
-                ( <div><CompassIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
+                ( <div><CompassIcon/><Button onClick={scrollToLifestyle} style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
                 :item.title==='Basics'?
-                ( <div><FilesIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
+                ( <div><FilesIcon/><Button onClick={scrollToBasics} style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
             :item.title==='Apearance'?
-            ( <div><AtomIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
+            ( <div><AtomIcon/><Button onClick={scrollToApearance} style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
         :item.title==='Family'?
-        ( <div><FamilyIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
+        ( <div><FamilyIcon/><Button onClick={scrollToFamily} style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
     :item.title==='Friendships'?
-    ( <div><FriendsIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
+    ( <div><FriendsIcon/><Button onClick={scrollToFriendships} style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>)
 :item.title==='Profession'?
-( <div><ProfessionIcon/><Button style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>):null}
+( <div><ProfessionIcon/><Button onClick={scrollToProfession} style={{color:'#ff4a83'}} size="small">{item.title}</Button></div>):null}
               
                </div>
             ))}  

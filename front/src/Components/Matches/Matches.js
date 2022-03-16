@@ -50,7 +50,7 @@ class Profile extends React.Component {
                'Mobeen'
               ],
             },
-            { title:'Nearly Matched',
+            { title:'Nearly-Matched',
               description: [
                 'Birmingham Uk'
               ],
@@ -60,7 +60,7 @@ class Profile extends React.Component {
                 'Birmingham Uk'
               ],
             },
-            { title:'Didnt Like',
+            { title:'Didnt-Like',
               description: [
                 'Birmingham Uk'
               ],
@@ -109,7 +109,7 @@ class Profile extends React.Component {
             
               {tiers.map((tier) => (
                
-                  
+                  <div id={tier.title}>
                       <Card style={{backgroundColor:'#fff' , boxShadow:'0px 2px 6px 0px rgb(0 0 0 / 30%)' ,marginBottom:'30px'}}>
                       <CardHeader
                       style={{ color:'rgba(21, 135, 135, 0.8)'}}
@@ -139,6 +139,7 @@ class Profile extends React.Component {
 
                       
                     </Card>
+                    </div>
                    
                     
                     ))}

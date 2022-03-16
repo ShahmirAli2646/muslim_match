@@ -117,7 +117,7 @@ const Forms = ()=>{
            Your profile</Typography>
            </div>
           {Sections.map((item)=>(
-            <div>
+            <div id={item.title}>
             <Card sx={{ maxWidth: 980, height:'auto', marginTop:'50px',
             borderRadius: '20px' ,
              boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)'  }}>

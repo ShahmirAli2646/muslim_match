@@ -106,7 +106,7 @@ const DataBlock = () => {
   return (
     <Container maxWidth='md' disableGutters={true}>
       {Sections.map((item) => (
-        <div>
+        <div id={item.title}>
           <Card sx={{
             maxWidth: 980, marginTop: '50px',
             borderRadius: '20px',
