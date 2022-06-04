@@ -35,7 +35,15 @@ class EditProfile extends React.Component {
       super(props)
 
     }
-    
+    componentDidMount() {
+      const reloadCount = sessionStorage.getItem('reloadCount');
+      if(reloadCount < 2) {
+        sessionStorage.setItem('reloadCount', String(reloadCount + 1));
+        window.location.reload();
+      } else {
+        sessionStorage.removeItem('reloadCount');
+      }
+    }
     render(){
         const tiers = [
             {  title:'AGE',

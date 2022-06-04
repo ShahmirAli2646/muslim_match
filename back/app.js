@@ -21,6 +21,17 @@ app.use(cors())
 app.post("/register", controller.registerUser );
 app.post("/login", controller.loginUser );
 app.get('/myprofile/:userId' , FetchUserProfile.FetchUserProfile)
+app.get('/user/:userId' , async (req, res) => {
+    try{
+        const userId = req.params.userId;
+        const user = await User.findOne({_id:userId},);
+        res.status(201).json(user);
+    }
+    catch(err){
+      console.log(err)
+    }
+
+},)
 app.post("/submit-profile-data",ProfileSubmit.submitProfile );
 app.get('/my-matches/full-matches/:userId/:page',FullMatches.FullMatches);
 app.get('/my-matches/partial-matches/:userId/:page',PartialMatches );

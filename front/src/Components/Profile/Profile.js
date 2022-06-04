@@ -27,142 +27,173 @@ import SectionHelper from './SectionHelper';
 import DataBlock from './DataBlock'
 import AdvertHelper from './AdvertHelper'
 import Promotion from '../CommonContent/Promotion'
+import userService from '../../services/user.service';
 
 
 
 class Profile extends React.Component {
-    constructor(props){
-      super(props)
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      user :  JSON.parse(localStorage.getItem("user")),
+      userName : null,
+      age : null , 
+      location : null
     }
-    
-    render(){
-        const tiers = [
-            {  title:'AGE',
-              description: [
-                '30'
-              ],
-             
-            },
-            {  title:'USER NAME',
-              description: [
-               'Mobeen'
-              ],
-            },
-            { title:'LOCATION',
-              description: [
-                'Birmingham Uk'
-              ],
-            },
-          ];
-        return(
-        <div>
-            <Container maxWidth="1600px" disableGutters={true}>
-         <div style={{ backgroundImage: `url(${background}) ` ,backgroundPosition: 'center',
-         backgroundSize: 'cover',
-         backgroundRepeat: 'no-repeat',
-        
-         height: '50vh' }}>
-             <div style={{ padding:100}}>
 
-             
-             <h3 style={{textAlign:'center' , fontSize:35 , padding:0 , margin:0}}><span style={{color:'#ffffff'}}>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</span></h3>
-            
-         <p style={{textAlign:'center' , fontSize:25}}><span style={{color:"#ffffff"}}><em>Bismillah Al</em>–<em>Rahman</em>,&nbsp;<em>Al</em>–<em>Rahim</em></span></p>
+  }
+  componentDidMount(){
+    window.onload = function() {
+      if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+      }
+    }
+     this.getUserData()
+  }
+  
+   getUserData = async ()=>{
+    const userData = await userService.getuser(this.state.user?._id)
+    console.log('userData' , userData)
+    this.setState({userName:userData.data.first_name} , async ()=>{
+      const userProfile = await userService.getuserProfile(this.state.user?._id)
+      console.log('userProfile' , userProfile)
+      const newDate = Date.parse(userProfile.data.birthdate);
+      const ageInMilliseconds = new Date() - new Date(newDate);
+      const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+      const location = userProfile.data.Whichcountryorcountriesdoyoulivein.label;
+      this.setState({age:result})
+      this.setState({location:location})
+      
+    })
+   }
 
-         </div>
-</div>
-</Container>
+  render() {
+    const tiers = [
+      {
+        title: 'AGE',
+        description: [
+          this.state.age
+        ],
 
-<Container maxWidth="1600px" disableGutters={true}>
-    <div style={{background:'#009da0' , textAlign:'center' , padding:'150px'}}>
-    <span style={{fontSize:'25px' , color:'#e0e0e0'}}>وَمَن يُطِعِ اللَّهَ وَالرَّسُولَ فَأُولَٰئِكَ مَعَ الَّذِينَ أَنْعَمَ اللَّهُ عَلَيْهِم مِّنَ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ وَالصَّالِحِينَ ۚ وَحَسُنَ أُولَٰئِكَ رَفِيقًا</span>
-    <p><em style={{color:'#e5e5e5' , fontSize:'18px'}}><br></br>
-And whoso obeys Allah and the Messenger, then they will be with those on whom Allah has bestowed His Grace, of the Prophets, the Siddiqoon, the martyrs, and the righteous. And how excellent these companions are!</em></p>
-<p><em style={{color:'#e5e5e5' , fontSize:'18px'}}></em><span style={{color:'#e5e5e5'}}><strong> Noble&nbsp;Qur’an [94:5]&nbsp;</strong></span></p>
-    </div>
-</Container>
-<Container maxWidth="1600px" disableGutters={true}>
-    <div style={{background:'#efefef' }}>
-    <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
-      <CssBaseline />
-     
-      {/* Hero unit */}
-    
-      {/* End hero unit */}
-      <Container maxWidth="xl" component="main">
-        <Grid container spacing={5} >
-          {tiers.map((tier) => (
-            // Enterprise card is full width at sm breakpoint
-            <Grid
-              item
-              key={tier.title}
-              xs={12}
-              md={4}
-              
-              
-            >
-              <Card style={{backgroundColor:'#efefef' , boxShadow:'none'}}>
-                <CardHeader
-                style={{textAlign:'center' , fontSize:20 , color:'rgba(163, 19, 19, 0.65)'}}
-                title={tier.title}
-                  sx={{
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === 'light'
-                        ? theme.palette.grey[2]
-                        : theme.palette.grey[700],
-                  }}
-                />
-                <CardContent>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'baseline',
-                      mb: 2,
-                    }}
+      },
+      {
+        title: 'USER NAME',
+        description: [
+          this.state.userName
+        ],
+      },
+      {
+        title: 'LOCATION',
+        description: [
+          this.state.location
+        ],
+      },
+    ];
+    return (
+      <div>
+        <Container maxWidth="1600px" disableGutters={true}>
+          <div style={{
+            backgroundImage: `url(${background}) `, backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+
+            height: '50vh'
+          }}>
+            <div style={{ padding: 100 }}>
+
+
+              <h3 style={{ textAlign: 'center', fontSize: 35, padding: 0, margin: 0 }}><span style={{ color: '#ffffff' }}>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</span></h3>
+
+              <p style={{ textAlign: 'center', fontSize: 25 }}><span style={{ color: "#ffffff" }}><em>Bismillah Al</em>–<em>Rahman</em>,&nbsp;<em>Al</em>–<em>Rahim</em></span></p>
+
+            </div>
+          </div>
+        </Container>
+
+        <Container maxWidth="1600px" disableGutters={true}>
+          <div style={{ background: '#009da0', textAlign: 'center', padding: '150px' }}>
+            <span style={{ fontSize: '25px', color: '#e0e0e0' }}>وَمَن يُطِعِ اللَّهَ وَالرَّسُولَ فَأُولَٰئِكَ مَعَ الَّذِينَ أَنْعَمَ اللَّهُ عَلَيْهِم مِّنَ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ وَالصَّالِحِينَ ۚ وَحَسُنَ أُولَٰئِكَ رَفِيقًا</span>
+            <p><em style={{ color: '#e5e5e5', fontSize: '18px' }}><br></br>
+              And whoso obeys Allah and the Messenger, then they will be with those on whom Allah has bestowed His Grace, of the Prophets, the Siddiqoon, the martyrs, and the righteous. And how excellent these companions are!</em></p>
+            <p><em style={{ color: '#e5e5e5', fontSize: '18px' }}></em><span style={{ color: '#e5e5e5' }}><strong> Noble&nbsp;Qur’an [94:5]&nbsp;</strong></span></p>
+          </div>
+        </Container>
+        <Container maxWidth="1600px" disableGutters={true}>
+          <div style={{ background: '#efefef' }}>
+            <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
+            <CssBaseline />
+
+            {/* Hero unit */}
+
+            {/* End hero unit */}
+            <Container maxWidth="xl" component="main">
+              <Grid container spacing={5} >
+                {tiers.map((tier) => (
+                  // Enterprise card is full width at sm breakpoint
+                  <Grid
+                    item
+                    key={tier.title}
+                    xs={12}
+                    md={4}
                   >
-                   
-                  </Box>
-                  <ul>
-                    {tier.description.map((line) => (
-                      <Typography
-                        style={{
-                            color:'#666',
-                            
-                            fontSize: 'larger',
-                            fontWeight: 'bold'}}
-                        component="li"
-                        variant="subtitle1"
-                        align="center"
-                        key={line}
-                      >
-                        {line}
-                      </Typography>
-                    ))}
-                  </ul>
-                </CardContent>
-               
-              </Card>
-            </Grid>
-          ))}
-          </Grid>
-          </Container>
+                    <Card style={{ backgroundColor: '#efefef', boxShadow: 'none' }}>
+                      <CardHeader
+                        style={{ textAlign: 'center', fontSize: 20, color: 'rgba(163, 19, 19, 0.65)' }}
+                        title={tier.title}
+                        sx={{
+                          backgroundColor: (theme) =>
+                            theme.palette.mode === 'light'
+                              ? theme.palette.grey[2]
+                              : theme.palette.grey[700],
+                        }}
+                      />
+                      <CardContent>
+                        <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'baseline',
+                            mb: 2,
+                          }}
+                        >
+                        </Box>
+                        <ul>
+                          {tier.description.map((line) => (
+                            <Typography
+                              style={{
+                                color: '#666',
 
-    </div>
-
-</Container>
-<SectionHelper/>
-   <DataBlock/>
-   <AdvertHelper/>
-   <br>
-   </br>
-   <br>
-   </br>
-
-         </div>
-        )
-    }
+                                fontSize: 'larger',
+                                fontWeight: 'bold'
+                              }}
+                              component="li"
+                              variant="subtitle1"
+                              align="center"
+                              key={line}
+                            >
+                              {line}
+                            </Typography>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
+        </div>
+        </Container>
+        <SectionHelper />
+        <DataBlock />
+        <AdvertHelper />
+        <br>
+        </br>
+        <br>
+        </br>
+      </div>
+    )
+  }
 }
 
 export default Profile

@@ -2,17 +2,20 @@ import axios from "axios";
 import authHeader from "./auth-header";
 const API_URL = "http://localhost:4001/";
 
-const getfullMatches = () => {
-  return axios.get(API_URL + "my-matches/full-matches/:userId/:page", { headers: authHeader() });
+const getfullMatches = (userId , page) => {
+  return axios.get(API_URL + "my-matches/full-matches/"+userId + "/"+page);
 };
-const getpartialMatches = () => {
-    return axios.get(API_URL + "my-matches/partial-matches/:userId/:page", { headers: authHeader() });
+const getpartialMatches = (userId , page) => {
+    return axios.get(API_URL + "my-matches/partial-matches/"+userId + "/"+page);
   };
   const getuserProfile = (userId) => {
     return axios.get(API_URL + "myprofile/"+userId);
   };
-  const getpotentialMatches = () => {
-    return axios.get(API_URL + "my-matches/potential-matches/:userId/:page", { headers: authHeader() });
+  const getuser = (userId) => {
+    return axios.get(API_URL + "user/"+userId);
+  };
+  const getpotentialMatches = (userId , page) => {
+    return axios.get(API_URL + "my-matches/potential-matches/"+userId + "/"+page);
   };
 const submitProfileData = (formdata) => {
     return axios
@@ -28,5 +31,6 @@ export default {
     getpartialMatches,
     getpotentialMatches,
     submitProfileData,
-    getuserProfile
+    getuserProfile,
+    getuser
 };

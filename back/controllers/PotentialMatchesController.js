@@ -11,7 +11,7 @@ const profile = require("../model/profile");
 module.exports = {
     PotentialMatches: async (req, res) => {
         const userId = req.params.userId;
-        var perPage = 5
+        var perPage = 3
         var page = Math.max(0, req.params.page)
         //run matching algorithm
         const profiletomatch = await Profile.findOne({ user: userId })
@@ -20,208 +20,208 @@ module.exports = {
         const FinalResult = PotentialMatches.filter(function (item) {
 
             var count = 0;
-            let result = equals(PotentialMatches.followingforspouse, profiletomatch.followingforspouse)
+            let result = equals(item.followingforspouse, profiletomatch.followingforspouse)
             if (result === true) {
                 count++
             }
 
-            if (PotentialMatches.WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted === profiletomatch.WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted) {
+            if (item.WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted === profiletomatch.WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted) {
                 count++
             }
-            if (PotentialMatches.TheIslamicteachingssectthatyoufollow === profiletomatch.TheIslamicteachingssectthatyoufollow) {
+            if (item.TheIslamicteachingssectthatyoufollow === profiletomatch.TheIslamicteachingssectthatyoufollow) {
                 count++
             }
-            if (PotentialMatches.Whichscholarsdoyoutakeknowledgefrom === profiletomatch.Whichscholarsdoyoutakeknowledgefrom) {
+            if (item.Whichscholarsdoyoutakeknowledgefrom === profiletomatch.Whichscholarsdoyoutakeknowledgefrom) {
                 count++
             }
-            if (PotentialMatches.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails === profiletomatch.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails)
+            if (item.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails === profiletomatch.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails)
                 count++;
-            if (PotentialMatches.Howmanyofthe5prayersadaydoyouusuallyprayinthemasjid === profiletomatch.Howmanyofthe5prayersadaydoyouusuallyprayinthemasjid)
+            if (item.Howmanyofthe5prayersadaydoyouusuallyprayinthemasjid === profiletomatch.Howmanyofthe5prayersadaydoyouusuallyprayinthemasjid)
                 count++;
-            if (PotentialMatches.DoyoumakeduaTOtheProphetSAWorduatopirsorsaintsthereisstrongevidencethatthistypeofduaissinfulshirk === profiletomatch.DoyoumakeduaTOtheProphetSAWorduatopirsorsaintsthereisstrongevidencethatthistypeofduaissinfulshirk)
+            if (item.DoyoumakeduaTOtheProphetSAWorduatopirsorsaintsthereisstrongevidencethatthistypeofduaissinfulshirk === profiletomatch.DoyoumakeduaTOtheProphetSAWorduatopirsorsaintsthereisstrongevidencethatthistypeofduaissinfulshirk)
                 count++;
-            if (PotentialMatches.DoyouwanttomakehijraonedayinshaAllah === profiletomatch.DoyouwanttomakehijraonedayinshaAllah)
+            if (item.DoyouwanttomakehijraonedayinshaAllah === profiletomatch.DoyouwanttomakehijraonedayinshaAllah)
                 count++;
-            if (PotentialMatches.DoyouvoluntaryFast === profiletomatch.DoyouvoluntaryFast)
+            if (item.DoyouvoluntaryFast === profiletomatch.DoyouvoluntaryFast)
                 count++;
-            if (PotentialMatches.CanyoureadandorunderstandanyArabic === profiletomatch.CanyoureadandorunderstandanyArabic)
+            if (item.CanyoureadandorunderstandanyArabic === profiletomatch.CanyoureadandorunderstandanyArabic)
                 count++;
-            if (PotentialMatches.DoyoureadQuran === profiletomatch.DoyoureadQuran)
+            if (item.DoyoureadQuran === profiletomatch.DoyoureadQuran)
                 count++;
-            if (PotentialMatches.MemorizedanyQuranifsohowmuch === profiletomatch.MemorizedanyQuranifsohowmuch) {
+            if (item.MemorizedanyQuranifsohowmuch === profiletomatch.MemorizedanyQuranifsohowmuch) {
                 count++;
             }
-            let result2 = equals(PotentialMatches.Whatstyleofmensclothingwouldyoupreferyourfuturehusbandwearwhenaroundnonmahramswhengoingtotheshoporatworketc, profiletomatch.Whatstyleofmensclothingwouldyoupreferyourfuturehusbandwearwhenaroundnonmahramswhengoingtotheshoporatworketc)
+            let result2 = equals(item.Whatstyleofmensclothingwouldyoupreferyourfuturehusbandwearwhenaroundnonmahramswhengoingtotheshoporatworketc, profiletomatch.Whatstyleofmensclothingwouldyoupreferyourfuturehusbandwearwhenaroundnonmahramswhengoingtotheshoporatworketc)
             if (result2 === true) {
                 count++
             }
-            let result3 = equals(PotentialMatches.Whatstyleofwomensclothingwouldyoupreferyourfuturewifetowearwhenaroundnonmahramswhengoingtotheshoporparketc, profiletomatch.Whatstyleofwomensclothingwouldyoupreferyourfuturewifetowearwhenaroundnonmahramswhengoingtotheshoporparketc)
+            let result3 = equals(item.Whatstyleofwomensclothingwouldyoupreferyourfuturewifetowearwhenaroundnonmahramswhengoingtotheshoporparketc, profiletomatch.Whatstyleofwomensclothingwouldyoupreferyourfuturewifetowearwhenaroundnonmahramswhengoingtotheshoporparketc)
             if (result3 === true) {
                 count++
             }
-            let result4 = equals(PotentialMatches.Whichbeardstylemeetyourpreferences, profiletomatch.Whichbeardstylemeetyourpreferences)
+            let result4 = equals(item.Whichbeardstylemeetyourpreferences, profiletomatch.Whichbeardstylemeetyourpreferences)
             if (result4 === true) {
                 count++
             }
-            if (PotentialMatches.Doyouwantawifewhowearsmakeupinfrontofnonmahrams === profiletomatch.Doyouwantawifewhowearsmakeupinfrontofnonmahrams) {
+            if (item.Doyouwantawifewhowearsmakeupinfrontofnonmahrams === profiletomatch.Doyouwantawifewhowearsmakeupinfrontofnonmahrams) {
                 count++;
             }
-            let result5 = equals(PotentialMatches.DoyoueatharamdrinkalcoholsmokecigarettessmokeshishaoruseecigarettesSelectallthatapply, profiletomatch.DoyoueatharamdrinkalcoholsmokecigarettessmokeshishaoruseecigarettesSelectallthatapply)
+            let result5 = equals(item.DoyoueatharamdrinkalcoholsmokecigarettessmokeshishaoruseecigarettesSelectallthatapply, profiletomatch.DoyoueatharamdrinkalcoholsmokecigarettessmokeshishaoruseecigarettesSelectallthatapply)
             if (result5 === true) {
                 count++
             }
-            if (PotentialMatches.Doyoufreemixwithnonmahramfemales === profiletomatch.Doyoufreemixwithnonmahramfemales)
+            if (item.Doyoufreemixwithnonmahramfemales === profiletomatch.Doyoufreemixwithnonmahramfemales)
                 count++;
-            if (PotentialMatches.Doyoufreemixwithnonmahrammen === profiletomatch.Doyoufreemixwithnonmahrammen) {
+            if (item.Doyoufreemixwithnonmahrammen === profiletomatch.Doyoufreemixwithnonmahrammen) {
                 count++;
             }
-            let result6 = equals(PotentialMatches.Typeofclothingworninfrontofnonmahrammenwhengoingtotheshopworkorparketc, profiletomatch.Typeofclothingworninfrontofnonmahrammenwhengoingtotheshopworkorparketc)
+            let result6 = equals(item.Typeofclothingworninfrontofnonmahrammenwhengoingtotheshopworkorparketc, profiletomatch.Typeofclothingworninfrontofnonmahrammenwhengoingtotheshopworkorparketc)
             if (result6 === true) {
                 count++
             }
-            let result7 = equals(PotentialMatches.Typeofclothingworninfrontofnonmahramwomanwhengoingtotheshoporworketc, profiletomatch.Typeofclothingworninfrontofnonmahramwomanwhengoingtotheshoporworketc)
+            let result7 = equals(item.Typeofclothingworninfrontofnonmahramwomanwhengoingtotheshoporworketc, profiletomatch.Typeofclothingworninfrontofnonmahramwomanwhengoingtotheshoporworketc)
             if (result7 === true) {
                 count++
             }
-            if (PotentialMatches.DoyouwatchTV === profiletomatch.DoyouwatchTV)
+            if (item.DoyouwatchTV === profiletomatch.DoyouwatchTV)
                 count++;
-            if (PotentialMatches.DoyoulistentoMusic === profiletomatch.DoyoulistentoMusic)
+            if (item.DoyoulistentoMusic === profiletomatch.DoyoulistentoMusic)
                 count++;
-            if (PotentialMatches.Doyouwearmakeupinfrontofnonmahrams === profiletomatch.Doyouwearmakeupinfrontofnonmahrams)
+            if (item.Doyouwearmakeupinfrontofnonmahrams === profiletomatch.Doyouwearmakeupinfrontofnonmahrams)
                 count++;
-            if (PotentialMatches.youngestageyouarelookingfor === profiletomatch.youngestageyouarelookingfor)
+            if (item.youngestageyouarelookingfor === profiletomatch.youngestageyouarelookingfor)
                 count++;
-            if (PotentialMatches.oldestageyouarelookingfor === profiletomatch.oldestageyouarelookingfor) {
+            if (item.oldestageyouarelookingfor === profiletomatch.oldestageyouarelookingfor) {
                 count++;
             }
-            let result8 = equals(PotentialMatches.Whattypeofhijabmatcheswithwhatyourelookingforinawife, profiletomatch.Whattypeofhijabmatcheswithwhatyourelookingforinawife)
+            let result8 = equals(item.Whattypeofhijabmatcheswithwhatyourelookingforinawife, profiletomatch.Whattypeofhijabmatcheswithwhatyourelookingforinawife)
             if (result8 === true) {
                 count++
             }
-            if (PotentialMatches.WouldyouconsidermarragetoaMuslimawhodoesnotwearNiqaab === profiletomatch.WouldyouconsidermarragetoaMuslimawhodoesnotwearNiqaab) {
+            if (item.WouldyouconsidermarragetoaMuslimawhodoesnotwearNiqaab === profiletomatch.WouldyouconsidermarragetoaMuslimawhodoesnotwearNiqaab) {
                 count++;
             }
-            let result9 = equals(PotentialMatches.Whichmaritalstatusmatchwithwhatyouarelookingformen, profiletomatch.Whichmaritalstatusmatchwithwhatyouarelookingformen)
+            let result9 = equals(item.Whichmaritalstatusmatchwithwhatyouarelookingformen, profiletomatch.Whichmaritalstatusmatchwithwhatyouarelookingformen)
             if (result9 === true) {
                 count++
             }
-            let result10 = equals(PotentialMatches.Whichmaritalstatusmatchwithwhatyouarelookingforwomen, profiletomatch.Whichmaritalstatusmatchwithwhatyouarelookingforwomen)
+            let result10 = equals(item.Whichmaritalstatusmatchwithwhatyouarelookingforwomen, profiletomatch.Whichmaritalstatusmatchwithwhatyouarelookingforwomen)
             if (result10 === true) {
                 count++
             }
-            let result11 = equals(PotentialMatches.Wouldyouconsidermarryingsomeonewhoisalreadymarried, profiletomatch.Wouldyouconsidermarryingsomeonewhoisalreadymarried)
-            if (result11 === true) {
+            if(item.Wouldyouconsidermarryingsomeonewhoisalreadymarried===profiletomatch.Wouldyouconsidermarryingsomeonewhoisalreadymarried){
                 count++
             }
-            if (PotentialMatches.Wouldyoumarrysomeonewhoalreadyhaschildren === profiletomatch.Wouldyoumarrysomeonewhoalreadyhaschildren)
+           
+            if (item.Wouldyoumarrysomeonewhoalreadyhaschildren === profiletomatch.Wouldyoumarrysomeonewhoalreadyhaschildren)
                 count++;
-            if (PotentialMatches.Wouldyoumarrysomeonewhohadmentalhealthproblems === profiletomatch.Wouldyoumarrysomeonewhohadmentalhealthproblems)
+            if (item.Wouldyoumarrysomeonewhohadmentalhealthproblems === profiletomatch.Wouldyoumarrysomeonewhohadmentalhealthproblems)
                 count++;
-            if (PotentialMatches.Wouldyoumarrysomeonewhohadphysicaldisabilities === profiletomatch.Wouldyoumarrysomeonewhohadphysicaldisabilities) {
+            if (item.Wouldyoumarrysomeonewhohadphysicaldisabilities === profiletomatch.Wouldyoumarrysomeonewhohadphysicaldisabilities) {
                 count++;
             }
-            let result12 = _.isEqual(PotentialMatches.Whichcountrieswouldyoupreferyourmarriagepartnertoholdcitizenship, profiletomatch.Whichcountrieswouldyoupreferyourmarriagepartnertoholdcitizenship)
+            let result12 = _.isEqual(item.Whichcountrieswouldyoupreferyourmarriagepartnertoholdcitizenship, profiletomatch.Whichcountrieswouldyoupreferyourmarriagepartnertoholdcitizenship)
             if (result12 === true) {
                 count++;
             }
-            let result13 = _.isEqual(PotentialMatches.Doyouhavespecificrequirementswithregardstotheethnicityofafuturemarriagepartner, profiletomatch.Doyouhavespecificrequirementswithregardstotheethnicityofafuturemarriagepartner)
+            let result13 = _.isEqual(item.Doyouhavespecificrequirementswithregardstotheethnicityofafuturemarriagepartner, profiletomatch.Doyouhavespecificrequirementswithregardstotheethnicityofafuturemarriagepartner)
             if (result13 === true) {
                 count++;
             }
-            if (PotentialMatches.WhatisyourpreferencewhenitcomestomarryingaMuslimwhofoundIslamlateroninlife === profiletomatch.WhatisyourpreferencewhenitcomestomarryingaMuslimwhofoundIslamlateroninlife) {
+            if (item.WhatisyourpreferencewhenitcomestomarryingaMuslimwhofoundIslamlateroninlife === profiletomatch.WhatisyourpreferencewhenitcomestomarryingaMuslimwhofoundIslamlateroninlife) {
                 count++;
             }
-            let result14 = _.isEqual(PotentialMatches.Whichcountryorcountriesdoyoulivein, profiletomatch.Whichcountryorcountriesdoyoulivein)
+            let result14 = _.isEqual(item.Whichcountryorcountriesdoyoulivein, profiletomatch.Whichcountryorcountriesdoyoulivein)
             if (result14 === true) {
                 count++;
             }
-            let result15 = _.isEqual(PotentialMatches.Whichcitytownvillagedoyoulivein, profiletomatch.Whichcitytownvillagedoyoulivein)
+            let result15 = _.isEqual(item.Whichcitytownvillagedoyoulivein, profiletomatch.Whichcitytownvillagedoyoulivein)
             if (result15 === true) {
                 count++;
             }
-            let result16 = _.isEqual(PotentialMatches.Whichcountryorcountriesdoyouholdcitizenship, profiletomatch.Whichcountryorcountriesdoyouholdcitizenship)
+            let result16 = _.isEqual(item.Whichcountryorcountriesdoyouholdcitizenship, profiletomatch.Whichcountryorcountriesdoyouholdcitizenship)
             if (result16 === true) {
                 count++;
             }
-            if (PotentialMatches.Whatisyourmaritalstatusmen === profiletomatch.Whatisyourmaritalstatusmen)
+            if (item.Whatisyourmaritalstatusmen === profiletomatch.Whatisyourmaritalstatusmen)
                 count++;
-            if (PotentialMatches.Whatisyourmaritalstatuswomen === profiletomatch.Whatisyourmaritalstatuswomen)
+            if (item.Whatisyourmaritalstatuswomen === profiletomatch.Whatisyourmaritalstatuswomen)
                 count++;
-            if (PotentialMatches.Doyouprayallofthe5dailyprayers === profiletomatch.Doyouprayallofthe5dailyprayers)
+            if (item.Doyouprayallofthe5dailyprayers === profiletomatch.Doyouprayallofthe5dailyprayers)
                 count++;
-            if (PotentialMatches.Doyoucoveryourhairfromnonmahrams === profiletomatch.Doyoucoveryourhairfromnonmahrams)
+            if (item.Doyoucoveryourhairfromnonmahrams === profiletomatch.Doyoucoveryourhairfromnonmahrams)
                 count++;
-            if (PotentialMatches.Whatareyourpreferredlivingarrangementsaftermarriage === profiletomatch.Whatareyourpreferredlivingarrangementsaftermarriage)
+            if (item.Whatareyourpreferredlivingarrangementsaftermarriage === profiletomatch.Whatareyourpreferredlivingarrangementsaftermarriage)
                 count++;
-            if (PotentialMatches.Doyouhaveanyphysicaldisabilities === profiletomatch.Doyouhaveanyphysicaldisabilities)
+            if (item.Doyouhaveanyphysicaldisabilities === profiletomatch.Doyouhaveanyphysicaldisabilities)
                 count++;
-            if (PotentialMatches.Doyouhaveanymentalhealthproblems === profiletomatch.Doyouhaveanymentalhealthproblems)
+            if (item.Doyouhaveanymentalhealthproblems === profiletomatch.Doyouhaveanymentalhealthproblems)
                 count++;
-            if (PotentialMatches.Doyouhaveanychildren === profiletomatch.Doyouhaveanychildren)
+            if (item.Doyouhaveanychildren === profiletomatch.Doyouhaveanychildren)
                 count++;
-            if (PotentialMatches.Doyouwantchildrenaftermarriage === profiletomatch.Doyouwantchildrenaftermarriage)
+            if (item.Doyouwantchildrenaftermarriage === profiletomatch.Doyouwantchildrenaftermarriage)
                 count++;
-            if (PotentialMatches.Areyouwillingtorelocateaftermarriage === profiletomatch.Areyouwillingtorelocateaftermarriage)
+            if (item.Areyouwillingtorelocateaftermarriage === profiletomatch.Areyouwillingtorelocateaftermarriage)
                 count++;
-            if (PotentialMatches.DidyourevertconverttoIslam === profiletomatch.DidyourevertconverttoIslam)
+            if (item.DidyourevertconverttoIslam === profiletomatch.DidyourevertconverttoIslam)
                 count++;
-            if (PotentialMatches.Whatistheshortestheightyoufindcompatible === profiletomatch.Whatistheshortestheightyoufindcompatible)
+            if (item.Whatistheshortestheightyoufindcompatible === profiletomatch.Whatistheshortestheightyoufindcompatible)
                 count++;
-            if (PotentialMatches.Whatsthetallestheightyoufindcompatible === profiletomatch.Whatsthetallestheightyoufindcompatible)
+            if (item.Whatsthetallestheightyoufindcompatible === profiletomatch.Whatsthetallestheightyoufindcompatible)
                 count++;
-            if (PotentialMatches.WhatisyourpreferencewhenitcomestothewaistsizeofyourfuturehusbandinshaAllahininches === profiletomatch.WhatisyourpreferencewhenitcomestothewaistsizeofyourfuturehusbandinshaAllahininches)
+            if (item.WhatisyourpreferencewhenitcomestothewaistsizeofyourfuturehusbandinshaAllahininches === profiletomatch.WhatisyourpreferencewhenitcomestothewaistsizeofyourfuturehusbandinshaAllahininches)
                 count++;
-            if (PotentialMatches.Smallestdresssizethatmeetsyourrequirementsforawife === profiletomatch.Smallestdresssizethatmeetsyourrequirementsforawife)
+            if (item.Smallestdresssizethatmeetsyourrequirementsforawife === profiletomatch.Smallestdresssizethatmeetsyourrequirementsforawife)
                 count++;
-            if (PotentialMatches.Largestdresssizethatmeetsyourrequirementsforawife === profiletomatch.Largestdresssizethatmeetsyourrequirementsforawife)
+            if (item.Largestdresssizethatmeetsyourrequirementsforawife === profiletomatch.Largestdresssizethatmeetsyourrequirementsforawife)
                 count++;
-            if (PotentialMatches.Whichbuildmatchesyourpreference === profiletomatch.Whichbuildmatchesyourpreference)
+            if (item.Whichbuildmatchesyourpreference === profiletomatch.Whichbuildmatchesyourpreference)
                 count++;
-            if (PotentialMatches.Whatisyourheight === profiletomatch.Whatisyourheight)
+            if (item.Whatisyourheight === profiletomatch.Whatisyourheight)
                 count++;
-            if (PotentialMatches.Yourdresssize === profiletomatch.Yourdresssize)
+            if (item.Yourdresssize === profiletomatch.Yourdresssize)
                 count++;
-            if (PotentialMatches.Yourwaistsizeininches === profiletomatch.Yourwaistsizeininches)
+            if (item.Yourwaistsizeininches === profiletomatch.Yourwaistsizeininches)
                 count++;
-            if (PotentialMatches.Whichbuildbestdescribesyou === profiletomatch.Whichbuildbestdescribesyou)
+            if (item.Whichbuildbestdescribesyou === profiletomatch.Whichbuildbestdescribesyou)
                 count++;
-            if (PotentialMatches.Whichstyleofbearddoyouhave === profiletomatch.Whichstyleofbearddoyouhave)
+            if (item.Whichstyleofbearddoyouhave === profiletomatch.Whichstyleofbearddoyouhave)
                 count++;
-            if (PotentialMatches.Whatisyourethnicity === profiletomatch.Whatisyourethnicity)
+            if (item.Whatisyourethnicity === profiletomatch.Whatisyourethnicity)
                 count++;
-            if (PotentialMatches.Areyourfamilyreligious === profiletomatch.Areyourfamilyreligious)
+            if (item.Areyourfamilyreligious === profiletomatch.Areyourfamilyreligious)
                 count++;
-            if (PotentialMatches.WhatsectfollowingofIslamareyourfamilypractising === profiletomatch.WhatsectfollowingofIslamareyourfamilypractising)
+            if (item.WhatsectfollowingofIslamareyourfamilypractising === profiletomatch.WhatsectfollowingofIslamareyourfamilypractising)
                 count++;
-            if (PotentialMatches.Howisyourrelationshipwithyourfamily === profiletomatch.Howisyourrelationshipwithyourfamily)
+            if (item.Howisyourrelationshipwithyourfamily === profiletomatch.Howisyourrelationshipwithyourfamily)
                 count++;
-            if (PotentialMatches.WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah === profiletomatch.WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah)
+            if (item.WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah === profiletomatch.WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah)
                 count++;
-            if (PotentialMatches.DoyouspendalotoftimewithfriendsWhatactivitiesdoyoudowithyourfriends === profiletomatch.DoyouspendalotoftimewithfriendsWhatactivitiesdoyoudowithyourfriends)
+            if (item.DoyouspendalotoftimewithfriendsWhatactivitiesdoyoudowithyourfriends === profiletomatch.DoyouspendalotoftimewithfriendsWhatactivitiesdoyoudowithyourfriends)
                 count++;
-            if (PotentialMatches.Areyourfriendsreligious === profiletomatch.Areyourfriendsreligious)
+            if (item.Areyourfriendsreligious === profiletomatch.Areyourfriendsreligious)
                 count++;
-            if (PotentialMatches.WhatsectfollowingofIslamdoyourfriendspractice === profiletomatch.WhatsectfollowingofIslamdoyourfriendspractice)
+            if (item.WhatsectfollowingofIslamdoyourfriendspractice === profiletomatch.WhatsectfollowingofIslamdoyourfriendspractice)
                 count++;
-            if (PotentialMatches.Howmightyourfriendsdescribeyourpersonality === profiletomatch.Howmightyourfriendsdescribeyourpersonality)
+            if (item.Howmightyourfriendsdescribeyourpersonality === profiletomatch.Howmightyourfriendsdescribeyourpersonality)
                 count++;
-            if (PotentialMatches.Wouldyouwantyourfuturehusbandtofreemixwithyourfriends === profiletomatch.Wouldyouwantyourfuturehusbandtofreemixwithyourfriends)
+            if (item.Wouldyouwantyourfuturehusbandtofreemixwithyourfriends === profiletomatch.Wouldyouwantyourfuturehusbandtofreemixwithyourfriends)
                 count++;
-            if (PotentialMatches.Wouldyouwantyourfuturewifetofreemixwithyourfriends === profiletomatch.Wouldyouwantyourfuturewifetofreemixwithyourfriends)
+            if (item.Wouldyouwantyourfuturewifetofreemixwithyourfriends === profiletomatch.Wouldyouwantyourfuturewifetofreemixwithyourfriends)
                 count++;
-            if (PotentialMatches.Whichprofessionstatusdescribewhatyouwantyourfuturewifetohaveselectallthatapply === profiletomatch.Whichprofessionstatusdescribewhatyouwantyourfuturewifetohaveselectallthatapply)
+            if (item.Whichprofessionstatusdescribewhatyouwantyourfuturewifetohaveselectallthatapply === profiletomatch.Whichprofessionstatusdescribewhatyouwantyourfuturewifetohaveselectallthatapply)
                 count++;
-            if (PotentialMatches.Whichprofessionstatusdescribewhatyouwantyourfuturehusbandtohaveselectallthatapply === profiletomatch.Whichprofessionstatusdescribewhatyouwantyourfuturehusbandtohaveselectallthatapply)
+            if (item.Whichprofessionstatusdescribewhatyouwantyourfuturehusbandtohaveselectallthatapply === profiletomatch.Whichprofessionstatusdescribewhatyouwantyourfuturehusbandtohaveselectallthatapply)
                 count++;
-            if (PotentialMatches.Theminimumlevelofeducationyouwantyourmarriagepartnertohavecompleted === profiletomatch.Theminimumlevelofeducationyouwantyourmarriagepartnertohavecompleted)
+            if (item.Theminimumlevelofeducationyouwantyourmarriagepartnertohavecompleted === profiletomatch.Theminimumlevelofeducationyouwantyourmarriagepartnertohavecompleted)
                 count++;
-            if (PotentialMatches.Whatisyourprofession === profiletomatch.Whatisyourprofession)
+            if (item.Whatisyourprofession === profiletomatch.Whatisyourprofession)
                 count++;
-            if (PotentialMatches.Whatisyourlevelofeducation === profiletomatch.Whatisyourlevelofeducation)
+            if (item.Whatisyourlevelofeducation === profiletomatch.Whatisyourlevelofeducation)
                 count++;
-            if (PotentialMatches.WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole === profiletomatch.WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole)
+            if (item.WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole === profiletomatch.WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole)
                 count++;
-            if ((count>=20)&&(count<=45)) {
+            if ((count>=20)&&(count<=30)) {
                 return item
             }
 
