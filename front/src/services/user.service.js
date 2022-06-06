@@ -1,6 +1,6 @@
 import axios from "axios";
 import authHeader from "./auth-header";
-const API_URL = "http://localhost:4001/";
+const API_URL = "https://muslim-match-api.herokuapp.com/";
 
 const getfullMatches = (userId , page) => {
   return axios.get(API_URL + "my-matches/full-matches/"+userId + "/"+page);
