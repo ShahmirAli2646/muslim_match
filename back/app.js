@@ -36,6 +36,14 @@ app.post("/submit-profile-data",ProfileSubmit.submitProfile );
 app.get('/my-matches/full-matches/:userId/:page',FullMatches.FullMatches);
 app.get('/my-matches/partial-matches/:userId/:page',PartialMatches );
 app.get('/my-matches/potential-matches/:userId/:page',PotentialMatches.PotentialMatches);
+app.get('/testMe' , async(req , res)=>{
+  try{
+    res.status(201).json('wassup bro');
+}
+catch(err){
+ res.json('oh bhai ni chal rah')
+}
+})
 
 
 module.exports = app;
