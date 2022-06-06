@@ -2,7 +2,7 @@
   "name": "front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/signin",
+  "homepage": "https://muslim-match-app.herokuapp.com/",
   "engines": {
     "node": "16.14.2"
   },

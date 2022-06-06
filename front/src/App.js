@@ -1,5 +1,5 @@
-import React, { useEffect , Fragment } from "react";
-import { BrowserRouter as Router, Switch} from "react-router-dom";
+import React, { useEffect, Fragment } from "react";
+import { BrowserRouter as Router, Switch , Route , Redirect} from "react-router-dom";
 import Navbar from './Components/Navbar';
 import Profile from './Components/Profile/Profile'
 import EditProfile from "./Components/Profile/EditProfile/EditProfile";
@@ -44,49 +44,56 @@ function App() {
   return (
 
     <Router>
-      
-       <Fragment>
-      <Navbar isAuthenticated={isAuthenticated} user={user}/>
-      <Suspense fallback={<Loader />}>
-        <Switch>
-        <PublicRoute
-            path="/signin"
-            isAuthenticated={isAuthenticated}
-            user={user}
-          >
-            <SignIn />
-          </PublicRoute>
-          <PublicRoute
-            path="/signup"
-            isAuthenticated={isAuthenticated}
-            user={user}
-          >
-            <SignUp />
-          </PublicRoute>
-          {/* <PublicRoute
+
+      <Fragment>
+        <Navbar isAuthenticated={isAuthenticated} user={user} />
+        <Route exact path="/" render={() => (
+          isAuthenticated ? (
+            <Redirect to="/user-profile" />
+          ) : (
+            <Redirect to="/signin" />
+          )
+        )} />
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <PublicRoute
+              path="/signin"
+              isAuthenticated={isAuthenticated}
+              user={user}
+            >
+              <SignIn />
+            </PublicRoute>
+            <PublicRoute
+              path="/signup"
+              isAuthenticated={isAuthenticated}
+              user={user}
+            >
+              <SignUp />
+            </PublicRoute>
+            {/* <PublicRoute
             path="/forgot-password"
             isAuthenticated={isAuthenticated}
           >
             <ForgotPassword />
           </PublicRoute> */}
-          <PrivateRoute
-            path="/user-profile"
-            isAuthenticated={isAuthenticated}
-            user={user}
-          >
-            <ProtectedRoutes />
-          </PrivateRoute>
-          <AdminPrivateRoute
-            path="/admin"
-            isAuthenticated={isAuthenticated}
-            user={user}
-          >
-            <AdminProtectedRoute />
-          </AdminPrivateRoute>
-        </Switch>
+            <PrivateRoute
+              path="/user-profile"
+              isAuthenticated={isAuthenticated}
+              user={user}
+            >
+              <ProtectedRoutes />
+            </PrivateRoute>
+            <AdminPrivateRoute
+              path="/admin"
+              isAuthenticated={isAuthenticated}
+              user={user}
+            >
+              <AdminProtectedRoute />
+            </AdminPrivateRoute>
+          </Switch>
         </Suspense>
-        </Fragment> 
-      
+      </Fragment>
+
     </Router>
   );
 }
