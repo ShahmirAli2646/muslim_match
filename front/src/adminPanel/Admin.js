@@ -8,10 +8,13 @@ import MetricChart from './metricChart'
 import { Grid } from '@mui/material';
 
 
+
 class Admin extends React.Component {
     constructor(props) {
         super(props)
+         
     }
+    
     render() {
         return (
             <Container maxWidth="xl" style={{padding:'50px'}}>

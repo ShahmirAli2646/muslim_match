@@ -1,6 +1,6 @@
 import axios from "axios";
 import jwt from 'jwt-decode'
-const API_URL = "https://muslim-match-api.herokuapp.com/";
+const API_URL = "http://localhost:4001/";
 const register = (first_name,last_name ,  email, password) => {
   return axios.post(API_URL + "register", {
     first_name,

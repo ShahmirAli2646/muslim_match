@@ -9,39 +9,95 @@ import Typography from '@mui/material/Typography';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import ProfileSnippetCard from './ProfileSnippetCard';
+import adminServices from '../services/admin.service'
 
 
 
 export default function BasicCard() {
+  const [profiles, setProfiles] = React.useState();
+  const [index, setIndex] = React.useState(0);
+  const [slides, setSlides] = React.useState();
+  React.useEffect(async() => {
+    const profiles = await adminServices.getMemberCards(1)
+    async function promises() {
+      const unresolved = profiles.data.response.map(async(idx) => {
+      const user = await adminServices.getUser(idx.user) 
+         idx.firstName = user.data.first_name
+        return idx;
+      })
+     const resolved = await Promise.all(unresolved)
+     setProfiles(resolved)
+    }
+    promises()
+    setSlides(profiles.data.profiles)
+    
+  } , []);
+  const handleBack = async () =>{
+      if(index > 0){
+          const newIndex = index - 1;
+          setIndex(newIndex)
+         
+            const page = index - 1;
+            const profiles = await adminServices.getMemberCards(page)
+            async function promises() {
+              const unresolved = profiles.data.response.map(async(idx) => {
+              const user = await adminServices.getUser(idx.user) 
+                 idx.firstName = user.data.first_name
+                return idx;
+              })
+             const resolved = await Promise.all(unresolved)
+             setProfiles(resolved)
+            }
+            promises()  
+      }
+  }
+  const renderProfileCard = (index , profiles) => {
+    return(
+      <Slide index={index}>
+          <ProfileSnippetCard profiles={profiles}/>
+          </Slide>
+    )
+  }
+
+  const handleNext = async() => {
+    if(index >=0){
+      const newIndex = index + 1;
+      setIndex(newIndex)
+      
+        const page = index + 1;
+        console.log('page kia hota hai' , page)
+        const profiles = await adminServices.getMemberCards(page)
+       
+        async function promises() {
+          const unresolved = profiles.data.response.map(async(idx) => {
+          const user = await adminServices.getUser(idx.user) 
+             idx.firstName = user.data.first_name
+            return idx;
+          })
+         const resolved = await Promise.all(unresolved)
+         setProfiles(resolved)
+        }
+        promises() 
+  }
+  console.log('next profiles' , profiles)
+  }
+
   return (
     <Card sx={{ minWidth: 275  }}>
-        <CardHeader style={{textAlign:'center' , fontSize:20 , color:'rgba(163, 19, 19, 0.65)'}}title={'Member Cards'}></CardHeader>
+      <CardHeader style={{textAlign:'center' , fontSize:20 , color:'rgba(163, 19, 19, 0.65)'}}title={'Member Cards'}></CardHeader>
       <CardContent>
       <CarouselProvider
-        
         naturalSlideWidth={100}
         naturalSlideHeight={20}
-        totalSlides={3}
+        totalSlides={slides}
       >
-          
           <Slider style={{paddingBottom:'100px'}}>
-          <Slide index={0}>
-          <ProfileSnippetCard/>
-          </Slide>
-          <Slide index={1}>
-          <ProfileSnippetCard/>
-          </Slide>
-          <Slide index={2}>
-          <ProfileSnippetCard/>
-          </Slide>
+          {renderProfileCard(index , profiles)}
         </Slider>
         <div style={{display:'flex' , justifyContent:'space-between' , marginTop:'30px'}}>
-        <ButtonBack>Back</ButtonBack>
-        <ButtonNext>Next</ButtonNext>
+        <ButtonBack onClick={handleBack}>Back</ButtonBack>
+        <ButtonNext onClick={handleNext}>Next</ButtonNext>
         </div>
-        
-        
-        
       </CarouselProvider>
       </CardContent>
     </Card>

@@ -2,8 +2,11 @@ import axios from "axios";
 import authHeader from "./auth-header";
 const API_URL = "http://localhost:4001/";
 
-const getfullMatches = (userId , page) => {
-  return axios.get(API_URL + "my-matches/full-matches/"+userId + "/"+page);
+const getMemberCards = (page) => {
+  return axios.get(API_URL + "adminDashboard/MemberCards/"+page);
+};
+const getUser = (user) => {
+  return axios.get(API_URL + "adminDashboard/Users/"+user);
 };
 const getpartialMatches = (userId , page) => {
     return axios.get(API_URL + "my-matches/partial-matches/"+userId + "/"+page);
@@ -27,10 +30,10 @@ const getAdminPanel = () => {
   return axios.get(API_URL + "admin", { headers: authHeader() });
 };
 export default {
-    getfullMatches,
+    getMemberCards,
     getpartialMatches,
     getpotentialMatches,
     submitProfileData,
     getuserProfile,
-    getuser
+    getUser
 };

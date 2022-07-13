@@ -1,5 +1,6 @@
 const User = require("../model/user");
 const Profile = require("../model/profile")
+const Match = require("../model/matches")
 const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
@@ -17,7 +18,7 @@ module.exports = {
         const profiletomatch = await Profile.findOne({ user: userId })
         //now return profiles that match this profile fully
         const FullMatches = await Profile.find({})
-        const FinalResult = FullMatches.filter (async function (item) {
+        const FinalResult = FullMatches.filter(async function (item) {
             var count = 0;
             let result = equals.equals(item.followingforspouse, profiletomatch.followingforspouse)
             if (result === true) {
@@ -108,7 +109,7 @@ module.exports = {
             if (result10 === true) {
                 count++
             }
-            if(item.Wouldyouconsidermarryingsomeonewhoisalreadymarried===profiletomatch.Wouldyouconsidermarryingsomeonewhoisalreadymarried){
+            if (item.Wouldyouconsidermarryingsomeonewhoisalreadymarried === profiletomatch.Wouldyouconsidermarryingsomeonewhoisalreadymarried) {
                 count++
             }
             if (item.Wouldyoumarrysomeonewhoalreadyhaschildren === profiletomatch.Wouldyoumarrysomeonewhoalreadyhaschildren)
@@ -219,23 +220,29 @@ module.exports = {
                 count++;
             if (item.WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole === profiletomatch.WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole)
                 count++;
-            if ((count<=78) && (count>=65)) {
+            if ((count <= 78) && (count >= 65)) {
                 const user = await User.findOne({ _id: item.user })
-                console.log('what the user' , user)
-                if(user){
+                console.log('what the user', user)
+                if (user) {
                     setTimeout(() => {
-                        item.user_first_name=user.first_name
+                        item.user_first_name = user.first_name
                         return item
-                      }, 5000);
+                    }, 5000);
                 }
-               
+
             }
 
 
 
         }
         )
-        console.log('FinalResult' , FinalResult)
+      
+        console.log('FinalResult', FinalResult)
+         const matchedUsers = FinalResult.map((item , index)=>{
+              return item.user
+         })
+        const matches = await Match.findOneAndUpdate({user_id:userId} , {match_id : matchedUsers} , {upsert:true})
+
         const paginate = (FinalResult, perPage, page) => {
             return FinalResult.slice((page - 1) * perPage, page * perPage);
         }
@@ -243,5 +250,5 @@ module.exports = {
         res.status(201).json(response);
     },
 
-    
+
 }

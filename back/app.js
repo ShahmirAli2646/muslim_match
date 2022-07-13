@@ -13,6 +13,7 @@ const FetchUserProfile= require('./controllers/FetchProfileController')
 const FullMatches = require('./controllers/FullMatchesController');
 const { PartialMatches } = require("./controllers/PartialMatchesController");
 const PotentialMatches = require("./controllers/PotentialMatchesController")
+const {totalMembers , chartResponse , memberCards , getUser} = require("./controllers/adminKPI")
 
 const app = express();
 
@@ -36,6 +37,11 @@ app.post("/submit-profile-data",ProfileSubmit.submitProfile );
 app.get('/my-matches/full-matches/:userId/:page',FullMatches.FullMatches);
 app.get('/my-matches/partial-matches/:userId/:page',PartialMatches );
 app.get('/my-matches/potential-matches/:userId/:page',PotentialMatches.PotentialMatches);
+app.get('/adminDashboard/TotalMembers' , totalMembers)
+app.get('/adminDashboard/ChartResponse' , chartResponse)
+app.get('/adminDashboard/MemberCards/:page' , memberCards)
+app.get('/adminDashboard/Users/:user' , getUser)
+
 app.get('/testMe' , async(req , res)=>{
   try{
     res.status(201).json('wassup bro');
