@@ -20,7 +20,8 @@ export default function BasicCard() {
   const [slideArray, setSlidesArray] = React.useState();
 
   React.useEffect(async () => {
-    const profiles = await adminServices.getMemberCards(1)
+    const profiles = await adminServices.getMemberCards()
+    console.log('profiles' , profiles)
     async function promises() {
       const unresolved = profiles.data.response.map(async (idx) => {
         const user = await adminServices.getUser(idx.user)
@@ -28,7 +29,12 @@ export default function BasicCard() {
         return idx;
       })
       const resolved = await Promise.all(unresolved)
-      setProfiles(resolved)
+      const paginate = (resolved, perPage, page) => {
+        return resolved.slice((page - 1) * perPage, page * perPage);
+    }
+      const displayItems = paginate(resolved, 3, index+1)
+     
+      setProfiles(displayItems)
     }
     promises()
     const slide = Math.round(profiles.data.profiles / 3)
@@ -36,11 +42,13 @@ export default function BasicCard() {
     setSlides(slide)
 
   }, []);
+
   React.useEffect(() => {
     const slideArray1 = Array.from(Array(slides).keys())
     setSlidesArray(slideArray1)
     console.log('slideArray' , slideArray1)
   }, [slides]);
+  
   const handleBack = async () => {
     if (index > 0) {
       const newIndex = index - 1;
@@ -55,32 +63,27 @@ export default function BasicCard() {
           return idx;
         })
         const resolved = await Promise.all(unresolved)
-        setProfiles(resolved)
+        const paginate = (resolved, perPage, page) => {
+          return resolved.slice((page - 1) * perPage, page * perPage);
+      }
+        const displayItems = paginate(resolved, 3, index+1)
+       
+        setProfiles(displayItems)
+        
       }
       promises()
     }
   }
-  const renderProfileCard = (index1, profiles) => {
-    return (
-      <React.Fragment>
-          {slideArray?.map((item , index)=>{
-                {console.log('my indexes' , index)}
-                <Slide index={index}>
-                <ProfileSnippetCard profiles={profiles} />
-              </Slide>
-          })} 
-      </React.Fragment>
-    )
-  }
+  
 
   const handleNext = async () => {
     if (index >= 0) {
       const newIndex = index + 1;
       setIndex(newIndex)
 
-      const page = index + 1;
-      console.log('page kia hota hai', page)
-      const profiles = await adminServices.getMemberCards(page)
+      
+     
+      const profiles = await adminServices.getMemberCards()
 
       async function promises() {
         const unresolved = profiles.data.response.map(async (idx) => {
@@ -89,13 +92,29 @@ export default function BasicCard() {
           return idx;
         })
         const resolved = await Promise.all(unresolved)
-        setProfiles(resolved)
+        const paginate = (resolved, perPage, page) => {
+          return resolved.slice((page - 1) * perPage, page * perPage);
+      }
+        const displayItems = paginate(resolved, 3, index+1)
+       
+        setProfiles(displayItems)
+        
       }
       promises()
     }
     console.log('next profiles', profiles)
   }
-
+  const renderProfileCard = (index1, profiles) => {
+    return (
+      <React.Fragment>
+            
+                    <Slide index={index1}>
+                    <ProfileSnippetCard profiles={profiles} />
+                  </Slide>
+                
+      </React.Fragment>
+    )
+  }
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardHeader style={{ textAlign: 'center', fontSize: 20, color: 'rgba(163, 19, 19, 0.65)' }} title={'Member Cards'}></CardHeader>

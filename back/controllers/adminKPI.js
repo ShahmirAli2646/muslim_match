@@ -45,14 +45,8 @@ module.exports = {
 
     memberCards: async (req, res) => {
         try {
-            var perPage = 3
-             var page = Math.max(0, req.params.page)
             const profiles = await Profile.find({})
-            const paginate = (profiles, perPage, page) => {
-                return profiles.slice((page - 1) * perPage, page * perPage);
-            }
-            const response = paginate(profiles, perPage, page)
-            res.status(200).json({response:response , profiles:profiles.length})  
+            res.status(200).json({response:profiles , profiles:profiles.length})  
         }
         catch (err) {
             res.status(400).send("No Members found");

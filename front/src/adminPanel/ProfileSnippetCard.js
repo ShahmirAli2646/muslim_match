@@ -65,7 +65,7 @@ class ProfileSnippetCard extends React.Component {
 
 
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        {tiers.map((item) => (
+        {this.props.profiles?.map((item) => (
           <Card style={{ backgroundColor: '#fff', marginRight: '13px', border: '1px solid #ededed', borderRadius: '20px', boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)', marginBottom: '20px' }}>
             <CardHeader
               style={{
@@ -75,7 +75,7 @@ class ProfileSnippetCard extends React.Component {
 
                 textAlign: 'center', fontSize: 20, color: '#fff'
               }}
-              title={item.title}
+              title={item.firstName}
               sx={{
                 backgroundColor: (theme) =>
                   theme.palette.mode === 'light'
@@ -84,19 +84,70 @@ class ProfileSnippetCard extends React.Component {
               }}
             />
             <CardContent style={{ textAlign: 'center' }}>
-              <LocationOn style={{ color: '#e36b6b' }} />
-              <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
+            <LocationOn style={{ color: '#e36b6b' }} />
+                      <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
+                        {item.Whichcountryorcountriesdoyoulivein.label + ' ' + item.Whichcitytownvillagedoyoulivein.label}
+                      </Typography>
+                      <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
+                        {item.gender === 'Male' ? (
+                          <React.Fragment>
+                            {"Said in his registration he follows the teachings of " +
+                              item.TheIslamicteachingssectthatyoufollow +
+                              " and also said with regards to his islamic studing:" +
+                              item.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {"Said in her registration she follows the teachings of " +
+                              item.TheIslamicteachingssectthatyoufollow +
+                              " and also said with regards to her islamic studing:" +
+                              item.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails}
+                          </React.Fragment>
+                        )}
+                      </Typography>
+                      <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
+                        {item.gender === 'Male' ? (
+                          <React.Fragment>
+                            {'he is ' +
+                              item.birthdate +
+                              ' years old , and ' +
+                              item.Whatisyourmaritalstatusmen +
+                              ' and described his ethnicity as ' +
+                              item.Whatisyourethnicity + '. he Described his Profession as '
+                              + item.Whatisyourprofession}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {item.Doyoucoveryourhairfromnonmahrams === "Hijab" ? (
+                              <React.Fragment>
+                                {'she is ' +
+                                  item.birthdate +
+                                  ' years old , and ' +
+                                  item.Whatisyourmaritalstatuswomen +
+                                  'and described her ethnicity as ' +
+                                  item.Whatisyourethnicity +
+                                  ' She Wears Hijab' +
+                                  '. She Described her Profession as ' +
+                                  item.Whatisyourprofession}
 
-                {item.description}
+                              </React.Fragment>
+                            ) :
+                              <React.Fragment>
+                                {'she is ' +
+                                  item.birthdate +
+                                  ' years old , and ' +
+                                  item.Whatisyourmaritalstatuswomen +
+                                  ' and described her ethnicity as ' +
+                                  item.Whatisyourethnicity +
+                                  ' She does not wear Hijab' +
+                                  '. She Described her Profession as ' +
+                                  item.Whatisyourprofession}
 
-              </Typography>
-              <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
-                {'Said in {his/her} registration {He/She} follows the teachings of {sect} and also said with regards to {His/Her} islamic studying {islamic studies} '}
-              </Typography>
-              <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
-                {'{He/She} is {Age} years old , and {Marital Status}. {She} {wears/doesnt wear} hijab , and described {His/Her} ethnicity {ethnicity}. {He/She} Described {His/Her} Profession as {insert} '}
-              </Typography>
-
+                              </React.Fragment>
+                            }
+                          </React.Fragment>
+                        )}
+                      </Typography>
             </CardContent>
             <CardActions style={{
               justifyContent: 'center', backgroundImage: `url(${background}) `, backgroundPosition: 'center',

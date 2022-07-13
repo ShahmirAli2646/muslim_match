@@ -2,8 +2,8 @@ import axios from "axios";
 import authHeader from "./auth-header";
 const API_URL = "http://localhost:4001/";
 
-const getMemberCards = (page) => {
-  return axios.get(API_URL + "adminDashboard/MemberCards/"+page);
+const getMemberCards = () => {
+  return axios.get(API_URL + "adminDashboard/MemberCards")
 };
 const getUser = (user) => {
   return axios.get(API_URL + "adminDashboard/Users/"+user);
