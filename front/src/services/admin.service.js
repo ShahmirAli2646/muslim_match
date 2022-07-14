@@ -26,14 +26,19 @@ const submitProfileData = (formdata) => {
       formdata
     )
     };
+
+const getTotalMembers = () => {
+  return axios.get(API_URL + "adminDashboard/TotalMembers")
+}    
 const getAdminPanel = () => {
   return axios.get(API_URL + "admin", { headers: authHeader() });
-};
+}
 export default {
     getMemberCards,
     getpartialMatches,
     getpotentialMatches,
     submitProfileData,
     getuserProfile,
-    getUser
+    getUser,
+    getTotalMembers,
 };
