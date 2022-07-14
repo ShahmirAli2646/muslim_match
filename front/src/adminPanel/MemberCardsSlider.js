@@ -10,6 +10,10 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-re
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import ProfileSnippetCard from './ProfileSnippetCard';
 import adminServices from '../services/admin.service'
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { IconButton } from '@mui/material';
+
 
 
 
@@ -104,35 +108,28 @@ export default function BasicCard() {
     }
     console.log('next profiles', profiles)
   }
-  const renderProfileCard = (index1, profiles) => {
-    return (
-      <React.Fragment>
-            
-                    <Slide index={index1}>
-                    <ProfileSnippetCard profiles={profiles} />
-                  </Slide>
-                
-      </React.Fragment>
-    )
-  }
+  
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardHeader style={{ textAlign: 'center', fontSize: 20, color: 'rgba(163, 19, 19, 0.65)' }} title={'Member Cards'}></CardHeader>
       <CardContent>
-        <CarouselProvider
-          naturalSlideWidth={100}
-          naturalSlideHeight={20}
-          totalSlides={slides}
-          
-        >
-          <Slider style={{ paddingBottom: '100px' }}>
-            {renderProfileCard(index, profiles)}
-          </Slider>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>
-            <ButtonBack onClick={handleBack}>Back</ButtonBack>
-            <ButtonNext onClick={handleNext}>Next</ButtonNext>
-          </div>
-        </CarouselProvider>
+      <ProfileSnippetCard profiles={profiles} />
+      <CardActions style={{ justifyContent: 'center' }}>
+        {console.log('help me whats up')}
+        <IconButton onClick={handleBack}>
+        <KeyboardArrowLeftIcon />
+      </IconButton>
+      <Typography style={{
+        background: '#efefef',
+        borderRadius: '50%',
+        width: '30px',
+        height: '30px',
+        textAlign: 'center',
+        paddingTop: '3px',}}>{index}</Typography>
+    <IconButton onClick={handleNext} style={{ marginLeft: 0 }}>
+      <KeyboardArrowRightIcon />
+    </IconButton>
+    </CardActions>
       </CardContent>
     </Card>
   );
