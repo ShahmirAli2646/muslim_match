@@ -28,6 +28,7 @@ import DataBlock from './DataBlock'
 import AdvertHelper from './AdvertHelper'
 import Promotion from '../CommonContent/Promotion'
 import userService from '../../services/user.service';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -35,38 +36,74 @@ class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user :  JSON.parse(localStorage.getItem("user")),
-      userName : null,
-      age : null , 
-      location : null
+      user: JSON.parse(localStorage.getItem("user")),
+      userName: null,
+      age: null,
+      location: null
+    }
+    console.log('props in my constructor', this.props)
+  }
+  componentDidMount() {
+
+    if (this.props.location !== undefined) {
+      if (this.props.location.state !== undefined) {
+        if (this.props.location.state.id !== undefined && this.props.location.state.id !== null) {
+          this.getUserData(this.props.location.state.id)
+        }
+        if (this.props.location.state.from === 'link') {
+          console.log('location props', this.props)
+          const reloadCount = sessionStorage.getItem('reloadCount');
+          if (reloadCount < 1) {
+            sessionStorage.setItem('reloadCount', String(reloadCount + 1));
+            window.location.reload();
+          } else {
+            sessionStorage.removeItem('reloadCount');
+          }
+          this.getUserData()
+        }
+      }
+      else {
+        this.getUserData()
+      }
+    }
+    else {
+      this.getUserData()
+    }
+  }
+
+  getUserData = async (view_id) => {
+    console.log('view_id', view_id)
+    if (view_id) {
+      const userData = await userService.getuser(view_id)
+      this.setState({ userName: userData.data.first_name }, async () => {
+        const userProfile = await userService.getuserProfile(this.state.user?._id)
+        console.log('userProfile', userProfile)
+        const newDate = Date.parse(userProfile.data.birthdate);
+        const ageInMilliseconds = new Date() - new Date(newDate);
+        const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+        const location = userProfile.data.Whichcountryorcountriesdoyoulivein.label;
+        this.setState({ age: result })
+        this.setState({ location: location })
+
+      })
+    }
+    else {
+      const userData = await userService.getuser(this.state.user?._id)
+      console.log('userData', userData)
+      this.setState({ userName: userData.data.first_name }, async () => {
+        const userProfile = await userService.getuserProfile(this.state.user?._id)
+        console.log('userProfile', userProfile)
+        const newDate = Date.parse(userProfile.data.birthdate);
+        const ageInMilliseconds = new Date() - new Date(newDate);
+        const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+        const location = userProfile.data.Whichcountryorcountriesdoyoulivein.label;
+        this.setState({ age: result })
+        this.setState({ location: location })
+
+      })
     }
 
   }
-  componentDidMount(){
-    window.onload = function() {
-      if(!window.location.hash) {
-        window.location = window.location + '#loaded';
-        window.location.reload();
-      }
-    }
-     this.getUserData()
-  }
-  
-   getUserData = async ()=>{
-    const userData = await userService.getuser(this.state.user?._id)
-    console.log('userData' , userData)
-    this.setState({userName:userData.data.first_name} , async ()=>{
-      const userProfile = await userService.getuserProfile(this.state.user?._id)
-      console.log('userProfile' , userProfile)
-      const newDate = Date.parse(userProfile.data.birthdate);
-      const ageInMilliseconds = new Date() - new Date(newDate);
-      const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
-      const location = userProfile.data.Whichcountryorcountriesdoyoulivein.label;
-      this.setState({age:result})
-      this.setState({location:location})
-      
-    })
-   }
 
   render() {
     const tiers = [
@@ -182,7 +219,7 @@ class Profile extends React.Component {
                 ))}
               </Grid>
             </Container>
-        </div>
+          </div>
         </Container>
         <SectionHelper />
         <DataBlock />
@@ -196,5 +233,5 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile
+export default withRouter(Profile)
 

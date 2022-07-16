@@ -26,6 +26,7 @@ import UserService from '../../services/user.service';
 import { useSelector } from 'react-redux'
 import { borderRadius, width } from '@mui/system';
 import viewService from '../../services/user.service'
+import { withRouter , Redirect  } from "react-router-dom";
 
 
 
@@ -39,13 +40,18 @@ class ProfileSnippetCard extends React.Component {
       userArray: [],
       FinalArray: [],
       triggerUpdateState: null,
-      userState: null
+      userState: null,
+      view:null,
+      view_id:null
     };
   }
 
   componentDidUpdate() {
     console.log('what are profile card props', this.props)
 
+  }
+  nextPath(path) {
+    this.props.history.push(path);
   }
 
   handleView = async (view_id) => {
@@ -55,12 +61,23 @@ class ProfileSnippetCard extends React.Component {
         view_id : view_id
        }
       const res = await viewService.viewUserProfile(formdata)
-      console.log('response' , res)
+      this.setState({view_id} , ()=>{
+        console.log('state view id' , this.state.view_id)
+      })
   }
+
 
   render() {
     return (
       <Container maxWidth="sm" component="main">
+        {this.state.view_id!==null && (
+          
+           <Redirect to={{
+            pathname: '/user-profile/view-profile',
+            state: { id: this.state.view_id }
+        }}
+        />
+        )}
         {this.props.tier === 'Matched' ? (
           <React.Fragment>
             {this.props.fullMatches !== null ? (
@@ -273,7 +290,8 @@ class ProfileSnippetCard extends React.Component {
                       backgroundSize: 'cover', textShadow: '1px 3px #d3d3', letterSpacing: '2px',
                       textAlign: 'center', fontSize: 20, color: '#fff', padding: '20px'
                     }}>
-                      <Button style={{
+                      <Button onClick={()=>{
+                        this.handleView(item.user)}} style={{
                         color: '#1e1e1e',
                         textTransform: 'capitalize',
                         borderWidth: '1px',
@@ -395,7 +413,8 @@ class ProfileSnippetCard extends React.Component {
                       backgroundSize: 'cover', textShadow: '1px 3px #d3d3', letterSpacing: '2px',
                       textAlign: 'center', fontSize: 20, color: '#fff', padding: '20px'
                     }}>
-                      <Button style={{
+                      <Button onClick={()=>{
+                        this.handleView(item.user)}} style={{
                         color: '#1e1e1e',
                         textTransform: 'capitalize',
                         borderWidth: '1px',
