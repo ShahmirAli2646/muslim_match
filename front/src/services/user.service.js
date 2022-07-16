@@ -29,6 +29,11 @@ const submitProfileData = (formdata) => {
     formdata
     )
  }   
+ const likeUserProfile = (formdata) => {
+  return axios.post(API_URL + "like-user-profile",
+  formdata
+  )
+}   
 const getAdminPanel = () => {
   return axios.get(API_URL + "admin", { headers: authHeader() });
 };
@@ -40,4 +45,5 @@ export default {
     getuserProfile,
     getuser,
     viewUserProfile,
+    likeUserProfile
 };

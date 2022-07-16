@@ -15,6 +15,7 @@ const { PartialMatches } = require("./controllers/PartialMatchesController");
 const PotentialMatches = require("./controllers/PotentialMatchesController")
 const {totalMembers , chartResponse , memberCards , getUser} = require("./controllers/adminKPI")
 const {viewProfile} = require("./controllers/viewProfileController")
+const {likeProfile} = require("./controllers/likeProfileController")
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.get('/user/:userId' , async (req, res) => {
 },)
 app.post("/submit-profile-data",ProfileSubmit.submitProfile );
 app.post("/view-user-profile" , viewProfile)
+app.post("/like-user-profile" , likeProfile)
 app.get('/my-matches/full-matches/:userId/:page',FullMatches.FullMatches);
 app.get('/my-matches/partial-matches/:userId/:page',PartialMatches );
 app.get('/my-matches/potential-matches/:userId/:page',PotentialMatches.PotentialMatches);

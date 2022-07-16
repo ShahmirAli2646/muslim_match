@@ -61,9 +61,15 @@ class ProfileSnippetCard extends React.Component {
         view_id : view_id
        }
       const res = await viewService.viewUserProfile(formdata)
-      this.setState({view_id} , ()=>{
-        console.log('state view id' , this.state.view_id)
-      })
+  }
+
+  handleLike = async (like_id) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+       let formdata = {
+        user_id : user?._id,
+        like_id : like_id
+       }
+      const res = await viewService.likeUserProfile(formdata)
   }
 
 
@@ -182,7 +188,9 @@ class ProfileSnippetCard extends React.Component {
                         backgroundColor: 'rgba(247,247,247,0.84)'
                       }} size="small">
                         View Profile</Button>
-                      <Button style={{
+                      <Button onClick={()=>{
+                        this.handleLike(item.user)
+                      }} style={{
                         color: '#1e1e1e',
                         textTransform: 'capitalize',
                         borderWidth: '1px',
@@ -302,7 +310,9 @@ class ProfileSnippetCard extends React.Component {
                         backgroundColor: 'rgba(247,247,247,0.84)'
                       }} size="small">
                         View Profile</Button>
-                      <Button style={{
+                      <Button onClick={()=>{
+                        this.handleLike(item.user)
+                      }} style={{
                         color: '#1e1e1e',
                         textTransform: 'capitalize',
                         borderWidth: '1px',
@@ -425,7 +435,9 @@ class ProfileSnippetCard extends React.Component {
                         backgroundColor: 'rgba(247,247,247,0.84)'
                       }} size="small">
                         View Profile</Button>
-                      <Button style={{
+                      <Button onClick={()=>{
+                        this.handleLike(item.user)
+                      }} style={{
                         color: '#1e1e1e',
                         textTransform: 'capitalize',
                         borderWidth: '1px',
