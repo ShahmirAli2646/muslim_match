@@ -23,6 +23,12 @@ const submitProfileData = (formdata) => {
       formdata
     )
     };
+
+ const viewUserProfile = (formdata) => {
+    return axios.post(API_URL + "view-user-profile",
+    formdata
+    )
+ }   
 const getAdminPanel = () => {
   return axios.get(API_URL + "admin", { headers: authHeader() });
 };
@@ -32,5 +38,6 @@ export default {
     getpotentialMatches,
     submitProfileData,
     getuserProfile,
-    getuser
+    getuser,
+    viewUserProfile,
 };

@@ -25,6 +25,7 @@ import LocationOn from '@mui/icons-material/LocationOn'
 import UserService from '../../services/user.service';
 import { useSelector } from 'react-redux'
 import { borderRadius, width } from '@mui/system';
+import viewService from '../../services/user.service'
 
 
 
@@ -45,6 +46,16 @@ class ProfileSnippetCard extends React.Component {
   componentDidUpdate() {
     console.log('what are profile card props', this.props)
 
+  }
+
+  handleView = async (view_id) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+       let formdata = {
+        user_id : user?._id,
+        view_id : view_id
+       }
+      const res = await viewService.viewUserProfile(formdata)
+      console.log('response' , res)
   }
 
   render() {
@@ -141,7 +152,9 @@ class ProfileSnippetCard extends React.Component {
                       backgroundSize: 'cover', textShadow: '1px 3px #d3d3', letterSpacing: '2px',
                       textAlign: 'center', fontSize: 20, color: '#fff', padding: '20px'
                     }}>
-                      <Button style={{
+                      <Button onClick={()=>{
+                        this.handleView(item.user)
+                      }} style={{
                         color: '#1e1e1e',
                         textTransform: 'capitalize',
                         borderWidth: '1px',
