@@ -61,7 +61,11 @@ class ProfileSnippetCard extends React.Component {
         view_id : view_id
        }
       const res = await viewService.viewUserProfile(formdata)
+      this.setState({view_id} , ()=>{
+        console.log('state view id' , this.state.view_id)
+      })
   }
+  
 
   handleLike = async (like_id) => {
     const user = JSON.parse(localStorage.getItem("user"));
