@@ -44,11 +44,14 @@ class Profile extends React.Component {
     console.log('props in my constructor', this.props)
   }
   componentDidMount() {
-
     if (this.props.location !== undefined) {
+      console.log('history')
       if (this.props.location.state !== undefined) {
+        console.log('first time load')
         if (this.props.location.state.id !== undefined && this.props.location.state.id !== null) {
+          console.log('from matches')
           this.getUserData(this.props.location.state.id)
+        
         }
         if (this.props.location.state.from === 'link') {
           console.log('location props', this.props)
@@ -61,6 +64,19 @@ class Profile extends React.Component {
           }
           this.getUserData()
         }
+        if(this.props.location.state.from !== undefined){
+          if(this.props.location.state.from.pathname === "/signin"){
+            const reloadCount = sessionStorage.getItem('reloadCount');
+            if (reloadCount < 1) {
+              sessionStorage.setItem('reloadCount', String(reloadCount + 1));
+              window.location.reload();
+            } else {
+              sessionStorage.removeItem('reloadCount');
+            }
+            this.getUserData()
+          }
+        } 
+       
       }
       else {
         this.getUserData()
@@ -72,7 +88,7 @@ class Profile extends React.Component {
   }
 
   getUserData = async (view_id) => {
-    console.log('view_id', view_id)
+    console.log('view_id')
     if (view_id) {
       const userData = await userService.getuser(view_id)
       this.setState({ userName: userData.data.first_name }, async () => {
