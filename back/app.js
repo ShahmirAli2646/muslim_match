@@ -13,7 +13,7 @@ const FetchUserProfile= require('./controllers/FetchProfileController')
 const FullMatches = require('./controllers/FullMatchesController');
 const { PartialMatches } = require("./controllers/PartialMatchesController");
 const PotentialMatches = require("./controllers/PotentialMatchesController")
-const {totalMembers , chartResponse , memberCards , getUser} = require("./controllers/adminKPI")
+const {totalMembers , chartResponse , memberCards , getUser , getTotalMatches} = require("./controllers/adminKPI")
 const {viewProfile} = require("./controllers/viewProfileController")
 const {likeProfile} = require("./controllers/likeProfileController")
 
@@ -42,6 +42,7 @@ app.get('/my-matches/full-matches/:userId/:page',FullMatches.FullMatches);
 app.get('/my-matches/partial-matches/:userId/:page',PartialMatches );
 app.get('/my-matches/potential-matches/:userId/:page',PotentialMatches.PotentialMatches);
 app.get('/adminDashboard/TotalMembers' , totalMembers)
+app.get('/adminDashboard/TotalMatches' , getTotalMatches)
 app.get('/adminDashboard/ChartResponse' , chartResponse)
 app.get('/adminDashboard/MemberCards' , memberCards)
 app.get('/adminDashboard/Users/:user' , getUser)

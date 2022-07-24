@@ -44,6 +44,7 @@ class Profile extends React.Component {
     console.log('props in my constructor', this.props)
   }
   componentDidMount() {
+   
     if (this.props.location !== undefined) {
       console.log('history')
       if (this.props.location.state !== undefined) {
@@ -66,6 +67,16 @@ class Profile extends React.Component {
         }
         if(this.props.location.state.from !== undefined){
           if(this.props.location.state.from.pathname === "/signin"){
+            const reloadCount = sessionStorage.getItem('reloadCount');
+            if (reloadCount < 1) {
+              sessionStorage.setItem('reloadCount', String(reloadCount + 1));
+              window.location.reload();
+            } else {
+              sessionStorage.removeItem('reloadCount');
+            }
+            this.getUserData()
+          }
+          else if (this.props.location.state.from.pathname === "/signup"){
             const reloadCount = sessionStorage.getItem('reloadCount');
             if (reloadCount < 1) {
               sessionStorage.setItem('reloadCount', String(reloadCount + 1));

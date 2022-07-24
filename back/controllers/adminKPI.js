@@ -46,20 +46,44 @@ module.exports = {
     memberCards: async (req, res) => {
         try {
             const profiles = await Profile.find({})
-            res.status(200).json({response:profiles , profiles:profiles.length})  
+            res.status(200).json({ response: profiles, profiles: profiles.length })
         }
         catch (err) {
             res.status(400).send("No Members found");
         }
     },
 
-    getUser : async (req , res) => {
-        try{ 
-            const users = await User.findOne({_id:req.params.user})
+    getUser: async (req, res) => {
+        try {
+            const users = await User.findOne({ _id: req.params.user })
             res.status(200).json(users)
         }
-        catch(err){
+        catch (err) {
             res.status(400).send("Invalid user")
         }
-    }
+    },
+    getTotalMatches: async (req, res) => {
+        try {
+            const matches = await Match.find({})
+            const result = matches.map((item, index) => {
+                const totalMatchesArray = item.match_id.map((item, index) => {
+                    return item
+                })
+                return totalMatchesArray
+            })
+            const totalMatchCount = result.map((item, index) => {
+
+                return item.length
+
+            })
+            const sum = totalMatchCount.reduce((accumulator, value) => {
+                return accumulator + value;
+              }, 0);
+            res.status(200).json(sum)
+        }
+        catch (err) {
+            res.status(400).send("Invalid user")
+        }
+    },
+
 }
