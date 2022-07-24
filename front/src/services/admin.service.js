@@ -33,6 +33,17 @@ const getTotalMembers = () => {
 const getAdminPanel = () => {
   return axios.get(API_URL + "admin", { headers: authHeader() });
 }
+const getTotalMatches = () => {
+  return axios.get(API_URL + "adminDashboard/TotalMatches")
+}
+const getTotalLikes = () => {
+  return axios.get(API_URL + "adminDashboard/TotalLikes")
+}
+const getTotalViews = () => {
+  return axios.get(API_URL + "adminDashboard/TotalViews")
+}            
+
+
 export default {
     getMemberCards,
     getpartialMatches,
@@ -41,4 +52,7 @@ export default {
     getuserProfile,
     getUser,
     getTotalMembers,
+    getTotalMatches,
+    getTotalLikes,
+    getTotalViews
 };

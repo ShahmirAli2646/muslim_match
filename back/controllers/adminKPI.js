@@ -1,5 +1,7 @@
 const User = require("../model/user");
 const Match = require("../model/matches")
+const Like = require("../model/likes")
+const View = require("../model/views")
 const Profile = require("../model/profile");
 const { first } = require("lodash");
 const user = require("../model/user");
@@ -77,6 +79,52 @@ module.exports = {
 
             })
             const sum = totalMatchCount.reduce((accumulator, value) => {
+                return accumulator + value;
+              }, 0);
+            res.status(200).json(sum)
+        }
+        catch (err) {
+            res.status(400).send("Invalid user")
+        }
+    },
+    getTotalLikes: async (req, res) => {
+        try {
+            const likes = await Like.find({})
+            const result = likes.map((item, index) => {
+                const totalLikesArray = item.like_id.map((item, index) => {
+                    return item
+                })
+                return totalLikesArray
+            })
+            const totalLikeCount = result.map((item, index) => {
+
+                return item.length
+
+            })
+            const sum = totalLikeCount.reduce((accumulator, value) => {
+                return accumulator + value;
+              }, 0);
+            res.status(200).json(sum)
+        }
+        catch (err) {
+            res.status(400).send("Invalid user")
+        }
+    },
+    getTotalViews: async (req, res) => {
+        try {
+            const views = await View.find({})
+            const result = views.map((item, index) => {
+                const totalViewsArray = item.view_id.map((item, index) => {
+                    return item
+                })
+                return totalViewsArray
+            })
+            const totalViewCount = result.map((item, index) => {
+
+                return item.length
+
+            })
+            const sum = totalViewCount.reduce((accumulator, value) => {
                 return accumulator + value;
               }, 0);
             res.status(200).json(sum)

@@ -9,14 +9,18 @@ import {
   Title
 } from '@devexpress/dx-react-chart-material-ui';
 
-const data = [
-  { argument: 1, value: 10 },
-  { argument: 2, value: 20 },
-  { argument: 3, value: 30 },
-];
 
-const Devexpressreactchart =  () => {
+
+const Devexpressreactchart =  (dataObj) => {
+ {console.log('what am i recieving' , dataObj)}
+ const data = [
+  { argument: 'members', value: dataObj.members },
+  { argument: 'likes', value: dataObj.likes },
+  { argument: 'matches', value: dataObj.matches },
+  { argument: 'views', value: dataObj.views },
+];
     return(
+    
     <Paper>
     <Chart
       data={data}
@@ -29,6 +33,7 @@ const Devexpressreactchart =  () => {
       <ValueAxis />
 
       <LineSeries valueField="value" argumentField="argument" />
+
     </Chart>
   </Paper>
     )
