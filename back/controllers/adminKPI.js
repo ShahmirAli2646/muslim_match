@@ -5,6 +5,7 @@ const View = require("../model/views")
 const Profile = require("../model/profile");
 const { first } = require("lodash");
 const user = require("../model/user");
+const views = require("../model/views");
 
 module.exports = {
     totalMembers: async (req, res) => {
@@ -41,8 +42,17 @@ module.exports = {
 
     },
 
-    activityPanelResponse: async () => {
-
+    activityPanelResponse: async (req , res) => {
+        try{
+          const matches = await Match.find({})
+          const views = await View.find({})
+          const likes = await Like.find({})
+          const members = await User.find({})
+          res.status(201).json({matches , views , likes , members})
+        }
+        catch(err){
+            res.status(400).send("No New Users");
+        }
     },
 
     memberCards: async (req, res) => {
