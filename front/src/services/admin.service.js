@@ -41,8 +41,10 @@ const getTotalLikes = () => {
 }
 const getTotalViews = () => {
   return axios.get(API_URL + "adminDashboard/TotalViews")
-}            
-
+}      
+const getActivityPanelResponse = () => {
+  return axios.get(API_URL + "adminDashboard/ActivityPanel")
+}      
 
 export default {
     getMemberCards,
@@ -54,5 +56,6 @@ export default {
     getTotalMembers,
     getTotalMatches,
     getTotalLikes,
-    getTotalViews
+    getTotalViews,
+    getActivityPanelResponse
 };

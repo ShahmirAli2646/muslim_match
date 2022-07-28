@@ -18,14 +18,19 @@ import GlobeIcon from '@mui/icons-material/LocationCity'
 import { List  } from '@mui/material';
 import { ListItem } from '@mui/material';
 import { ListItemIcon } from '@mui/material';
+import adminService from '../services/admin.service';
 
 
 
 export default function ActivityPanel() {
     const [count, setCount] = useState(0);
-    useEffect(()=>{
-        console.log('dedew') 
-    })
+    const getActivites = async() => {
+        const res = await adminService.getActivityPanelResponse()
+        console.log('activity response' , res)
+    }
+    useEffect(async()=>{
+         await getActivites()
+    } , [])
     const notifications = [
         {
             title:'viewed',
