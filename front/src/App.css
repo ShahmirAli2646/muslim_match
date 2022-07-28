@@ -1,1 +1,4 @@
 
+  ul[name="legend-top"] {
+    display: flex !important;
+  }

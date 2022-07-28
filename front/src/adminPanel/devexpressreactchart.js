@@ -5,36 +5,69 @@ import {
   ValueAxis,
   Chart,
   LineSeries,
+  SplineSeries,
   Legend,
-  Title
+  Title,
+  Label,
+  Tooltip
 } from '@devexpress/dx-react-chart-material-ui';
+import { EventTracker } from '@devexpress/dx-react-chart';
+import '../App.css'
 
 
-
-const Devexpressreactchart =  (dataObj) => {
- {console.log('what am i recieving' , dataObj)}
- const data = [
-  { argument: 'members', value: dataObj.members },
-  { argument: 'likes', value: dataObj.likes },
-  { argument: 'matches', value: dataObj.matches },
-  { argument: 'views', value: dataObj.views },
-];
+const Devexpressreactchart =  ({dataObj}) => {
+  const toolTipContent = ({text , targetItem}) => {
+      return(
+       <React.Fragment>
+         {targetItem.point === 1 ? (
+          <label>{'Total Likes : ' + text}</label>
+         ): targetItem.point === 0 ? (
+           <label>{'Total Matches : ' + text}</label>
+         ) : targetItem.point === 2 ? (
+          <label>{'Total Members : ' + text}</label>
+         ) : targetItem.point === 3 ? (
+          <label>{'Total Views : ' + text}</label>
+         ) : ''}
+       </React.Fragment>
+        
+      )
+  }
+  const titleComponent = ({text}) => {
+    return(
+      <div style={{display:'flex' , justifyContent:'space-evenly' , width:'100%'}}>
+      <h3 style={{color: 'orchid' }}>Application Insight Graph</h3>
+      </div>
+    )
+  }
+  
+ const customizeText = () => {
+  return `members`;
+}
     return(
     
     <Paper>
-    <Chart
-      data={data}
-    > 
-    <Legend position="top"
-                    horizontalAlignment="center"
-                    verticalAlignment="top" />
+    {dataObj!==undefined?(
+        <Chart
+        data={dataObj}
+      > 
+
+                    
+           
+        <ArgumentAxis showLabels={true}>
          
-      <ArgumentAxis />
-      <ValueAxis />
-
-      <LineSeries valueField="value" argumentField="argument" />
-
-    </Chart>
+        </ArgumentAxis>
+        <ValueAxis  showLabels={true} />
+  
+        <SplineSeries  color='orange' valueField="value" argumentField="Argument" >
+         
+        </SplineSeries>
+        <EventTracker />
+        <Tooltip contentComponent={toolTipContent} />
+        <Title textComponent={titleComponent} />
+  
+      </Chart>
+    ):''}  
+   
   </Paper>
     )
 }
