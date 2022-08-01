@@ -64,7 +64,7 @@ class ProfileSnippetCard extends React.Component {
     return (
 
 
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <Stack direction={{ xs: 'column', sm: 'column' , md : 'row' , lg : 'row' , xl : 'row'  }}>
         {this.props.profiles?.map((item) => (
           <Card style={{ backgroundColor: '#fff', marginRight: '13px', border: '1px solid #ededed', borderRadius: '20px', boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)', marginBottom: '20px' }}>
             <CardHeader
@@ -186,7 +186,7 @@ class ProfileSnippetCard extends React.Component {
 
         ))}
 
-      </div>
+      </Stack>
 
 
     )

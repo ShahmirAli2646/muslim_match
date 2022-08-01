@@ -22,9 +22,9 @@ const Devexpressreactchart =  ({dataObj}) => {
          {targetItem.point === 1 ? (
           <label>{'Total Likes : ' + text}</label>
          ): targetItem.point === 0 ? (
-           <label>{'Total Matches : ' + text}</label>
+           <label>{'Total Members : ' + text}</label>
          ) : targetItem.point === 2 ? (
-          <label>{'Total Members : ' + text}</label>
+          <label>{'Total Matches : ' + text}</label>
          ) : targetItem.point === 3 ? (
           <label>{'Total Views : ' + text}</label>
          ) : ''}
