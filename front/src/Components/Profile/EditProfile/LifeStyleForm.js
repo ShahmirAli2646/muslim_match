@@ -147,7 +147,7 @@ const LifeStyleForm = () => {
         value={menclothing}
         multiple
         onChange={handleMenClothingChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput />}
         label="MenClothing"
       >
         <MenuItem value="">
@@ -176,7 +176,7 @@ const LifeStyleForm = () => {
         value={womenclothing}
         multiple
         onChange={handleWomenClothingChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput />}
         label="WomenClothing"
       >
         <MenuItem value="">
@@ -206,7 +206,7 @@ const LifeStyleForm = () => {
         value={beard}
         multiple
         onChange={handleBeardChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput />}
         label="Beard"
       >
         <MenuItem value="">
@@ -251,7 +251,7 @@ const LifeStyleForm = () => {
         value={haram}
         multiple
         onChange={handleHaramChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput />}
         label="Haram"
       >
         <MenuItem value="">
@@ -323,7 +323,7 @@ const LifeStyleForm = () => {
         value={nonmahrammenclothing}
         multiple
         onChange={handleNonMahramMenClothingChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput />}
         label="NonMahramMenClothing"
       >
         <MenuItem value="">
@@ -361,7 +361,7 @@ const LifeStyleForm = () => {
         value={nonmahramwomenclothing}
         multiple
         onChange={handleNonMahramWomenClothingChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput  />}
         label="NonMahramWomenClothing"
       >
         <MenuItem value="">

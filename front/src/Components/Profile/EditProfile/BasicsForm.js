@@ -221,7 +221,7 @@ const BasicsForm = () => {
         value={hijabtype}
         multiple
         onChange={handleHijabTypeChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput/>}
         label="HijabType"
       >
         <MenuItem value="">
@@ -265,7 +265,7 @@ const BasicsForm = () => {
         value={menmaritalstatus}
         multiple
         onChange={handleMenMaritalStatusChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput />}
         label="MaritalStatusMen"
       >
         <MenuItem value="">
@@ -290,7 +290,7 @@ const BasicsForm = () => {
         value={womenmaritalstatus}
         multiple
         onChange={handleWomenMaritalStatusChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput />}
         label="MaritalStatusWomen"
       >
         <MenuItem value="">

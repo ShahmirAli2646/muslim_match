@@ -105,7 +105,7 @@ const DeenForm = () => {
         value={followings}
         multiple
         onChange={handleFollowingsChange}
-        input={<OutlinedInput label="Name" />}
+        input={<OutlinedInput/>}
         label="Followings"
       >
         <MenuItem value="">
