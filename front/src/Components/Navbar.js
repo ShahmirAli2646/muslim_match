@@ -160,56 +160,52 @@ export default function PrimarySearchAppBar({ isAuthenticated, user }) {
 
 
           <a >
-            <img style={{width: '100%'}} src={ProductLogo} alt='icon' />
+            <img style={{ width: '100%' }} src={ProductLogo} alt='icon' />
           </a>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {isAuthenticated && user?.role !== 'admin' ? (
-              <CustomSelect user={user}/>
-            ) : ''}
-
-
-          </Box>
-           {isAuthenticated && user?.role!=='admin'?(
-              <Stack spacing={0} direction="row">
+          {isAuthenticated && user?.role !== 'admin' ? (
+            <Stack spacing={0} direction="row">
+              {isAuthenticated && user?.role !== 'admin' ? (
+                <CustomSelect user={user} />
+              ) : ''}
               <Button variant="text"><Link to={'/user-profile/my-matches'} style={{ color: 'rgb(137 134 134)', textDecoration: 'none', textTransform: 'capitalize', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '15px' }}>My Matches</Link></Button>
               <Button style={{ color: 'rgb(137 134 134)', textTransform: 'capitalize', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '15px' }} variant="text">Donate</Button>
             </Stack>
-           ):''
-           }
-          
+          ) : ''
+          }
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {isAuthenticated && user?.role !== 'admin' ? (
               <div>
-             <IconButton size="large" aria-label="show 4 new mails" style={{color:'#666'}} color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon style={{fontSize:'30px'}} />
-              </Badge>
-            </IconButton>
-            <IconButton size="large" aria-label="show 4 new mails" style={{color:'#666'}} color="inherit">
-              <Badge badgeContent={4} color="error">
-                <NotificationsIcon style={{fontSize:'30px'}} />
-              </Badge>
-            </IconButton>
-            </div>
-            ):''}
+                <IconButton size="large" aria-label="show 4 new mails" style={{ color: '#666' }} color="inherit">
+                  <Badge badgeContent={4} color="error">
+                    <MailIcon style={{ fontSize: '30px' }} />
+                  </Badge>
+                </IconButton>
+                <IconButton size="large" aria-label="show 4 new mails" style={{ color: '#666' }} color="inherit">
+                  <Badge badgeContent={4} color="error">
+                    <NotificationsIcon style={{ fontSize: '30px' }} />
+                  </Badge>
+                </IconButton>
+              </div>
+            ) : ''}
 
-            {isAuthenticated?(
-               <IconButton
-               style={{ color: '#666' }}
-               size="large"
-               edge="end"
-               aria-label="account of current user"
-               aria-controls={menuId}
-               aria-haspopup="true"
-               onClick={handleProfileMenuOpen}
-               color="inherit"
-             >
-               <AccountCircle style={{ fontSize: '30px' }} />
-             </IconButton>
-            ):''}
-           
+            {isAuthenticated ? (
+              <IconButton
+                style={{ color: '#666' }}
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle style={{ fontSize: '30px' }} />
+              </IconButton>
+            ) : ''}
+
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton

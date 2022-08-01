@@ -13,6 +13,7 @@ import FamilyIcon from '@mui/icons-material/PeopleOutline'
 import FriendsIcon from '@mui/icons-material/ContactsOutlined'
 import ProfessionIcon from '@mui/icons-material/LocalPostOfficeOutlined'
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
+import { Grid } from '@mui/material';
 
 
 export default function SectionHelper() {
@@ -86,7 +87,10 @@ export default function SectionHelper() {
 
 
   return (
+    <React.Fragment>
+    <div className='section-helper'>
 
+    
     <Card sx={{
       maxWidth: 500, marginTop: '50px', padding: '20px',
       borderRadius: '2px 35px 2px 35px',
@@ -123,8 +127,9 @@ export default function SectionHelper() {
           backgroundColor: '#ff4a83'
         }} size="small">No</Button>
       </CardActions>
-
     </Card>
+    </div>
+    </React.Fragment>
 
   );
 }

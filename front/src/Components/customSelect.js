@@ -24,9 +24,9 @@ export default function CustomSelect({user}) {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-      <Button style={{color:'rgb(137 134 134)' , textTransform:'capitalize' , fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'15px'}} aria-describedby={id} variant="text" onClick={handleClick}>
+    
+      <FormControl >
+      <Button style={{ color: 'rgb(137 134 134)', textDecoration: 'none', textTransform: 'capitalize', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '15px' }} aria-describedby={id} variant="text" onClick={handleClick}>
         My Profile
       </Button>
       <Popover
@@ -50,6 +50,6 @@ export default function CustomSelect({user}) {
         </div>
       </Popover>
       </FormControl>
-    </Box>
+   
   );
 }

@@ -250,7 +250,6 @@ class Profile extends React.Component {
         </Container>
         <SectionHelper />
         <DataBlock />
-        <AdvertHelper />
         <br>
         </br>
         <br>

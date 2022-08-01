@@ -81,7 +81,6 @@ class EditProfile extends React.Component {
 
    <EditHelper/>
    <Forms/>
-   <AdvertHelper/>
    <br>
    </br>
    <br>

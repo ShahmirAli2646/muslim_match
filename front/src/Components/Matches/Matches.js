@@ -406,7 +406,6 @@ class Profile extends React.Component {
           ))
           }
         </Container>
-        <AdvertHelper />
         <SectionHelper />
         <br>
         </br>

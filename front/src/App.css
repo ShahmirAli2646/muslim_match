@@ -2,3 +2,9 @@
   ul[name="legend-top"] {
     display: flex !important;
   }
+
+  @media (max-width: 1396px)  {
+    .section-helper {
+      display: none;
+    }
+  }

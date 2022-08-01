@@ -94,7 +94,7 @@ export default function EditHelper() {
         document.querySelector("#Finish").scrollIntoView({ behavior: 'smooth'});
       }
     return (
-        
+      <div className='section-helper'>
       <Card sx={{ maxWidth: 500, marginTop:'50px', padding:'20px',
          borderRadius: '2px 35px 2px 35px' ,
           position:'fixed' ,top:'80px' , boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)' , left:10 }}>
@@ -137,6 +137,6 @@ export default function EditHelper() {
         </CardActions>
         
       </Card>
-      
+      </div>
     );
   }
