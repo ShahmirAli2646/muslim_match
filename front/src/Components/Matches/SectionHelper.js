@@ -62,6 +62,8 @@ export default function SectionHelper() {
       
       
     return (
+        <div className='section-helper'>
+
         
       <Card sx={{ maxWidth: 800, marginTop:'50px', padding:'20px', width:'20%',background:'#f7f7f7',
          borderRadius: '20px' ,
@@ -90,6 +92,7 @@ export default function SectionHelper() {
         </CardActions>
         
       </Card>
+      </div>
       
     );
   }

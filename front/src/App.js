@@ -14,6 +14,7 @@ import PrivateRoute from "./Components/AuthRoutes/PrivateRoute";
 import AdminPrivateRoute from "./Components/AuthRoutes/AdminPrivateRoute";
 import { useSelector } from 'react-redux'
 import { Grid } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
 // const SignIn =  lazy(() => import('./Components/SignIn'));
 // const SignUp =  lazy(() => import('./Components/Register'));
 
@@ -97,7 +98,7 @@ function App() {
           </Switch>
         </Suspense>
       </Fragment>
-
+      <ToastContainer />
     </Router>
   );
 }

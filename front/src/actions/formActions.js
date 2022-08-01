@@ -10,6 +10,8 @@ import {
   LIFESTYLE_FORM,
 } from "./types";
 import UserService from '../services/user.service'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const SubmitStartForm = (phone, purpose, gender, birthdate) => (dispatch) => {
   dispatch({
@@ -21,6 +23,7 @@ export const SubmitStartForm = (phone, purpose, gender, birthdate) => (dispatch)
       birthdate: birthdate
     },
   });
+  toast('step1 complete')
 };
 
 export const SubmitAppearanceForm = (Whatistheshortestheightyoufindcompatible, Whatsthetallestheightyoufindcompatible, WhatisyourpreferencewhenitcomestothewaistsizeofyourfuturehusbandinshaAllahininches,
@@ -45,6 +48,7 @@ export const SubmitAppearanceForm = (Whatistheshortestheightyoufindcompatible, W
       Whatisyourethnicity: Whatisyourethnicity,
     },
   });
+  toast('step2 complete')
 };
 
 
@@ -92,6 +96,7 @@ export const SubmitBasicsForm = (youngestageyouarelookingfor, oldestageyouareloo
       DidyourevertconverttoIslam: DidyourevertconverttoIslam
     },
   });
+  toast('step3 complete')
 };
 
 export const SubmitDeenForm = (followingforspouse, WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted,
@@ -118,6 +123,7 @@ export const SubmitDeenForm = (followingforspouse, WhattypeandlevelofIslamicstud
       MemorizedanyQuranifsohowmuch: MemorizedanyQuranifsohowmuch,
     },
   });
+  toast('step4 complete')
 };
 
 export const SubmitFinishForm = (WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole
@@ -131,6 +137,7 @@ export const SubmitFinishForm = (WhatdoyoubelievetheroleofthehusbandisWhatdoyoub
         newsletter: newsletter,
       },
     });
+    toast('step5 complete')
   };
 
 export const SubmitProfressionForm = (Whichprofessionstatusdescribewhatyouwantyourfuturewifetohaveselectallthatapply, Whichprofessionstatusdescribewhatyouwantyourfuturehusbandtohaveselectallthatapply,
@@ -145,6 +152,7 @@ export const SubmitProfressionForm = (Whichprofessionstatusdescribewhatyouwantyo
         Whatisyourlevelofeducation: Whatisyourlevelofeducation,
       },
     });
+    toast('step6 complete')
   };
 
 
@@ -159,6 +167,7 @@ export const SubmitFamilyRelationsForm = (Areyourfamilyreligious, Whatsectfollow
 
     },
   });
+  toast('step7 complete')
 };
 
 export const SubmitFriendshipsForm = (DoyouspendalotoftimewithfriendsWhatactivitiesdoyoudowithyourfriends, Areyourfriendsreligious, WhatsectfollowingofIslamdoyourfriendspractice,
@@ -175,6 +184,7 @@ export const SubmitFriendshipsForm = (DoyouspendalotoftimewithfriendsWhatactivit
 
       },
     });
+    toast('step8 complete')
   };
 
 export const SubmitLifestyleForm = (Whatstyleofmensclothingwouldyoupreferyourfuturehusbandwearwhenaroundnonmahramswhengoingtotheshoporatworketc, Whatstyleofwomensclothingwouldyoupreferyourfuturewifetowearwhenaroundnonmahramswhengoingtotheshoporparketc,
@@ -198,6 +208,7 @@ export const SubmitLifestyleForm = (Whatstyleofmensclothingwouldyoupreferyourfut
         Doyouwearmakeupinfrontofnonmahrams: Doyouwearmakeupinfrontofnonmahrams,
       },
     });
+    toast('step9 complete')
   };
 
   export const FinishAndSubmitForm = (formdata) => (dispatch) => {
