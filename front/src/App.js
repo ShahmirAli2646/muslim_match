@@ -13,6 +13,7 @@ import PublicRoute from "./Components/AuthRoutes/PublicRoute";
 import PrivateRoute from "./Components/AuthRoutes/PrivateRoute";
 import AdminPrivateRoute from "./Components/AuthRoutes/AdminPrivateRoute";
 import { useSelector } from 'react-redux'
+import { Grid } from '@mui/material';
 // const SignIn =  lazy(() => import('./Components/SignIn'));
 // const SignUp =  lazy(() => import('./Components/Register'));
 
@@ -46,7 +47,10 @@ function App() {
     <Router>
 
       <Fragment>
+        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
         <Navbar isAuthenticated={isAuthenticated} user={user} />
+        </Grid>
+        
         <Route exact path="/" render={() => (
           isAuthenticated ? (
             <Redirect to="/user-profile" />

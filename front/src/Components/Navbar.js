@@ -160,7 +160,7 @@ export default function PrimarySearchAppBar({ isAuthenticated, user }) {
 
 
           <a >
-            <img src={ProductLogo} alt='icon' />
+            <img style={{width: '100%'}} src={ProductLogo} alt='icon' />
           </a>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

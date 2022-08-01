@@ -20,7 +20,7 @@ class Admin extends React.Component {
         return (
             <Container maxWidth="xl" style={{padding:'50px'}}>
             <Grid container spacing={2}>
-                <Grid item xl={3} lg={4} md={12} sm={12}>
+                <Grid item xl={3} lg={4} md={12} sm={12} >
                     
                         <TotalMembersCard/>
                     
