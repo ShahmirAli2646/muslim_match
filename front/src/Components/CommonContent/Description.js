@@ -1,9 +1,12 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import { Container } from '@mui/material';
 
 const Description = () => {
     return (
+      
+
       <div style={{background:'#009da0' , padding:'0px' , textAlign:'center'}}>
           <h1 style={{display:'inline-block' , fontSize:28 , textAlign:'center' , color:'#d3d3d3' , fontFamily:'fantasy' , fontWeight:'normal'}}>
               The Free Mariage Agency
@@ -35,6 +38,7 @@ const Description = () => {
     </h3>
 
       </div>
+  
     )
 }
 

@@ -51,7 +51,7 @@ export default function SignIn() {
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
      
-      height: '100vh' , padding:'70px'  , boxSizing:'unset'}}>
+        padding:'70px'  , boxSizing:'unset'}}>
 
       
     <ThemeProvider theme={theme}>
@@ -109,7 +109,7 @@ export default function SignIn() {
                 borderWidth: '2px',
                 borderRadius: '30px',
                 backgroundColor: 'rgb(255, 74, 130)',
-                width: '30%',
+                width: '35%',
                 textTransform: 'lowercase' }}
               type="submit"
               fullWidth

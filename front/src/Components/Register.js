@@ -52,7 +52,7 @@ export default function SignUp() {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
 
-        height: '100vh', padding: '70px', boxSizing: 'unset'
+        padding: '70px', boxSizing: 'unset'
       }}>
 
         <ThemeProvider theme={theme}>
