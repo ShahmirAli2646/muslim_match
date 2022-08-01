@@ -8,6 +8,9 @@ const API_URL = "http://localhost:4001/";
 const getfullMatches = (userId , page) => {
   return axios.get(API_URL + "my-matches/full-matches/"+userId + "/"+page);
 };
+const getLikes = (userId , page) => {
+  return axios.get(API_URL + "my-likes/likes/"+userId + "/"+page);
+};
 const getpartialMatches = (userId , page) => {
     return axios.get(API_URL + "my-matches/partial-matches/"+userId + "/"+page);
   };
@@ -52,5 +55,6 @@ export default {
     getuserProfile,
     getuser,
     viewUserProfile,
-    likeUserProfile
+    likeUserProfile,
+    getLikes
 };
