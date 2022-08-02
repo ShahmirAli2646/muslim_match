@@ -26,7 +26,7 @@ import UserService from '../../services/user.service';
 import { useSelector } from 'react-redux'
 import { borderRadius, width } from '@mui/system';
 import viewService from '../../services/user.service'
-import { withRouter , Redirect  } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 
 
 
@@ -37,12 +37,13 @@ class ProfileSnippetCard extends React.Component {
       FullMatches: [],
       PartialMatches: [],
       PotentialMatches: [],
+      likes: [],
       userArray: [],
       FinalArray: [],
       triggerUpdateState: null,
       userState: null,
-      view:null,
-      view_id:null
+      view: null,
+      view_id: null
     };
   }
 
@@ -56,37 +57,37 @@ class ProfileSnippetCard extends React.Component {
 
   handleView = async (view_id) => {
     const user = JSON.parse(localStorage.getItem("user"));
-       let formdata = {
-        user_id : user?._id,
-        view_id : view_id
-       }
-      const res = await viewService.viewUserProfile(formdata)
-      this.setState({view_id} , ()=>{
-        console.log('state view id' , this.state.view_id)
-      })
+    let formdata = {
+      user_id: user?._id,
+      view_id: view_id
+    }
+    const res = await viewService.viewUserProfile(formdata)
+    this.setState({ view_id }, () => {
+      console.log('state view id', this.state.view_id)
+    })
   }
-  
+
 
   handleLike = async (like_id) => {
     const user = JSON.parse(localStorage.getItem("user"));
-       let formdata = {
-        user_id : user?._id,
-        like_id : like_id
-       }
-      const res = await viewService.likeUserProfile(formdata)
+    let formdata = {
+      user_id: user?._id,
+      like_id: like_id
+    }
+    const res = await viewService.likeUserProfile(formdata)
   }
 
 
   render() {
     return (
       <Container maxWidth="sm" component="main">
-        {this.state.view_id!==null && (
-          
-           <Redirect to={{
+        {this.state.view_id !== null && (
+
+          <Redirect to={{
             pathname: '/user-profile/view-profile',
             state: { id: this.state.view_id }
-        }}
-        />
+          }}
+          />
         )}
         {this.props.tier === 'Matched' ? (
           <React.Fragment>
@@ -179,7 +180,7 @@ class ProfileSnippetCard extends React.Component {
                       backgroundSize: 'cover', textShadow: '1px 3px #d3d3', letterSpacing: '2px',
                       textAlign: 'center', fontSize: 20, color: '#fff', padding: '20px'
                     }}>
-                      <Button onClick={()=>{
+                      <Button onClick={() => {
                         this.handleView(item.user)
                       }} style={{
                         color: '#1e1e1e',
@@ -192,7 +193,7 @@ class ProfileSnippetCard extends React.Component {
                         backgroundColor: 'rgba(247,247,247,0.84)'
                       }} size="small">
                         View Profile</Button>
-                      <Button onClick={()=>{
+                      <Button onClick={() => {
                         this.handleLike(item.user)
                       }} style={{
                         color: '#1e1e1e',
@@ -216,121 +217,122 @@ class ProfileSnippetCard extends React.Component {
           <React.Fragment>
             {this.props.potentialMatches !== null ? (
               <React.Fragment>
-              {
-                this.props.potentialMatches.map((item) => (
-                  <Card style={{ backgroundColor: '#fff', border: '1px solid #ededed', borderRadius: '20px', boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)', marginBottom: '20px' }}>
-                    <CardHeader
-                      style={{
-                        backgroundImage: `url(${actionsbackground}) `, backgroundPosition: 'center',
+                {
+                  this.props.potentialMatches.map((item) => (
+                    <Card style={{ backgroundColor: '#fff', border: '1px solid #ededed', borderRadius: '20px', boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)', marginBottom: '20px' }}>
+                      <CardHeader
+                        style={{
+                          backgroundImage: `url(${actionsbackground}) `, backgroundPosition: 'center',
+                          backgroundSize: 'cover', textShadow: '1px 3px #d3d3', letterSpacing: '2px',
+                          textAlign: 'center', fontSize: 20, color: '#fff'
+                        }}
+                        title={item.user_first_name}
+                        sx={{
+                          backgroundColor: (theme) =>
+                            theme.palette.mode === 'light'
+                              ? theme.palette.grey[2]
+                              : theme.palette.grey[700],
+                        }}
+                      />
+                      <CardContent style={{ textAlign: 'center' }}>
+                        <LocationOn style={{ color: '#e36b6b' }} />
+                        <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
+                          {item.Whichcountryorcountriesdoyoulivein.label + ' ' + item.Whichcitytownvillagedoyoulivein.label}
+                        </Typography>
+                        <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
+                          {item.gender === 'Male' ? (
+                            <React.Fragment>
+                              {"Said in his registration he follows the teachings of " +
+                                item.TheIslamicteachingssectthatyoufollow +
+                                " and also said with regards to his islamic studing:" +
+                                item.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails}
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              {"Said in her registration she follows the teachings of " +
+                                item.TheIslamicteachingssectthatyoufollow +
+                                " and also said with regards to her islamic studing:" +
+                                item.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails}
+                            </React.Fragment>
+                          )}
+                        </Typography>
+                        <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
+                          {item.gender === 'Male' ? (
+                            <React.Fragment>
+                              {'he is ' +
+                                item.birthdate +
+                                ' years old , and ' +
+                                item.Whatisyourmaritalstatusmen +
+                                ' and described his ethnicity as ' +
+                                item.Whatisyourethnicity + '. he Described his Profession as '
+                                + item.Whatisyourprofession}
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              {item.Doyoucoveryourhairfromnonmahrams === "Hijab" ? (
+                                <React.Fragment>
+                                  {'she is ' +
+                                    item.birthdate +
+                                    ' years old , and ' +
+                                    item.Whatisyourmaritalstatuswomen +
+                                    'and described her ethnicity as ' +
+                                    item.Whatisyourethnicity +
+                                    ' She Wears Hijab' +
+                                    '. She Described her Profession as ' +
+                                    item.Whatisyourprofession}
+                                </React.Fragment>
+                              ) :
+                                <React.Fragment>
+                                  {'she is ' +
+                                    item.birthdate +
+                                    ' years old , and ' +
+                                    item.Whatisyourmaritalstatuswomen +
+                                    ' and described her ethnicity as ' +
+                                    item.Whatisyourethnicity +
+                                    ' She does not wear Hijab' +
+                                    '. She Described her Profession as ' +
+                                    item.Whatisyourprofession}
+                                </React.Fragment>
+                              }
+                            </React.Fragment>
+                          )}
+                        </Typography>
+                      </CardContent>
+                      <CardActions style={{
+                        justifyContent: 'center', backgroundImage: `url(${background}) `, backgroundPosition: 'center',
                         backgroundSize: 'cover', textShadow: '1px 3px #d3d3', letterSpacing: '2px',
-                        textAlign: 'center', fontSize: 20, color: '#fff'
-                      }}
-                      title={item.user_first_name}
-                      sx={{
-                        backgroundColor: (theme) =>
-                          theme.palette.mode === 'light'
-                            ? theme.palette.grey[2]
-                            : theme.palette.grey[700],
-                      }}
-                    />
-                    <CardContent style={{ textAlign: 'center' }}>
-                      <LocationOn style={{ color: '#e36b6b' }} />
-                      <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
-                        {item.Whichcountryorcountriesdoyoulivein.label + ' ' + item.Whichcitytownvillagedoyoulivein.label}
-                      </Typography>
-                      <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
-                        {item.gender === 'Male' ? (
-                          <React.Fragment>
-                            {"Said in his registration he follows the teachings of " +
-                              item.TheIslamicteachingssectthatyoufollow +
-                              " and also said with regards to his islamic studing:" +
-                              item.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails}
-                          </React.Fragment>
-                        ) : (
-                          <React.Fragment>
-                            {"Said in her registration she follows the teachings of " +
-                              item.TheIslamicteachingssectthatyoufollow +
-                              " and also said with regards to her islamic studing:" +
-                              item.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails}
-                          </React.Fragment>
-                        )}
-                      </Typography>
-                      <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
-                        {item.gender === 'Male' ? (
-                          <React.Fragment>
-                            {'he is ' +
-                              item.birthdate +
-                              ' years old , and ' +
-                              item.Whatisyourmaritalstatusmen +
-                              ' and described his ethnicity as ' +
-                              item.Whatisyourethnicity + '. he Described his Profession as '
-                              + item.Whatisyourprofession}
-                          </React.Fragment>
-                        ) : (
-                          <React.Fragment>
-                            {item.Doyoucoveryourhairfromnonmahrams === "Hijab" ? (
-                              <React.Fragment>
-                                {'she is ' +
-                                  item.birthdate +
-                                  ' years old , and ' +
-                                  item.Whatisyourmaritalstatuswomen +
-                                  'and described her ethnicity as ' +
-                                  item.Whatisyourethnicity +
-                                  ' She Wears Hijab' +
-                                  '. She Described her Profession as ' +
-                                  item.Whatisyourprofession}
-                              </React.Fragment>
-                            ) :
-                              <React.Fragment>
-                                {'she is ' +
-                                  item.birthdate +
-                                  ' years old , and ' +
-                                  item.Whatisyourmaritalstatuswomen +
-                                  ' and described her ethnicity as ' +
-                                  item.Whatisyourethnicity +
-                                  ' She does not wear Hijab' +
-                                  '. She Described her Profession as ' +
-                                  item.Whatisyourprofession}
-                              </React.Fragment>
-                            }
-                          </React.Fragment>
-                        )}
-                      </Typography>
-                    </CardContent>
-                    <CardActions style={{
-                      justifyContent: 'center', backgroundImage: `url(${background}) `, backgroundPosition: 'center',
-                      backgroundSize: 'cover', textShadow: '1px 3px #d3d3', letterSpacing: '2px',
-                      textAlign: 'center', fontSize: 20, color: '#fff', padding: '20px'
-                    }}>
-                      <Button onClick={()=>{
-                        this.handleView(item.user)}} style={{
-                        color: '#1e1e1e',
-                        textTransform: 'capitalize',
-                        borderWidth: '1px',
-                        borderRadius: '6px',
-                        borderWidth: '1px!important',
-                        borderColor: '#FFFFFF',
-                        fontSize: '13px',
-                        backgroundColor: 'rgba(247,247,247,0.84)'
-                      }} size="small">
-                        View Profile</Button>
-                      <Button onClick={()=>{
-                        this.handleLike(item.user)
-                      }} style={{
-                        color: '#1e1e1e',
-                        textTransform: 'capitalize',
-                        borderWidth: '1px',
-                        borderRadius: '6px',
-                        borderWidth: '1px!important',
-                        borderColor: '#FFFFFF',
-                        fontSize: '13px',
-                        backgroundColor: 'rgba(247,247,247,0.84)'
-                      }} size="small">
-                        Like Profile</Button>
-                    </CardActions>
-                  </Card>
-                ))
-              }
+                        textAlign: 'center', fontSize: 20, color: '#fff', padding: '20px'
+                      }}>
+                        <Button onClick={() => {
+                          this.handleView(item.user)
+                        }} style={{
+                          color: '#1e1e1e',
+                          textTransform: 'capitalize',
+                          borderWidth: '1px',
+                          borderRadius: '6px',
+                          borderWidth: '1px!important',
+                          borderColor: '#FFFFFF',
+                          fontSize: '13px',
+                          backgroundColor: 'rgba(247,247,247,0.84)'
+                        }} size="small">
+                          View Profile</Button>
+                        <Button onClick={() => {
+                          this.handleLike(item.user)
+                        }} style={{
+                          color: '#1e1e1e',
+                          textTransform: 'capitalize',
+                          borderWidth: '1px',
+                          borderRadius: '6px',
+                          borderWidth: '1px!important',
+                          borderColor: '#FFFFFF',
+                          fontSize: '13px',
+                          backgroundColor: 'rgba(247,247,247,0.84)'
+                        }} size="small">
+                          Like Profile</Button>
+                      </CardActions>
+                    </Card>
+                  ))
+                }
               </React.Fragment>
 
             ) : ''}
@@ -340,7 +342,7 @@ class ProfileSnippetCard extends React.Component {
           <React.Fragment>
             {this.props.partialMatches !== null ? (
               <React.Fragment>
-              {this.props.partialMatches.map((item) => (
+                {this.props.partialMatches.map((item) => (
                   <Card style={{ backgroundColor: '#fff', border: '1px solid #ededed', borderRadius: '20px', boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)', marginBottom: '20px' }}>
                     <CardHeader
                       style={{
@@ -427,8 +429,9 @@ class ProfileSnippetCard extends React.Component {
                       backgroundSize: 'cover', textShadow: '1px 3px #d3d3', letterSpacing: '2px',
                       textAlign: 'center', fontSize: 20, color: '#fff', padding: '20px'
                     }}>
-                      <Button onClick={()=>{
-                        this.handleView(item.user)}} style={{
+                      <Button onClick={() => {
+                        this.handleView(item.user)
+                      }} style={{
                         color: '#1e1e1e',
                         textTransform: 'capitalize',
                         borderWidth: '1px',
@@ -439,7 +442,7 @@ class ProfileSnippetCard extends React.Component {
                         backgroundColor: 'rgba(247,247,247,0.84)'
                       }} size="small">
                         View Profile</Button>
-                      <Button onClick={()=>{
+                      <Button onClick={() => {
                         this.handleLike(item.user)
                       }} style={{
                         color: '#1e1e1e',
@@ -455,11 +458,135 @@ class ProfileSnippetCard extends React.Component {
                     </CardActions>
                   </Card>
                 ))
-              }</React.Fragment>
+                }</React.Fragment>
             ) : ''}
 
           </React.Fragment>
-        ) : ''}
+        ) : this.props.tier === 'Liked' ? (
+          <React.Fragment>
+            {this.props.likes !== null ? (
+              <React.Fragment>
+                {this.props.likes.map((item) => (
+                  <Card style={{ backgroundColor: '#fff', border: '1px solid #ededed', borderRadius: '20px', boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)', marginBottom: '20px' }}>
+                    <CardHeader
+                      style={{
+                        backgroundImage: `url(${actionsbackground}) `, backgroundPosition: 'center',
+                        backgroundSize: 'cover', textShadow: '1px 3px #d3d3', letterSpacing: '2px',
+                        textAlign: 'center', fontSize: 20, color: '#fff'
+                      }}
+                      title={item.first_name}
+                      sx={{
+                        backgroundColor: (theme) =>
+                          theme.palette.mode === 'light'
+                            ? theme.palette.grey[2]
+                            : theme.palette.grey[700],
+                      }}
+                    />
+                    <CardContent style={{ textAlign: 'center' }}>
+                      <LocationOn style={{ color: '#e36b6b' }} />
+                      <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
+                        {item.data?.Whichcountryorcountriesdoyoulivein.label + ' ' + item.data?.Whichcitytownvillagedoyoulivein.label}
+                      </Typography>
+                      <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
+                        {item.data?.gender === 'Male' ? (
+                          <React.Fragment>
+                            {"Said in his registration he follows the teachings of " +
+                              item.data?.TheIslamicteachingssectthatyoufollow +
+                              " and also said with regards to his islamic studing:" +
+                              item.data?.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {"Said in her registration she follows the teachings of " +
+                              item.data?.TheIslamicteachingssectthatyoufollow +
+                              " and also said with regards to her islamic studing:" +
+                              item.data?.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails}
+                          </React.Fragment>
+                        )}
+                      </Typography>
+                      <Typography style={{ fontFamily: 'sans-serif', fontSize: '15px', fontWeight: 'bold', color: '#666' }}>
+                        {item.data?.gender === 'Male' ? (
+                          <React.Fragment>
+                            {'he is ' +
+                              item.data?.birthdate +
+                              ' years old , and ' +
+                              item.data?.Whatisyourmaritalstatusmen +
+                              ' and described his ethnicity as ' +
+                              item.data?.Whatisyourethnicity + '. he Described his Profession as '
+                              + item.data?.Whatisyourprofession}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {item.data?.Doyoucoveryourhairfromnonmahrams === "Hijab" ? (
+                              <React.Fragment>
+                                {'she is ' +
+                                  item.data?.birthdate +
+                                  ' years old , and ' +
+                                  item.data?.Whatisyourmaritalstatuswomen +
+                                  'and described her ethnicity as ' +
+                                  item.data?.Whatisyourethnicity +
+                                  ' She Wears Hijab' +
+                                  '. She Described her Profession as ' +
+                                  item.data?.Whatisyourprofession}
+
+                              </React.Fragment>
+                            ) :
+                              <React.Fragment>
+                                {'she is ' +
+                                  item.data?.birthdate +
+                                  ' years old , and ' +
+                                  item.data?.Whatisyourmaritalstatuswomen +
+                                  ' and described her ethnicity as ' +
+                                  item.data?.Whatisyourethnicity +
+                                  ' She does not wear Hijab' +
+                                  '. She Described her Profession as ' +
+                                  item.data?.Whatisyourprofession}
+
+                              </React.Fragment>
+                            }
+                          </React.Fragment>
+                        )}
+                      </Typography>
+                    </CardContent>
+                    <CardActions style={{
+                      justifyContent: 'center', backgroundImage: `url(${background}) `, backgroundPosition: 'center',
+                      backgroundSize: 'cover', textShadow: '1px 3px #d3d3', letterSpacing: '2px',
+                      textAlign: 'center', fontSize: 20, color: '#fff', padding: '20px'
+                    }}>
+                      <Button onClick={() => {
+                        this.handleView(item.id)
+                      }} style={{
+                        color: '#1e1e1e',
+                        textTransform: 'capitalize',
+                        borderWidth: '1px',
+                        borderRadius: '6px',
+                        borderWidth: '1px!important',
+                        borderColor: '#FFFFFF',
+                        fontSize: '13px',
+                        backgroundColor: 'rgba(247,247,247,0.84)'
+                      }} size="small">
+                        View Profile</Button>
+                      <Button onClick={() => {
+                        this.handleLike(item.id)
+                      }} style={{
+                        color: '#1e1e1e',
+                        textTransform: 'capitalize',
+                        borderWidth: '1px',
+                        borderRadius: '6px',
+                        borderWidth: '1px!important',
+                        borderColor: '#FFFFFF',
+                        fontSize: '13px',
+                        backgroundColor: 'rgba(247,247,247,0.84)'
+                      }} size="small">
+                        Like Profile</Button>
+                    </CardActions>
+                  </Card>
+                ))
+                }</React.Fragment>
+            ) : ''}
+
+          </React.Fragment>
+        ): <label></label>}
       </Container>
     )
   }

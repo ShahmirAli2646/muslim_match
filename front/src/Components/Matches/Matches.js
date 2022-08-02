@@ -38,63 +38,65 @@ class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user:JSON.parse(localStorage.getItem("user")),
-      fullMatchPage : 1,
-      potentialMatchPage :1 ,
+      user: JSON.parse(localStorage.getItem("user")),
+      fullMatchPage: 1,
+      potentialMatchPage: 1,
       partialMatchPage: 1,
-      FullMatches : null,
-      PotentialMatches : null , 
-      PartialMatches : null , 
+      likePage: 1,
+      FullMatches: null,
+      PotentialMatches: null,
+      PartialMatches: null,
+      likes: null
     }
 
   }
-  pagination = (tier , count)=>{
+  pagination = (tier, count) => {
     console.log('yes im getting called')
-    console.log('whats my props' , tier , count)
-    if(tier==='Matched'){
-      this.setState({fullMatchPage:count} ,  ()=>{
-      const user = JSON.parse(localStorage.getItem("user"));
-      this.setState({user})
-      userService.getfullMatches(user?._id, this.state.fullMatchPage).then(
-        (response) => {
-          this.setState({ FullMatches: response.data })
-          for (let i = 0; i < this.state.FullMatches.length; i++) {
-            userService.getuser(this.state.FullMatches[i].user).then(
-              (response) => {
-                let temp_state = [...this.state.FullMatches];
-                let temp_element = { ...temp_state[i] };
-                temp_element.user_first_name = response.data.first_name
-                temp_state[i] = temp_element;
-                this.setState({ FullMatches: temp_state })
-                let tempstate_age = [...this.state.FullMatches];
-                let tempelement_age = { ...tempstate_age[i] };
-                const newDate = Date.parse(tempelement_age.birthdate);
-                const ageInMilliseconds = new Date() - new Date(newDate);
-                const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
-                tempelement_age.birthdate = result
-                tempstate_age[i] = tempelement_age;
-                this.setState({ FullMatches: tempstate_age })
-              }
-            )
+    console.log('whats my props', tier, count)
+    if (tier === 'Matched') {
+      this.setState({ fullMatchPage: count }, () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        this.setState({ user })
+        userService.getfullMatches(user?._id, this.state.fullMatchPage).then(
+          (response) => {
+            this.setState({ FullMatches: response.data })
+            for (let i = 0; i < this.state.FullMatches.length; i++) {
+              userService.getuser(this.state.FullMatches[i].user).then(
+                (response) => {
+                  let temp_state = [...this.state.FullMatches];
+                  let temp_element = { ...temp_state[i] };
+                  temp_element.user_first_name = response.data.first_name
+                  temp_state[i] = temp_element;
+                  this.setState({ FullMatches: temp_state })
+                  let tempstate_age = [...this.state.FullMatches];
+                  let tempelement_age = { ...tempstate_age[i] };
+                  const newDate = Date.parse(tempelement_age.birthdate);
+                  const ageInMilliseconds = new Date() - new Date(newDate);
+                  const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+                  tempelement_age.birthdate = result
+                  tempstate_age[i] = tempelement_age;
+                  this.setState({ FullMatches: tempstate_age })
+                }
+              )
+            }
+            return Promise.resolve();
+          },
+          (error) => {
+            const message =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
+            console.log('message', message)
+            return Promise.reject();
           }
-          return Promise.resolve();
-        },
-        (error) => {
-          const message =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-          console.log('message', message)
-          return Promise.reject();
-        }
-      );
+        );
       })
       console.log(this.state)
     }
-    if(tier==='Potentials'){
-      this.setState({potentialMatchPage:count} ,  ()=>{
+    if (tier === 'Potentials') {
+      this.setState({ potentialMatchPage: count }, () => {
         const user = JSON.parse(localStorage.getItem("user"));
         userService.getpotentialMatches(user?._id, this.state.potentialMatchPage).then(
           (response) => {
@@ -117,7 +119,7 @@ class Profile extends React.Component {
                   tempelement_age.birthdate = result
                   tempstate_age[i] = tempelement_age;
                   this.setState({ PotentialMatches: tempstate_age })
-                  console.log('finalupdatedpotentialsState' , )
+                  console.log('finalupdatedpotentialsState',)
                 }
               )
             }
@@ -137,8 +139,8 @@ class Profile extends React.Component {
       })
       console.log(this.state)
     }
-    if(tier==='Nearly-Matched'){
-      this.setState({partialMatchPage:count} ,  ()=>{
+    if (tier === 'Nearly-Matched') {
+      this.setState({ partialMatchPage: count }, () => {
         const user = JSON.parse(localStorage.getItem("user"));
         userService.getpartialMatches(user?._id, this.state.partialMatchPage).then(
           (response) => {
@@ -180,128 +182,241 @@ class Profile extends React.Component {
       })
       console.log(this.state)
     }
+    if (tier === 'Liked') {
+      this.setState({ likePage: count }, () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        this.setState({ user })
+        let tempData = []
+        userService.getLikes(user?._id, this.state.likePage).then(
+          (response) => {
+            console.log('whats going on')
+            for (let i = 0; i < response.data[0].length; i++) {
+              userService.getuser(response.data[0][i]).then(
+                (response) => {
+                  console.log('each liked user', response.data)
+                  let item = {}
+                  console.log('likes coming here', response.data)
+                  item.first_name = response.data.first_name
+                  item.id = response.data._id
+                  console.log('updated like item', item)
+                  tempData.push(item)
+                  console.log('final tempdata', tempData)
+                  userService.getuserProfile(response.data._id).then(
+                    (response) => {
+                      console.log('each profile response', response)
+                      const newArray = tempData.map((item, index) => {
+                        if (item.id === response.data.user) {
+                          item.data = response.data
+                          const newDate = Date.parse(response.data.birthdate);
+                          const ageInMilliseconds = new Date() - new Date(newDate);
+                          const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+                          item.data.birthdate = result
+  
+                        }
+                        return item
+                      })
+  
+                      this.setState({ likes: newArray }, () => {
+                        console.log('complete like array', this.state.likes)
+                      })
+                    }
+                  )
+  
+                }
+              )
+            }
+            return Promise.resolve();
+          },
+          (error) => {
+            const message =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
+            console.log('message', message)
+            return Promise.reject();
+          }
+  
+  
+        );
+      })
+      
+    }
   }
 
   componentDidMount() {
-    console.log('what are profile card props on mount' , this.props)
-    
-      const user = JSON.parse(localStorage.getItem("user"));
-      this.setState({user})
-      userService.getfullMatches(user?._id, this.state.fullMatchPage).then(
-        (response) => {
-          this.setState({ FullMatches: response.data })
-          for (let i = 0; i < this.state.FullMatches.length; i++) {
-            userService.getuser(this.state.FullMatches[i].user).then(
-              (response) => {
-                let temp_state = [...this.state.FullMatches];
-                let temp_element = { ...temp_state[i] };
-                temp_element.user_first_name = response.data.first_name
-                temp_state[i] = temp_element;
-                this.setState({ FullMatches: temp_state })
-                let tempstate_age = [...this.state.FullMatches];
-                let tempelement_age = { ...tempstate_age[i] };
-                const newDate = Date.parse(tempelement_age.birthdate);
-                const ageInMilliseconds = new Date() - new Date(newDate);
-                const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
-                tempelement_age.birthdate = result
-                tempstate_age[i] = tempelement_age;
-                this.setState({ FullMatches: tempstate_age })
-              }
-            )
-          }
-          return Promise.resolve();
-        },
-        (error) => {
-          const message =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-          console.log('message', message)
-          return Promise.reject();
+    const user = JSON.parse(localStorage.getItem("user"));
+    this.setState({ user })
+    let tempData = []
+    userService.getLikes(user?._id, this.state.likePage).then(
+      (response) => {
+        console.log('whats going on')
+        for (let i = 0; i < response.data[0].length; i++) {
+          userService.getuser(response.data[0][i]).then(
+            (response) => {
+              console.log('each liked user', response.data)
+              let item = {}
+              console.log('likes coming here', response.data)
+              item.first_name = response.data.first_name
+              item.id = response.data._id
+              console.log('updated like item', item)
+              tempData.push(item)
+              console.log('final tempdata', tempData)
+              userService.getuserProfile(response.data._id).then(
+                (response) => {
+                  console.log('each profile response', response)
+                  const newArray = tempData.map((item, index) => {
+                    if (item.id === response.data.user) {
+                      item.data = response.data
+                      const newDate = Date.parse(response.data.birthdate);
+                      const ageInMilliseconds = new Date() - new Date(newDate);
+                      const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+                      item.data.birthdate = result
+
+                    }
+                    return item
+                  })
+
+                  this.setState({ likes: newArray }, () => {
+                    console.log('complete like array', this.state.likes)
+                  })
+                }
+              )
+
+            }
+          )
         }
-      );
-      userService.getpotentialMatches(user?._id, this.state.potentialMatchPage).then(
-        (response) => {
-          console.log('response', response)
-          this.setState({ PotentialMatches: response.data })
-          //add here
-          for (let i = 0; i < this.state.PotentialMatches.length; i++) {
-            userService.getuser(this.state.PotentialMatches[i].user).then(
-              (response) => {
-                let temp_state = [...this.state.PotentialMatches];
-                let temp_element = { ...temp_state[i] };
-                temp_element.user_first_name = response.data.first_name
-                temp_state[i] = temp_element;
-                this.setState({ PotentialMatches: temp_state })
-                let tempstate_age = [...this.state.PotentialMatches];
-                let tempelement_age = { ...tempstate_age[i] };
-                const newDate = Date.parse(tempelement_age.birthdate);
-                const ageInMilliseconds = new Date() - new Date(newDate);
-                const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
-                tempelement_age.birthdate = result
-                tempstate_age[i] = tempelement_age;
-                this.setState({ PotentialMatches: tempstate_age })
-                console.log('finalupdatedpotentialsState' , )
-              }
-            )
-          }
-          return Promise.resolve();
-        },
-        (error) => {
-          const message =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-          console.log('message', message)
-          return Promise.reject();
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        console.log('message', message)
+        return Promise.reject();
+      }
+
+
+    );
+    userService.getfullMatches(user?._id, this.state.fullMatchPage).then(
+      (response) => {
+        this.setState({ FullMatches: response.data })
+        for (let i = 0; i < this.state.FullMatches.length; i++) {
+          userService.getuser(this.state.FullMatches[i].user).then(
+            (response) => {
+              let temp_state = [...this.state.FullMatches];
+              let temp_element = { ...temp_state[i] };
+              temp_element.user_first_name = response.data.first_name
+              temp_state[i] = temp_element;
+              this.setState({ FullMatches: temp_state })
+              let tempstate_age = [...this.state.FullMatches];
+              let tempelement_age = { ...tempstate_age[i] };
+              const newDate = Date.parse(tempelement_age.birthdate);
+              const ageInMilliseconds = new Date() - new Date(newDate);
+              const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+              tempelement_age.birthdate = result
+              tempstate_age[i] = tempelement_age;
+              this.setState({ FullMatches: tempstate_age })
+            }
+          )
         }
-      );
-      userService.getpartialMatches(user?._id, this.state.partialMatchPage).then(
-        (response) => {
-          console.log('response', response)
-          this.setState({ PartialMatches: response.data })
-          //add here
-          for (let i = 0; i < this.state.PartialMatches.length; i++) {
-            userService.getuser(this.state.PartialMatches[i].user).then(
-              (response) => {
-                let temp_state = [...this.state.PartialMatches];
-                let temp_element = { ...temp_state[i] };
-                temp_element.user_first_name = response.data.first_name
-                temp_state[i] = temp_element;
-                this.setState({ PartialMatches: temp_state })
-                let tempstate_age = [...this.state.PartialMatches];
-                let tempelement_age = { ...tempstate_age[i] };
-                const newDate = Date.parse(tempelement_age.birthdate);
-                const ageInMilliseconds = new Date() - new Date(newDate);
-                const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
-                tempelement_age.birthdate = result
-                tempstate_age[i] = tempelement_age;
-                this.setState({ PartialMatches: tempstate_age })
-              }
-            )
-          }
-          return Promise.resolve();
-        },
-        (error) => {
-          const message =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-          console.log('message', message)
-          return Promise.reject();
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        console.log('message', message)
+        return Promise.reject();
+      }
+    );
+    userService.getpotentialMatches(user?._id, this.state.potentialMatchPage).then(
+      (response) => {
+        console.log('response', response)
+        this.setState({ PotentialMatches: response.data })
+        //add here
+        for (let i = 0; i < this.state.PotentialMatches.length; i++) {
+          userService.getuser(this.state.PotentialMatches[i].user).then(
+            (response) => {
+              let temp_state = [...this.state.PotentialMatches];
+              let temp_element = { ...temp_state[i] };
+              temp_element.user_first_name = response.data.first_name
+              temp_state[i] = temp_element;
+              this.setState({ PotentialMatches: temp_state })
+              let tempstate_age = [...this.state.PotentialMatches];
+              let tempelement_age = { ...tempstate_age[i] };
+              const newDate = Date.parse(tempelement_age.birthdate);
+              const ageInMilliseconds = new Date() - new Date(newDate);
+              const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+              tempelement_age.birthdate = result
+              tempstate_age[i] = tempelement_age;
+              this.setState({ PotentialMatches: tempstate_age })
+              console.log('finalupdatedpotentialsState',)
+            }
+          )
         }
-      );
-    
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        console.log('message', message)
+        return Promise.reject();
+      }
+    );
+    userService.getpartialMatches(user?._id, this.state.partialMatchPage).then(
+      (response) => {
+        console.log('response', response)
+        this.setState({ PartialMatches: response.data })
+        //add here
+        for (let i = 0; i < this.state.PartialMatches.length; i++) {
+          userService.getuser(this.state.PartialMatches[i].user).then(
+            (response) => {
+              let temp_state = [...this.state.PartialMatches];
+              let temp_element = { ...temp_state[i] };
+              temp_element.user_first_name = response.data.first_name
+              temp_state[i] = temp_element;
+              this.setState({ PartialMatches: temp_state })
+              let tempstate_age = [...this.state.PartialMatches];
+              let tempelement_age = { ...tempstate_age[i] };
+              const newDate = Date.parse(tempelement_age.birthdate);
+              const ageInMilliseconds = new Date() - new Date(newDate);
+              const result = Math.floor(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365); // convert to years
+              tempelement_age.birthdate = result
+              tempstate_age[i] = tempelement_age;
+              this.setState({ PartialMatches: tempstate_age })
+            }
+          )
+        }
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        console.log('message', message)
+        return Promise.reject();
+      }
+    );
+
   }
 
-  
-  
+
+
 
   render() {
     const tiers = [
@@ -390,17 +505,18 @@ class Profile extends React.Component {
                     }}
                   >
                   </Box>
-                  <ProfileSnippetCard 
-                  tier={tier.title}
-                  fullMatchPage={this.state.fullMatchPage}
-                  potentialMatchPage={this.state.potentialMatchPage}
-                  partialMatchPage={this.state.partialMatchPage}
-                  fullMatches={this.state.FullMatches}
-                  partialMatches={this.state.PartialMatches}
-                  potentialMatches={this.state.PotentialMatches}
+                  <ProfileSnippetCard
+                    tier={tier.title}
+                    fullMatchPage={this.state.fullMatchPage}
+                    potentialMatchPage={this.state.potentialMatchPage}
+                    partialMatchPage={this.state.partialMatchPage}
+                    fullMatches={this.state.FullMatches}
+                    partialMatches={this.state.PartialMatches}
+                    potentialMatches={this.state.PotentialMatches}
+                    likes = {this.state.likes}
                   />
                 </CardContent>
-                <Prevnext tier={tier.title} pagination={this.pagination}/>
+                <Prevnext tier={tier.title} pagination={this.pagination} />
               </Card>
             </div>
           ))
