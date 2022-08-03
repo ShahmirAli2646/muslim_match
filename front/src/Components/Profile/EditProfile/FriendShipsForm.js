@@ -35,20 +35,21 @@ const FriendShipsForm = ({data}) => {
   const [religiousfriends, setReligiousFriends] = React.useState('');
   const [sectfriends, setSectFriends] = React.useState('');
   const [personality, setPersonality] = React.useState('');
+  const dispatch = useDispatch();
   React.useEffect(()=>{
     if(data!==undefined && data!==null){
 
-   
     setTimeFriends(data.DoyouspendalotoftimewithfriendsWhatactivitiesdoyoudowithyourfriends)
     setFreeMixMen(data.Wouldyouwantyourfuturehusbandtofreemixwithyourfriends)
     setFreeMixWomen(data.Wouldyouwantyourfuturewifetofreemixwithyourfriends)
     setReligiousFriends(data.Areyourfriendsreligious)
     setSectFriends(data.WhatsectfollowingofIslamdoyourfriendspractice)
     setPersonality(data.Howmightyourfriendsdescribeyourpersonality)
+    
   }
   } , [data])
-  const dispatch = useDispatch();
-  const handleSubmitFriendshipsForm = (event) => {
+  
+  React.useEffect(()=>{
     dispatch(SubmitFriendshipsForm(
       timefriends,
       religiousfriends,
@@ -57,7 +58,13 @@ const FriendShipsForm = ({data}) => {
       freemixmen, freemixwomen,
 
     ))
-  };
+  } , [timefriends,
+    religiousfriends,
+    sectfriends,
+    personality,
+    freemixmen, freemixwomen,] )
+    
+  
 
 
   const handleFreeMixWomenChange = (event) => {
@@ -149,14 +156,7 @@ const FriendShipsForm = ({data}) => {
 
 
 
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button style={{
-          background: '#e5598f', fontSize: '18px', border: '5px solid white',
-          borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
-          textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
-          position: 'relative', left: '25px', top: '10px'
-        }} onClick={handleSubmitFriendshipsForm} variant="outlined">Save</Button>
-      </div>
+      
 
       {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker

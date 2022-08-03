@@ -40,11 +40,14 @@ const StartForm = ({data}) => {
   const [startDate, setStartDate] = React.useState(new Date());
   const [phone, setPhone] = React.useState('');
   const dispatch = useDispatch();
-  const handleSubmitStartForm = (event) => {
+  React.useEffect(()=>{
     dispatch(SubmitStartForm(phone,
       purpose,
       gender, startDate))
-  };
+  } , [phone,
+    purpose,
+    gender, startDate] )
+ 
   React.useEffect(()=>{
     if(data!==undefined && data!==null){
     setPurpose(data.purpose)
@@ -106,14 +109,7 @@ const StartForm = ({data}) => {
       <br></br>
       <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
 
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button style={{
-          background: '#e5598f', fontSize: '18px', border: '5px solid white',
-          borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
-          textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
-          position: 'relative', left: '25px', top: '10px'
-        }} onClick={handleSubmitStartForm} variant="outlined">Save</Button>
-      </div>
+      
 
       {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker

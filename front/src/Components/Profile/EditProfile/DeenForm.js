@@ -63,10 +63,10 @@ const DeenForm = ({data}) => {
   }
    } , [data])
   const dispatch = useDispatch();
-
-  const handleSubmitDeenForm = (event) => {
+  React.useEffect(()=>{
     dispatch(SubmitDeenForm(followings , islamicstudying, sect ,scholars, currentstudy,prayers , dua,hijra ,fast, arabic ,  quran , memorizedquran ))
-  };
+  } , [followings , islamicstudying, sect ,scholars, currentstudy,prayers , dua,hijra ,fast, arabic ,  quran , memorizedquran ])
+  
   const handleArabicChange = (event) => {
     setArabicChange(event.target.value);
   }
@@ -285,14 +285,7 @@ const DeenForm = ({data}) => {
       <TextField value={memorizedquran} onChange={handleMemorizedQuranChange} id="standard-basic" variant="filled" />
 
 
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button style={{
-          background: '#e5598f', fontSize: '18px', border: '5px solid white',
-          borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
-          textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
-          position: 'relative', left: '25px', top: '10px'
-        }} onClick={handleSubmitDeenForm} variant="outlined">Save</Button>
-      </div>
+     
       {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
         label="Basic example"

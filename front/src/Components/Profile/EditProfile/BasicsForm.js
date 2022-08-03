@@ -101,15 +101,16 @@ const BasicsForm = ({data}) => {
 
    } , [data])
   const dispatch = useDispatch();
-  const handleSubmitBasicForm = (event) => {
+  React.useEffect(()=>{
     dispatch(SubmitBasicsForm(minage , maxage , hijabtype , consider , menmaritalstatus , womenmaritalstatus , 
       marriageconsider , childrenconsider , mentalhealth ,  disability , partnercountries , partnerethnicity , revert , 
       yourcountry , yourcity , yourcitizenship , malemaritalstatus , femalemaritalstatus , dailyprayers , coverhair , 
       living , mydisabilty , mymentalhealth , mychildren , wantchildren ,relocate , revertconvert ))
-  };
-
-
-
+  }  , [minage , maxage , hijabtype , consider , menmaritalstatus , womenmaritalstatus , 
+    marriageconsider , childrenconsider , mentalhealth ,  disability , partnercountries , partnerethnicity , revert , 
+    yourcountry , yourcity , yourcitizenship , malemaritalstatus , femalemaritalstatus , dailyprayers , coverhair , 
+    living , mydisabilty , mymentalhealth , mychildren , wantchildren ,relocate , revertconvert ] )
+  
   const handleMinAgeChange = (event) => {
     console.log('minage' , event )
     setMinAge(event.value);
@@ -771,14 +772,7 @@ const BasicsForm = ({data}) => {
         </MenuItem>
       </Select>
 
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button style={{
-          background: '#e5598f', fontSize: '18px', border: '5px solid white',
-          borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
-          textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
-          position: 'relative', left: '25px', top: '10px'
-        }} onClick={handleSubmitBasicForm} variant="outlined">Save</Button>
-      </div>
+      
 
       {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker

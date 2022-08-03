@@ -64,12 +64,14 @@ const AppearanceForm = ({data}) => {
     setEthnicity(data.Whatisyourethnicity)}
    } , [data])
   const dispatch = useDispatch();
-
-  const handleSubmitAppearanceForm = (event) => {
+  React.useEffect(()=>{
     dispatch(SubmitAppearanceForm(shortestheight, tallestheight, waist, smallestdress,
       largestdress, build, myheight, mydress,
       mywaist, mybuild, beard, ethnicity))
-  };
+  } ,[shortestheight, tallestheight, waist, smallestdress,
+    largestdress, build, myheight, mydress,
+    mywaist, mybuild, beard, ethnicity] )
+  
 
   const handleShortestHeightChange = (event) => {
     setShortestHeight(event.target.value);
@@ -501,14 +503,7 @@ const AppearanceForm = ({data}) => {
 
       </Select>
       <br></br>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button style={{
-          background: '#e5598f', fontSize: '18px', border: '5px solid white',
-          borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
-          textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
-          position: 'relative', left: '25px', top: '10px'
-        }} onClick={handleSubmitAppearanceForm} variant="outlined">Save</Button>
-      </div>
+      
 
 
     </FormControl>

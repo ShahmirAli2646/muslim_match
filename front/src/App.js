@@ -42,7 +42,9 @@ const SignUp = React.lazy(() =>
 
 function App() {
   const isAuthenticated = useSelector(state => state.auth.isLoggedIn)
+  console.log('authentication' , isAuthenticated)
   const user = useSelector(state => state.auth.user)
+  console.log('user' , user)
   return (
 
     <Router>

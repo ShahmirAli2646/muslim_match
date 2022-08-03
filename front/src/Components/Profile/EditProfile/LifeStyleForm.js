@@ -62,7 +62,7 @@ const LifeStyleForm = ({data}) => {
     }
   } , [data])
   const dispatch = useDispatch();
-  const handleSubmitLifeStyleForm = (event) => {
+  React.useEffect(()=>{
     dispatch(SubmitLifestyleForm(
       menclothing,
       nonmahramwomenclothing,
@@ -77,7 +77,18 @@ const LifeStyleForm = ({data}) => {
       nonmahrammen,
 
     ))
-  };
+  } , [menclothing,
+    nonmahramwomenclothing,
+    beard,
+    nonmahrammakeup,
+    haram, nonmahramwomen,
+    nonmahrammen,
+    nonmahrammenclothing,
+    nonmahramwomenclothing,
+    tv,
+    music,
+    nonmahrammen,] )
+  
 
 
   const handleHaramChange = (event) => {
@@ -481,14 +492,7 @@ const LifeStyleForm = ({data}) => {
 
 
 
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button style={{
-          background: '#e5598f', fontSize: '18px', border: '5px solid white',
-          borderRadius: '36px', color: '#fff', textTransform: 'capitalize',
-          textDecoration: 'none', boxShadow: '0px 2px 14px 0px rgb(0 0 0 / 30%)',
-          position: 'relative', left: '25px', top: '10px'
-        }} onClick={handleSubmitLifeStyleForm} variant="outlined">Save</Button>
-      </div>
+      
 
       {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
