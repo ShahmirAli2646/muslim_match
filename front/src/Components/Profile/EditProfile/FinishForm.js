@@ -34,10 +34,14 @@ const FinishForm = ({data}) => {
   const [addinformation, setAddInformation] = React.useState('');
   const [suggestions, setSuggestions] = React.useState('');
   React.useEffect(()=>{
+    if(data!==undefined && data!==null){
+
+    
    setHusbandRole(data.WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole)
    setNews(data.newsletter)
    setAddInformation(data.Isthereanyadditionalinformationyouwanttoaddaboutyourselforthemarriagepartneryouarelookingfor)
    setSuggestions(data.suggestions)
+    }
   } , [data])
   const dispatch = useDispatch();
   const handleSubmitFinishForm = (event) => {

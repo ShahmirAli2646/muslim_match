@@ -33,7 +33,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SubmitAppearanceForm } from '../../../actions/formActions';
 
 
-const AppearanceForm = () => {
+const AppearanceForm = ({data}) => {
   const [shortestheight, setShortestHeight] = React.useState('');
   const [tallestheight, setTallestHeight] = React.useState('');
   const [myheight, setMyHeight] = React.useState('');
@@ -46,6 +46,23 @@ const AppearanceForm = () => {
   const [mybuild, setMyBuild] = React.useState('');
   const [beard, setBeard] = React.useState('');
   const [ethnicity, setEthnicity] = React.useState('');
+  React.useEffect(()=>{
+    if(data!==undefined && data!==null){
+
+    
+    setShortestHeight(data.Whatistheshortestheightyoufindcompatible)
+    setTallestHeight(data.Whatsthetallestheightyoufindcompatible)
+    setMyHeight(data.Whatisyourheight)
+    setWaist(data.WhatisyourpreferencewhenitcomestothewaistsizeofyourfuturehusbandinshaAllahininches)
+    setMyWaist(data.Yourwaistsizeininches)
+    setSmallestDress(data.Smallestdresssizethatmeetsyourrequirementsforawife)
+    setLargestDress(data.Largestdresssizethatmeetsyourrequirementsforawife)
+    setMyDress(data.Yourdresssize)
+    setBuild(data.Whichbuildmatchesyourpreference)
+    setMyBuild(data.Whichbuildbestdescribesyou)
+    setBeard(data.Whichstyleofbearddoyouhave)
+    setEthnicity(data.Whatisyourethnicity)}
+   } , [data])
   const dispatch = useDispatch();
 
   const handleSubmitAppearanceForm = (event) => {

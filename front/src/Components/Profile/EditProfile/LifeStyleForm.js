@@ -44,6 +44,9 @@ const LifeStyleForm = ({data}) => {
   const [nonmahramwomen, setNonMahramWomen] = React.useState('');
   const [nonmahrammen, setNonMahramMen] = React.useState('');
   React.useEffect(()=>{
+    if(data!==undefined && data!==null){
+
+    
     setMenClothing(data?.Whatstyleofmensclothingwouldyoupreferyourfuturehusbandwearwhenaroundnonmahramswhengoingtotheshoporatworketc)
     setNonMahramMenClothing(data?.Typeofclothingworninfrontofnonmahrammenwhengoingtotheshopworkorparketc)
     setNonMahramWomenClothing(data?.Typeofclothingworninfrontofnonmahramwomanwhengoingtotheshoporworketc)
@@ -56,6 +59,7 @@ const LifeStyleForm = ({data}) => {
     setNonMahramMakeup(data.Doyouwearmakeupinfrontofnonmahrams)
     setNonMahramWomen(data.Doyoufreemixwithnonmahramfemales)
     setNonMahramMen(data.Doyoufreemixwithnonmahrammen)
+    }
   } , [data])
   const dispatch = useDispatch();
   const handleSubmitLifeStyleForm = (event) => {

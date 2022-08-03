@@ -150,10 +150,33 @@ const Forms = ()=>{
                     (<BasicsForm  data={data}/>):
                     item.title==='Friendships'?
                     (<FriendShipsForm  data={data}/>):null
-
                     
                 }
                 </div>
+              )}
+              {data===undefined && (
+                <div style={{maxWidth:800}}>
+                {item.title==='Start'?
+                ( <StartForm />  ):
+                item.title==='Appearance'?
+                (<AppearanceForm />):
+                item.title==='LifeStyle'?
+                (<LifeStyleForm />):
+                item.title==='Profession'?
+                (<ProfessionForm />):
+                item.title==='Family'?
+                (<FamilyRelationsForm />):
+                item.title==='Finish'?
+                (<FinishForm  />):
+                item.title==='Deen'?
+                (<DeenForm />):
+                item.title==='Basics'?
+                (<BasicsForm  />):
+                item.title==='Friendships'?
+                (<FriendShipsForm />):null
+                
+            }
+            </div>
               )}
               
                 

@@ -46,11 +46,15 @@ const ProfessionForm = ({data}) => {
     ))
   };
   React.useEffect(()=>{
+     if(data!==undefined && data!==null){
+
+     
      setWifeProfession(data.Whichprofessionstatusdescribewhatyouwantyourfuturewifetohaveselectallthatapply)
      setMyProfession(data.Whatisyourprofession)
      setHusbandProfession(data.Whichprofessionstatusdescribewhatyouwantyourfuturehusbandtohaveselectallthatapply)
      setPartnerEducation(data.Theminimumlevelofeducationyouwantyourmarriagepartnertohavecompleted)
      setMyEducation(data.Whatisyourlevelofeducation)
+     }
    } , [data])
   const handleWifeProfessionChange = (event) => {
     setWifeProfession(event.target.value);

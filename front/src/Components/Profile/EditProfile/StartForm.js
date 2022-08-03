@@ -46,10 +46,12 @@ const StartForm = ({data}) => {
       gender, startDate))
   };
   React.useEffect(()=>{
+    if(data!==undefined && data!==null){
     setPurpose(data.purpose)
     setGender(data.gender)
     setPhone(data.phone)
     setStartDate(Date.parse(data.birthdate))
+    }
    } , [data])
 
   const handlePurposeChange = (event) => {

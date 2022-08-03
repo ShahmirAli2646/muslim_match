@@ -36,12 +36,16 @@ const FriendShipsForm = ({data}) => {
   const [sectfriends, setSectFriends] = React.useState('');
   const [personality, setPersonality] = React.useState('');
   React.useEffect(()=>{
+    if(data!==undefined && data!==null){
+
+   
     setTimeFriends(data.DoyouspendalotoftimewithfriendsWhatactivitiesdoyoudowithyourfriends)
     setFreeMixMen(data.Wouldyouwantyourfuturehusbandtofreemixwithyourfriends)
     setFreeMixWomen(data.Wouldyouwantyourfuturewifetofreemixwithyourfriends)
     setReligiousFriends(data.Areyourfriendsreligious)
     setSectFriends(data.WhatsectfollowingofIslamdoyourfriendspractice)
     setPersonality(data.Howmightyourfriendsdescribeyourpersonality)
+  }
   } , [data])
   const dispatch = useDispatch();
   const handleSubmitFriendshipsForm = (event) => {

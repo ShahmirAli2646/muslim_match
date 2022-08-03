@@ -32,10 +32,14 @@ const FamilyRelationsForm = ({data}) => {
   const [partnerrelation, setPartnerRelation] = React.useState('');
   const [familysect, setFamilySect] = React.useState('');
   React.useEffect(()=>{
+    if(data!==undefined && data!==null){
+
+    
     setFamilyReligious(data.Areyourfamilyreligious)
     setYourRelation(data.Howisyourrelationshipwithyourfamily)
     setPartnerRelation(data.WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah)
     setFamilySect(data.WhatsectfollowingofIslamareyourfamilypractising)
+    }
    } , [data])
   const dispatch = useDispatch();
   const handleSubmitFamilyRelationsForm = (event) => {

@@ -31,7 +31,7 @@ import { SubmitDeenForm } from '../../../actions/formActions';
 
 
 
-const DeenForm = () => {
+const DeenForm = ({data}) => {
 
   const [followings, setFollowings] = React.useState([]);
   const [sect, setSect] = React.useState('');
@@ -45,6 +45,23 @@ const DeenForm = () => {
   const [currentstudy, setCurrentStudyChange] = React.useState('');
   const [arabic, setArabicChange] = React.useState('');
   const [memorizedquran, setMemorizedQuran] = React.useState('');
+  React.useEffect(()=>{
+    if(data!==undefined && data!==null){
+
+    
+    setSect(data.TheIslamicteachingssectthatyoufollow)
+    setPrayers(data.Howmanyofthe5prayersadaydoyouusuallyprayinthemasjid)
+    setDua(data.DoyoumakeduaTOtheProphetSAWorduatopirsorsaintsthereisstrongevidencethatthistypeofduaissinfulshirk)
+    setHijra(data.DoyouwanttomakehijraonedayinshaAllah)
+    setFast(data.DoyouvoluntaryFast)
+    setQuran(data.DoyoureadQuran)
+    setIslamicStuding(data.WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted)
+    setScholarChange(data.Whichscholarsdoyoutakeknowledgefrom)
+    setCurrentStudyChange(data.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails)
+    setArabicChange(data.CanyoureadandorunderstandanyArabic)
+    setMemorizedQuran(data.MemorizedanyQuranifsohowmuch)
+  }
+   } , [data])
   const dispatch = useDispatch();
 
   const handleSubmitDeenForm = (event) => {

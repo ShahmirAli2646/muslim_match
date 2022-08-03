@@ -37,7 +37,7 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitBasicsForm } from '../../../actions/formActions';
-const BasicsForm = () => {
+const BasicsForm = ({data}) => {
   const [minage, setMinAge] = React.useState('');
   const [maxage, setMaxAge] = React.useState('');
   const [consider, setConsider] = React.useState('');
@@ -66,6 +66,40 @@ const BasicsForm = () => {
   const [hijabtype, setHijabType] = React.useState([]);
   const [menmaritalstatus, setMenMaritalStatus] = React.useState([]);
   const [womenmaritalstatus, setWomenMaritalStatus] = React.useState([]);
+  React.useEffect(()=>{
+    if(data!==undefined && data!==null){
+
+    
+    setMinAge(data.youngestageyouarelookingfor)
+    setMaxAge(data.oldestageyouarelookingfor)
+    setConsider(data.WouldyouconsidermarragetoaMuslimawhodoesnotwearNiqaab)
+    setMyChildren(data.Doyouhaveanychildren)
+    setWantChildren(data.Doyouwantchildrenaftermarriage)
+    setRevertConvert(data.DidyourevertconverttoIslam)
+    setRelocate(data.Areyouwillingtorelocateaftermarriage)
+    setRevert(data.WhatisyourpreferencewhenitcomestomarryingaMuslimwhofoundIslamlateroninlife)
+    setMyMentalHealth(data.Doyouhaveanymentalhealthproblems)
+    setMyDisability(data.Doyouhaveanyphysicaldisabilities)
+    setPartnerCountry(data.Whichcountrieswouldyoupreferyourmarriagepartnertoholdcitizenship)
+    setYourCountry(data.Whichcountryorcountriesdoyoulivein)
+    setYourCity(data.Whichcitytownvillagedoyoulivein)
+    setYourCitizenship(data.Whichcountryorcountriesdoyouholdcitizenship)
+    setPartnerEthnicity(data.Doyouhavespecificrequirementswithregardstotheethnicityofafuturemarriagepartner)
+    setLiving(data.Whatareyourpreferredlivingarrangementsaftermarriage)
+    setCoverHair(data.Doyoucoveryourhairfromnonmahrams)
+    setDailyPrayer(data.Doyouprayallofthe5dailyprayers)
+    setFemaleMaritalStatus(data.Whatisyourmaritalstatuswomen)
+    setMaleMaritalStatus(data.Whatisyourmaritalstatusmen)
+    setMarriageConsider(data.Wouldyouconsidermarryingsomeonewhoisalreadymarried)
+    setChildrenConsider(data.Wouldyoumarrysomeonewhoalreadyhaschildren)
+    setMentalHealth(data.Wouldyoumarrysomeonewhohadmentalhealthproblems)
+    setDisabilty(data.Wouldyoumarrysomeonewhohadphysicaldisabilities)
+    setHijabType(data.Whattypeofhijabmatcheswithwhatyourelookingforinawife)
+    setMenMaritalStatus(data.Whichmaritalstatusmatchwithwhatyouarelookingformen)
+    setWomenMaritalStatus(data.Whichmaritalstatusmatchwithwhatyouarelookingforwomen)
+    }
+
+   } , [data])
   const dispatch = useDispatch();
   const handleSubmitBasicForm = (event) => {
     dispatch(SubmitBasicsForm(minage , maxage , hijabtype , consider , menmaritalstatus , womenmaritalstatus , 
