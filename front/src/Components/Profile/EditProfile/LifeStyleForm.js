@@ -30,7 +30,7 @@ import { SubmitLifestyleForm } from '../../../actions/formActions';
 
 
 
-const LifeStyleForm = () => {
+const LifeStyleForm = ({data}) => {
   const [menclothing, setMenClothing] = React.useState([]);
   const [nonmahrammenclothing, setNonMahramMenClothing] = React.useState([]);
   const [nonmahramwomenclothing, setNonMahramWomenClothing] = React.useState([]);
@@ -43,6 +43,20 @@ const LifeStyleForm = () => {
   const [nonmahrammakeup, setNonMahramMakeup] = React.useState('');
   const [nonmahramwomen, setNonMahramWomen] = React.useState('');
   const [nonmahrammen, setNonMahramMen] = React.useState('');
+  React.useEffect(()=>{
+    setMenClothing(data?.Whatstyleofmensclothingwouldyoupreferyourfuturehusbandwearwhenaroundnonmahramswhengoingtotheshoporatworketc)
+    setNonMahramMenClothing(data?.Typeofclothingworninfrontofnonmahrammenwhengoingtotheshopworkorparketc)
+    setNonMahramWomenClothing(data?.Typeofclothingworninfrontofnonmahramwomanwhengoingtotheshoporworketc)
+    setHaram(data.DoyoueatharamdrinkalcoholsmokecigarettessmokeshishaoruseecigarettesSelectallthatapply)
+    setWomenClothing(data?.Whatstyleofwomensclothingwouldyoupreferyourfuturewifetowearwhenaroundnonmahramswhengoingtotheshoporparketc)
+    setBeard(data.Whichbeardstylemeetyourpreferences)
+    setMakeUp(data.Doyouwantawifewhowearsmakeupinfrontofnonmahrams)
+    setTV(data.DoyouwatchTV)
+    setMusic(data.DoyoulistentoMusic)
+    setNonMahramMakeup(data.Doyouwearmakeupinfrontofnonmahrams)
+    setNonMahramWomen(data.Doyoufreemixwithnonmahramfemales)
+    setNonMahramMen(data.Doyoufreemixwithnonmahrammen)
+  } , [data])
   const dispatch = useDispatch();
   const handleSubmitLifeStyleForm = (event) => {
     dispatch(SubmitLifestyleForm(

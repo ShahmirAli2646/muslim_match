@@ -31,64 +31,67 @@ import AdvertHelper from '../AdvertHelper'
 
 
 class EditProfile extends React.Component {
-    constructor(props){
-      super(props)
+  constructor(props) {
+    super(props)
 
+  }
+  componentDidMount() {
+    const reloadCount = sessionStorage.getItem('reloadCount');
+    if (reloadCount < 2) {
+      sessionStorage.setItem('reloadCount', String(reloadCount + 1));
+      window.location.reload();
+    } else {
+      sessionStorage.removeItem('reloadCount');
     }
-    componentDidMount() {
-      const reloadCount = sessionStorage.getItem('reloadCount');
-      if(reloadCount < 2) {
-        sessionStorage.setItem('reloadCount', String(reloadCount + 1));
-        window.location.reload();
-      } else {
-        sessionStorage.removeItem('reloadCount');
-      }
-    }
-    render(){
-        const tiers = [
-            {  title:'AGE',
-              description: [
-                '30'
-              ],
-             
-            },
-            {  title:'USER NAME',
-              description: [
-               'Mobeen'
-              ],
-            },
-            { title:'LOCATION',
-              description: [
-                'Birmingham Uk'
-              ],
-            },
-          ];
-        return(
-        <div>
-            <Container maxWidth="xl" disableGutters={true}>
-         
+  }
+  render() {
+    const tiers = [
+      {
+        title: 'AGE',
+        description: [
+          '30'
+        ],
 
-             
-             <h3 style={{textAlign:'center' , fontSize:35 , padding:0 , margin:0}}><span style={{color:'#666666'}}>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</span></h3>
-            
-         <p style={{textAlign:'center' , fontSize:25}}><span style={{color:"#666666"}}><em>Bismillah Al</em>–<em>Rahman</em>,&nbsp;<em>Al</em>–<em>Rahim</em></span></p>
-
-         
-
-</Container>
+      },
+      {
+        title: 'USER NAME',
+        description: [
+          'Mobeen'
+        ],
+      },
+      {
+        title: 'LOCATION',
+        description: [
+          'Birmingham Uk'
+        ],
+      },
+    ];
+    return (
+      <div>
+        <Container maxWidth="xl" disableGutters={true}>
 
 
 
-   <EditHelper/>
-   <Forms/>
-   <br>
-   </br>
-   <br>
-   </br>
+          <h3 style={{ textAlign: 'center', fontSize: 35, padding: 0, margin: 0 }}><span style={{ color: '#666666' }}>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</span></h3>
 
-         </div>
-        )
-    }
+          <p style={{ textAlign: 'center', fontSize: 25 }}><span style={{ color: "#666666" }}><em>Bismillah Al</em>–<em>Rahman</em>,&nbsp;<em>Al</em>–<em>Rahim</em></span></p>
+
+
+
+        </Container>
+
+
+
+        <EditHelper />
+        <Forms />
+        <br>
+        </br>
+        <br>
+        </br>
+
+      </div>
+    )
+  }
 }
 
 export default EditProfile

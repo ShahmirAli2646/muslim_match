@@ -26,12 +26,17 @@ import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitFamilyRelationsForm } from '../../../actions/formActions';
 
-const FamilyRelationsForm = () => {
+const FamilyRelationsForm = ({data}) => {
   const [familyreligious, setFamilyReligious] = React.useState('');
   const [yourrelation, setYourRelation] = React.useState('');
   const [partnerrelation, setPartnerRelation] = React.useState('');
-
   const [familysect, setFamilySect] = React.useState('');
+  React.useEffect(()=>{
+    setFamilyReligious(data.Areyourfamilyreligious)
+    setYourRelation(data.Howisyourrelationshipwithyourfamily)
+    setPartnerRelation(data.WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah)
+    setFamilySect(data.WhatsectfollowingofIslamareyourfamilypractising)
+   } , [data])
   const dispatch = useDispatch();
   const handleSubmitFamilyRelationsForm = (event) => {
     dispatch(SubmitFamilyRelationsForm(familyreligious,

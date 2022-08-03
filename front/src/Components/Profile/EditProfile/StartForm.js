@@ -27,19 +27,30 @@ import "react-datepicker/dist/react-datepicker.css";
 import PhoneInput from 'mui-phone-input';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitStartForm } from '../../../actions/formActions';
+import userService from '../../../services/user.service';
 
 
 
-const StartForm = () => {
-  const [purpose, setPurpose] = React.useState('');
+const StartForm = ({data}) => {
+
+  const [purpose, setPurpose] = React.useState(
+    ''
+  );
   const [gender, setGender] = React.useState('');
   const [startDate, setStartDate] = React.useState(new Date());
+  const [phone, setPhone] = React.useState('');
   const dispatch = useDispatch();
   const handleSubmitStartForm = (event) => {
     dispatch(SubmitStartForm(phone,
       purpose,
       gender, startDate))
   };
+  React.useEffect(()=>{
+    setPurpose(data.purpose)
+    setGender(data.gender)
+    setPhone(data.phone)
+    setStartDate(Date.parse(data.birthdate))
+   } , [data])
 
   const handlePurposeChange = (event) => {
 
@@ -48,18 +59,16 @@ const StartForm = () => {
   const handleGenderChange = (event) => {
     setGender(event.target.value);
   }
-  const [phone, setPhone] = React.useState(null);
+ 
 
   return (
     <FormControl variant="filled" sx={{ m: 2, width: '100%' }}>
+      
       <Typography>Please enter your phone number accurately - This will not be shown on your profile</Typography>
-      <PhoneInput onChange={setPhone} />
+      <PhoneInput value={phone} onChange={setPhone} />
       <br></br>
       <Typography>Are you filling this form out for yourself or someone else?</Typography>
       <br></br>
-
-
-
       <Select
         labelId="demo-simple-select-standard-label"
         id="demo-simple-select-standard"

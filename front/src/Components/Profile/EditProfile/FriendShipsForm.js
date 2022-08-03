@@ -28,13 +28,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { SubmitFriendshipsForm } from '../../../actions/formActions';
 
 
-const FriendShipsForm = () => {
+const FriendShipsForm = ({data}) => {
   const [timefriends, setTimeFriends] = React.useState('');
   const [freemixwomen, setFreeMixWomen] = React.useState('');
   const [freemixmen, setFreeMixMen] = React.useState('');
   const [religiousfriends, setReligiousFriends] = React.useState('');
   const [sectfriends, setSectFriends] = React.useState('');
   const [personality, setPersonality] = React.useState('');
+  React.useEffect(()=>{
+    setTimeFriends(data.DoyouspendalotoftimewithfriendsWhatactivitiesdoyoudowithyourfriends)
+    setFreeMixMen(data.Wouldyouwantyourfuturehusbandtofreemixwithyourfriends)
+    setFreeMixWomen(data.Wouldyouwantyourfuturewifetofreemixwithyourfriends)
+    setReligiousFriends(data.Areyourfriendsreligious)
+    setSectFriends(data.WhatsectfollowingofIslamdoyourfriendspractice)
+    setPersonality(data.Howmightyourfriendsdescribeyourpersonality)
+  } , [data])
   const dispatch = useDispatch();
   const handleSubmitFriendshipsForm = (event) => {
     dispatch(SubmitFriendshipsForm(

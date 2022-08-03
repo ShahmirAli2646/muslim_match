@@ -32,6 +32,7 @@ import { Grid } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import {FinishAndSubmitForm} from '../../../actions/formActions'
+import userService from '../../../services/user.service';
 
 
 
@@ -41,6 +42,7 @@ const Forms = ()=>{
   const Dispatch = useDispatch();
 
         const [age, setAge] = React.useState('');
+        const [data , setData] = React.useState()
       
         const handleChange = (event) => {
           setAge(event.target.value);
@@ -52,7 +54,12 @@ const Forms = ()=>{
         const SubmitHandler = ()=>{
            Dispatch(FinishAndSubmitForm(formData))
         }
-       
+        React.useEffect(async() => {
+          const user = JSON.parse(localStorage.getItem("user"));
+          const res = await userService.getuserProfile(user?._id)
+          console.log('my response data' , res.data)
+          setData(res.data)
+        },[]);
        
     const Sections = [
         {  title:'Start',
@@ -123,29 +130,32 @@ const Forms = ()=>{
              boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 30%)'  }}>
             <CardHeader style={{fontFamily:'fantasy' , fontSize:30 , color:'rgba(21, 135, 135, 0.8)'}} title={item.title}></CardHeader>
             <CardContent>
-                <div style={{maxWidth:800}}>
+              {data!==undefined && (
+                    <div style={{maxWidth:800}}>
                     {item.title==='Start'?
-                    ( <StartForm/>  ):
+                    ( <StartForm data={data}/>  ):
                     item.title==='Appearance'?
-                    (<AppearanceForm/>):
+                    (<AppearanceForm  data={data}/>):
                     item.title==='LifeStyle'?
-                    (<LifeStyleForm/>):
+                    (<LifeStyleForm  data={data}/>):
                     item.title==='Profession'?
-                    (<ProfessionForm/>):
+                    (<ProfessionForm  data={data}/>):
                     item.title==='Family'?
-                    (<FamilyRelationsForm/>):
+                    (<FamilyRelationsForm  data={data}/>):
                     item.title==='Finish'?
-                    (<FinishForm/>):
+                    (<FinishForm  data={data}/>):
                     item.title==='Deen'?
-                    (<DeenForm/>):
+                    (<DeenForm  data={data}/>):
                     item.title==='Basics'?
-                    (<BasicsForm/>):
+                    (<BasicsForm  data={data}/>):
                     item.title==='Friendships'?
-                    (<FriendShipsForm/>):null
+                    (<FriendShipsForm  data={data}/>):null
 
                     
                 }
                 </div>
+              )}
+              
                 
             </CardContent>
           </Card>

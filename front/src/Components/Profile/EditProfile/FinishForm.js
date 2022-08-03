@@ -28,11 +28,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { SubmitFinishForm } from '../../../actions/formActions';
 
 
-const FinishForm = () => {
+const FinishForm = ({data}) => {
   const [husbandrole, setHusbandRole] = React.useState('');
   const [news, setNews] = React.useState('');
   const [addinformation, setAddInformation] = React.useState('');
   const [suggestions, setSuggestions] = React.useState('');
+  React.useEffect(()=>{
+   setHusbandRole(data.WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole)
+   setNews(data.newsletter)
+   setAddInformation(data.Isthereanyadditionalinformationyouwanttoaddaboutyourselforthemarriagepartneryouarelookingfor)
+   setSuggestions(data.suggestions)
+  } , [data])
   const dispatch = useDispatch();
   const handleSubmitFinishForm = (event) => {
     dispatch(SubmitFinishForm(

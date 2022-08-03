@@ -29,7 +29,7 @@ import { SubmitProfressionForm } from '../../../actions/formActions';
 
 
 
-const ProfessionForm = () => {
+const ProfessionForm = ({data}) => {
   const [wifeprofession, setWifeProfession] = React.useState('');
   const [myprofession, setMyProfession] = React.useState('');
   const [husbandprofession, setHusbandProfession] = React.useState('');
@@ -45,7 +45,13 @@ const ProfessionForm = () => {
       myeducation,
     ))
   };
-
+  React.useEffect(()=>{
+     setWifeProfession(data.Whichprofessionstatusdescribewhatyouwantyourfuturewifetohaveselectallthatapply)
+     setMyProfession(data.Whatisyourprofession)
+     setHusbandProfession(data.Whichprofessionstatusdescribewhatyouwantyourfuturehusbandtohaveselectallthatapply)
+     setPartnerEducation(data.Theminimumlevelofeducationyouwantyourmarriagepartnertohavecompleted)
+     setMyEducation(data.Whatisyourlevelofeducation)
+   } , [data])
   const handleWifeProfessionChange = (event) => {
     setWifeProfession(event.target.value);
   }
