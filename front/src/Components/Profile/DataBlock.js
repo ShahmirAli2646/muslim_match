@@ -20,10 +20,13 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import addBusinessDays from 'date-fns/addBusinessDays';
+import { useDispatch } from 'react-redux';
+import { isComplete , isInComplete } from '../../actions/checkProfile';
 
 
 const DataBlock = ({view_id}) => {
   const history = useHistory();
+  const dispatch = useDispatch()
   const styles = {
     question:{
       color: 'rgb(255, 74, 131)',
@@ -68,6 +71,7 @@ const DataBlock = ({view_id}) => {
           if(response.data === null){
             toast("Please create a profile to generate matches")
             history.push('/user-profile/edit-profile')
+            dispatch(isComplete(false))
 
           }
           else{
@@ -84,6 +88,7 @@ const DataBlock = ({view_id}) => {
             if(isNullish === true){
               toast("Please complete all profile information for accurate matches")
             }
+            dispatch(isComplete(true))
             setProfileData(response)
           }
           
