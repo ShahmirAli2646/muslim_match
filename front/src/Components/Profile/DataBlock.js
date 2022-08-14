@@ -20,7 +20,7 @@ import { useSelector } from 'react-redux';
 
 
 
-const DataBlock = () => {
+const DataBlock = ({view_id}) => {
   const styles = {
     question:{
       color: 'rgb(255, 74, 131)',
@@ -37,27 +37,51 @@ const DataBlock = () => {
   const [profiledata, setProfileData] = React.useState('');
   const user = useSelector(state => state.auth.user)
   React.useEffect(() => {
-    const result = UserService.getuserProfile(user?._id).then(
-      (response) => {
-        console.log('response', response)
-        setProfileData(response)
-        return response;
-      },
-      (error) => {
-        const message =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-        console.log('message', message)
+    console.log('whats my view_id' , view_id)
+    if(view_id!==''){
+      const result = UserService.getuserProfile(view_id).then(
+        (response) => {
+          console.log('response', response)
+          setProfileData(response)
+          return response;
+        },
+        (error) => {
+          const message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+          console.log('message', message)
+  
+        }
+      )
+      console.log('profiledata', profiledata?.data)
+    }
+    else{
+      const result = UserService.getuserProfile(user?._id).then(
+        (response) => {
+          console.log('response', response)
+          setProfileData(response)
+          return response;
+        },
+        (error) => {
+          const message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+          console.log('message', message)
+  
+        }
+      )
+  
+      console.log('profiledata', profiledata?.data)
+    }
+   
 
-      }
-    )
-
-    console.log('profiledata', profiledata?.data)
-
-  }, [])
+  }, [view_id])
   const Sections = [
     {
       title: 'Deen',

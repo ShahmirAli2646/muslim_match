@@ -39,7 +39,8 @@ class Profile extends React.Component {
       user: JSON.parse(localStorage.getItem("user")),
       userName: null,
       age: null,
-      location: null
+      location: null,
+      view_id : ''
     }
     console.log('props in my constructor', this.props)
   }
@@ -51,8 +52,9 @@ class Profile extends React.Component {
         console.log('first time load')
         if (this.props.location.state.id !== undefined && this.props.location.state.id !== null) {
           console.log('from matches')
-          this.getUserData(this.props.location.state.id)
-        
+          this.setState({view_id:this.props.location.state.id} , ()=>{
+            this.getUserData(this.props.location.state.id)
+          })
         }
         if (this.props.location.state.from === 'link') {
           console.log('location props', this.props)
@@ -99,11 +101,12 @@ class Profile extends React.Component {
   }
 
   getUserData = async (view_id) => {
-    console.log('view_id')
+    console.log('view_id' , view_id)
     if (view_id) {
       const userData = await userService.getuser(view_id)
+      console.log('userData' , userData)
       this.setState({ userName: userData.data.first_name }, async () => {
-        const userProfile = await userService.getuserProfile(this.state.user?._id)
+        const userProfile = await userService.getuserProfile(view_id)
         console.log('userProfile', userProfile)
         const newDate = Date.parse(userProfile.data.birthdate);
         const ageInMilliseconds = new Date() - new Date(newDate);
@@ -249,7 +252,7 @@ class Profile extends React.Component {
           </div>
         </Container>
         <SectionHelper />
-        <DataBlock />
+          <DataBlock view_id={this.state.view_id}/>
         <br>
         </br>
         <br>
