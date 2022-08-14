@@ -8,9 +8,11 @@ import { BrowserRouter as Router, Routes, Route , Link } from "react-router-dom"
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useSelector } from 'react-redux';
 
 export default function CustomSelect({user}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const isComplete = useSelector(state => state.checkProfile.isComplete)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -42,7 +44,9 @@ export default function CustomSelect({user}) {
       > 
         <div style={{padding:'20px' , display:'flex'  , flexDirection:'column' , paddingRight:'100px'}}>
         <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={{pathname:'/user-profile/view-profile' ,  state:{from: "link"}}} style={{ textDecoration: 'none' , color:'#666' }}>View Profile</Link></Typography>
-        <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={'/user-profile/edit-profile'} style={{ textDecoration: 'none' , color:'#666' }}>Edit Profile</Link></Typography>
+        {isComplete === true ? (
+             <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={'/user-profile/edit-profile'} style={{ textDecoration: 'none' , color:'#666' }}>Edit Profile</Link></Typography>
+        ): <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={'/user-profile/edit-profile'} style={{ textDecoration: 'none' , color:'#666' }}>Create Profile</Link></Typography>}
         {user?.role==='admin'?(
            <Typography style={{fontFamily:'sans-serif' , fontWeight:'bold' , fontSize:'14px' , color:'#666'}} sx={{ p: 1 }}><Link to={'/admin/admin-panel'} style={{ textDecoration: 'none' , color:'#666' }}>Admin Panel</Link></Typography>
         ):''}
