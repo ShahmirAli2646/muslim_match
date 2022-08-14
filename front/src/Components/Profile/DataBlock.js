@@ -17,10 +17,13 @@ import { Container } from '@mui/material';
 import SectionHelper from './SectionHelper';
 import UserService from '../../services/user.service'
 import { useSelector } from 'react-redux';
-
+import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import addBusinessDays from 'date-fns/addBusinessDays';
 
 
 const DataBlock = ({view_id}) => {
+  const history = useHistory();
   const styles = {
     question:{
       color: 'rgb(255, 74, 131)',
@@ -62,7 +65,28 @@ const DataBlock = ({view_id}) => {
       const result = UserService.getuserProfile(user?._id).then(
         (response) => {
           console.log('response', response)
-          setProfileData(response)
+          if(response.data === null){
+            toast("Please create a profile to generate matches")
+            history.push('/user-profile/edit-profile')
+
+          }
+          else{
+            console.log('coming in else')
+            const isNullish = Object.values(response.data).some(value => {
+              if (value === null) {
+                return true;
+              }
+            
+              return false;
+            });
+           
+            
+            if(isNullish === true){
+              toast("Please complete all profile information for accurate matches")
+            }
+            setProfileData(response)
+          }
+          
           return response;
         },
         (error) => {
