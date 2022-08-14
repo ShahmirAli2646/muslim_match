@@ -2,12 +2,23 @@ import {
     PROFILE_COMPLETE,
     PROFILE_INCOMPLETE
   } from "../actions/types";
-  const user = JSON.parse(localStorage.getItem("user"));
-  const initialState = {
-    isComplete : false
+  const isComplete = localStorage.getItem("isComplete")
+  let check = ''
+  if(isComplete!==undefined){
+     if(isComplete === 'false'){
+         check = false;
+     }
+     else{
+        check=true
+     }
   }
+  const initialState = isComplete ? 
+  {isComplete : check} :
+  {isComplete : false}
+  
   export default function (state = initialState, action) {
     const { type, payload } = action;
+    
     switch (type) {
       case PROFILE_COMPLETE:
         return {

@@ -44,6 +44,7 @@ function App() {
   const isAuthenticated = useSelector(state => state.auth.isLoggedIn)
   console.log('authentication' , isAuthenticated)
   const user = useSelector(state => state.auth.user)
+  const isComplete = useSelector(state => state.checkProfile.isComplete)
   console.log('user' , user)
   return (
 
@@ -51,7 +52,7 @@ function App() {
 
       <Fragment>
         <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-        <Navbar isAuthenticated={isAuthenticated} user={user} />
+        <Navbar isComplete={isComplete} isAuthenticated={isAuthenticated} user={user} />
         </Grid>
         
         <Route exact path="/" render={() => (

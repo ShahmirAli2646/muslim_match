@@ -10,9 +10,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useSelector } from 'react-redux';
 
-export default function CustomSelect({user}) {
+export default function CustomSelect({user , isComplete}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const isComplete = useSelector(state => state.checkProfile.isComplete)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

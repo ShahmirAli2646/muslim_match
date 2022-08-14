@@ -33,8 +33,7 @@ import Settings from './Settings/Settings'
 
 
 
-export default function PrimarySearchAppBar({ isAuthenticated, user }) {
-  const isComplete = useSelector(state => state.checkProfile.isComplete)
+export default function PrimarySearchAppBar({ isAuthenticated, user , isComplete }) {
   console.log('isComplete' , isComplete)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -168,10 +167,10 @@ export default function PrimarySearchAppBar({ isAuthenticated, user }) {
           {isAuthenticated && user?.role !== 'admin' ? (
             <Stack spacing={0} direction="row">
               {isAuthenticated && user?.role !== 'admin' ? (
-                <CustomSelect user={user} />
+                <CustomSelect isComplete={isComplete} user={user} />
               ) : ''}
                {isComplete === true ? (
-                 <Button variant="text"><Link to={'/user-profile/my-matches'} style={{ color: 'rgb(137 134 134)', textDecoration: 'none', textTransform: 'capitalize', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '15px' }}>My Matches</Link></Button>
+                 <Button varia nt="text"><Link to={'/user-profile/my-matches'} style={{ color: 'rgb(137 134 134)', textDecoration: 'none', textTransform: 'capitalize', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '15px' }}>My Matches</Link></Button>
                ):''}
               
               <Button style={{ color: 'rgb(137 134 134)', textTransform: 'capitalize', fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '15px' }} variant="text">Donate</Button>

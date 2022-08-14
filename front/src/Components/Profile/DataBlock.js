@@ -71,6 +71,7 @@ const DataBlock = ({view_id}) => {
           if(response.data === null){
             toast("Please create a profile to generate matches")
             history.push('/user-profile/edit-profile')
+            localStorage.setItem("isComplete" , 'false')
             dispatch(isComplete(false))
 
           }
@@ -88,6 +89,7 @@ const DataBlock = ({view_id}) => {
             if(isNullish === true){
               toast("Please complete all profile information for accurate matches")
             }
+            localStorage.setItem('isComplete' , 'true')
             dispatch(isComplete(true))
             setProfileData(response)
           }
