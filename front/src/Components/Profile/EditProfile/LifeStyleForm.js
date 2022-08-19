@@ -27,10 +27,11 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitLifestyleForm } from '../../../actions/formActions';
+import { SubmitLifestyleFormImp } from '../../../actions/importantActions';
 
 
 
-const LifeStyleForm = ({data}) => {
+const LifeStyleForm = ({data , important}) => {
   const [menclothing, setMenClothing] = React.useState([]);
   const [nonmahrammenclothing, setNonMahramMenClothing] = React.useState([]);
   const [nonmahramwomenclothing, setNonMahramWomenClothing] = React.useState([]);
@@ -43,10 +44,23 @@ const LifeStyleForm = ({data}) => {
   const [nonmahrammakeup, setNonMahramMakeup] = React.useState('');
   const [nonmahramwomen, setNonMahramWomen] = React.useState('');
   const [nonmahrammen, setNonMahramMen] = React.useState('');
+
+
+
+  const [menclothingImp, setMenClothingImp] = React.useState(false);
+  const [nonmahrammenclothingImp, setNonMahramMenClothingImp] = React.useState(false);
+  const [nonmahramwomenclothingImp, setNonMahramWomenClothingImp] = React.useState(false);
+  const [haramImp, setHaramImp] = React.useState(false);
+  const [womenclothingImp, setWomenClothingImp] = React.useState(false);
+  const [beardImp, setBeardImp] = React.useState(false);
+  const [makeupImp, setMakeUpImp] = React.useState(false);
+  const [tvImp, setTVImp] = React.useState(false);
+  const [musicImp, setMusicImp] = React.useState(false);
+  const [nonmahrammakeupImp, setNonMahramMakeupImp] = React.useState(false);
+  const [nonmahramwomenImp, setNonMahramWomenImp] = React.useState(false);
+  const [nonmahrammenImp, setNonMahramMenImp] = React.useState(false);
   React.useEffect(()=>{
     if(data!==undefined && data!==null){
-
-    
     setMenClothing(data?.Whatstyleofmensclothingwouldyoupreferyourfuturehusbandwearwhenaroundnonmahramswhengoingtotheshoporatworketc)
     setNonMahramMenClothing(data?.Typeofclothingworninfrontofnonmahrammenwhengoingtotheshopworkorparketc)
     setNonMahramWomenClothing(data?.Typeofclothingworninfrontofnonmahramwomanwhengoingtotheshoporworketc)
@@ -90,6 +104,52 @@ const LifeStyleForm = ({data}) => {
     nonmahrammen,] )
   
 
+
+
+
+
+    React.useEffect(()=>{
+      if(important!==undefined && important!==null){
+      setMenClothingImp(important?.Whatstyleofmensclothingwouldyoupreferyourfuturehusbandwearwhenaroundnonmahramswhengoingtotheshoporatworketc)
+      setNonMahramMenClothingImp(important?.Typeofclothingworninfrontofnonmahrammenwhengoingtotheshopworkorparketc)
+      setNonMahramWomenClothingImp(important?.Typeofclothingworninfrontofnonmahramwomanwhengoingtotheshoporworketc)
+      setHaramImp(important.DoyoueatharamdrinkalcoholsmokecigarettessmokeshishaoruseecigarettesSelectallthatapply)
+      setWomenClothingImp(important?.Whatstyleofwomensclothingwouldyoupreferyourfuturewifetowearwhenaroundnonmahramswhengoingtotheshoporparketc)
+      setBeardImp(important.Whichbeardstylemeetyourpreferences)
+      setMakeUpImp(important.Doyouwantawifewhowearsmakeupinfrontofnonmahrams)
+      setTVImp(important.DoyouwatchTV)
+      setMusicImp(important.DoyoulistentoMusic)
+      setNonMahramMakeupImp(important.Doyouwearmakeupinfrontofnonmahrams)
+      setNonMahramWomenImp(important.Doyoufreemixwithnonmahramfemales)
+      setNonMahramMenImp(important.Doyoufreemixwithnonmahrammen)
+      }
+    } , [important])
+    React.useEffect(()=>{
+      dispatch(SubmitLifestyleFormImp(
+        menclothingImp,
+        nonmahramwomenclothingImp,
+        beardImp,
+        nonmahrammakeupImp,
+        haramImp, nonmahramwomenImp,
+        nonmahrammenImp,
+        nonmahrammenclothingImp,
+        nonmahramwomenclothingImp,
+        tvImp,
+        musicImp,
+        nonmahrammenImp,
+  
+      ))
+    } , [menclothingImp,
+      nonmahramwomenclothingImp,
+      beardImp,
+      nonmahrammakeupImp,
+      haramImp, nonmahramwomenImp,
+      nonmahrammenImp,
+      nonmahrammenclothingImp,
+      nonmahramwomenclothingImp,
+      tvImp,
+      musicImp,
+      nonmahrammenImp,] )
 
   const handleHaramChange = (event) => {
     const {

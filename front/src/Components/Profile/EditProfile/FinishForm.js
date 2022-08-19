@@ -26,17 +26,22 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitFinishForm } from '../../../actions/formActions';
+import { SubmitFinishFormImp } from '../../../actions/importantActions';
 
 
-const FinishForm = ({data}) => {
+const FinishForm = ({data , important}) => {
   const [husbandrole, setHusbandRole] = React.useState('');
   const [news, setNews] = React.useState('');
   const [addinformation, setAddInformation] = React.useState('');
   const [suggestions, setSuggestions] = React.useState('');
+
+
+  const [husbandroleImp, setHusbandRoleImp] = React.useState(false);
+  const [newsImp, setNewsImp] = React.useState(false);
+  const [addinformationImp, setAddInformationImp] = React.useState(false);
+  const [suggestionsImp, setSuggestionsImp] = React.useState(false);
   React.useEffect(()=>{
     if(data!==undefined && data!==null){
-
-    
    setHusbandRole(data.WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole)
    setNews(data.newsletter)
    setAddInformation(data.Isthereanyadditionalinformationyouwanttoaddaboutyourselforthemarriagepartneryouarelookingfor)
@@ -55,6 +60,28 @@ const FinishForm = ({data}) => {
     addinformation,
     suggestions,
     news,] )
+
+
+
+    React.useEffect(()=>{
+      if(important!==undefined && important!==null){
+     setHusbandRoleImp(important.WhatdoyoubelievetheroleofthehusbandisWhatdoyoubelievetheroleofthewifeisandhowwouldyoufulfilyourrole)
+     setNewsImp(important.newsletter)
+     setAddInformationImp(important.Isthereanyadditionalinformationyouwanttoaddaboutyourselforthemarriagepartneryouarelookingfor)
+     setSuggestionsImp(important.suggestions)
+      }
+    } , [important])
+    React.useEffect(()=>{
+      dispatch(SubmitFinishFormImp(
+        husbandroleImp,
+        addinformationImp,
+        suggestionsImp,
+        newsImp,
+      ))
+    } , [husbandroleImp,
+      addinformationImp,
+      suggestionsImp,
+      newsImp,] )
   
   
 

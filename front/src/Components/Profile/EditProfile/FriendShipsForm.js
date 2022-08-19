@@ -26,19 +26,28 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitFriendshipsForm } from '../../../actions/formActions';
+import { SubmitFriendshipsFormImp } from '../../../actions/importantActions';
 
 
-const FriendShipsForm = ({data}) => {
+const FriendShipsForm = ({data , important}) => {
   const [timefriends, setTimeFriends] = React.useState('');
   const [freemixwomen, setFreeMixWomen] = React.useState('');
   const [freemixmen, setFreeMixMen] = React.useState('');
   const [religiousfriends, setReligiousFriends] = React.useState('');
   const [sectfriends, setSectFriends] = React.useState('');
   const [personality, setPersonality] = React.useState('');
+
+
+
+  const [timefriendsImp, setTimeFriendsImp] = React.useState(false);
+  const [freemixwomenImp, setFreeMixWomenImp] = React.useState(false);
+  const [freemixmenImp, setFreeMixMenImp] = React.useState(false);
+  const [religiousfriendsImp, setReligiousFriendsImp] = React.useState(false);
+  const [sectfriendsImp, setSectFriendsImp] = React.useState(false);
+  const [personalityImp ,  setPersonalityImp] = React.useState(false);
   const dispatch = useDispatch();
   React.useEffect(()=>{
     if(data!==undefined && data!==null){
-
     setTimeFriends(data.DoyouspendalotoftimewithfriendsWhatactivitiesdoyoudowithyourfriends)
     setFreeMixMen(data.Wouldyouwantyourfuturehusbandtofreemixwithyourfriends)
     setFreeMixWomen(data.Wouldyouwantyourfuturewifetofreemixwithyourfriends)
@@ -63,6 +72,35 @@ const FriendShipsForm = ({data}) => {
     sectfriends,
     personality,
     freemixmen, freemixwomen,] )
+
+
+
+    React.useEffect(()=>{
+      if(important!==undefined && important!==null){
+      setTimeFriendsImp(important.DoyouspendalotoftimewithfriendsWhatactivitiesdoyoudowithyourfriends)
+      setFreeMixMenImp(important.Wouldyouwantyourfuturehusbandtofreemixwithyourfriends)
+      setFreeMixWomenImp(important.Wouldyouwantyourfuturewifetofreemixwithyourfriends)
+      setReligiousFriendsImp(important.Areyourfriendsreligious)
+      setSectFriendsImp(important.WhatsectfollowingofIslamdoyourfriendspractice)
+      setPersonalityImp(important.Howmightyourfriendsdescribeyourpersonality)
+      
+    }
+    } , [important])
+    
+    React.useEffect(()=>{
+      dispatch(SubmitFriendshipsFormImp(
+        timefriendsImp,
+        religiousfriendsImp,
+        sectfriendsImp,
+        personalityImp,
+        freemixmenImp, freemixwomenImp,
+  
+      ))
+    } , [timefriendsImp,
+      religiousfriendsImp,
+      sectfriendsImp,
+      personalityImp,
+      freemixmenImp, freemixwomenImp,] )
     
   
 

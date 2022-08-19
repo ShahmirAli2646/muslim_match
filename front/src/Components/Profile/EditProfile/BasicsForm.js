@@ -37,7 +37,9 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitBasicsForm } from '../../../actions/formActions';
-const BasicsForm = ({data}) => {
+import { SubmitBasicsFormImp } from '../../../actions/importantActions';
+
+const BasicsForm = ({data , important}) => {
   const [minage, setMinAge] = React.useState('');
   const [maxage, setMaxAge] = React.useState('');
   const [consider, setConsider] = React.useState('');
@@ -66,10 +68,40 @@ const BasicsForm = ({data}) => {
   const [hijabtype, setHijabType] = React.useState([]);
   const [menmaritalstatus, setMenMaritalStatus] = React.useState([]);
   const [womenmaritalstatus, setWomenMaritalStatus] = React.useState([]);
+
+
+  const [minageImp, setMinAgeImp] = React.useState(false);
+  const [maxageImp, setMaxAgeImp] = React.useState(false);
+  const [considerImp, setConsiderImp] = React.useState(false);
+  const [mychildrenImp, setMyChildrenImp] = React.useState(false);
+  const [wantchildrenImp, setWantChildrenImp] = React.useState(false);
+  const [revertconvertImp, setRevertConvertImp] = React.useState(false);
+  const [relocateImp, setRelocateImp] = React.useState(false);
+  const [revertImp, setRevertImp] = React.useState(false);
+  const [mymentalhealthImp, setMyMentalHealthImp] = React.useState(false);
+  const [mydisabiltyImp, setMyDisabilityImp] = React.useState(false);
+  const [partnercountriesImp, setPartnerCountryImp] = React.useState(false)
+  const [yourcountryImp, setYourCountryImp] = React.useState(false)
+  const [yourcityImp, setYourCityImp] = React.useState(false)
+  const [yourcitizenshipImp, setYourCitizenshipImp] = React.useState(false)
+  const [partnerethnicityImp, setPartnerEthnicityImp] = React.useState(false)
+  const [livingImp, setLivingImp] = React.useState(false);
+  const [coverhairImp, setCoverHairImp] = React.useState(false);
+  const [dailyprayersImp, setDailyPrayerImp] = React.useState(false);
+  const [femalemaritalstatusImp, setFemaleMaritalStatusImp] = React.useState(false);
+  const [malemaritalstatusImp, setMaleMaritalStatusImp] = React.useState(false);
+  const [marriageconsiderImp, setMarriageConsiderImp] = React.useState(false);
+  const [childrenconsiderImp, setChildrenConsiderImp] = React.useState(false);
+  const [mentalhealthImp, setMentalHealthImp] = React.useState(false);
+  const [disabilityImp, setDisabiltyImp] = React.useState(false);
+  const [hijabtypeImp, setHijabTypeImp] = React.useState(false);
+  const [menmaritalstatusImp, setMenMaritalStatusImp] = React.useState(false);
+  const [womenmaritalstatusImp, setWomenMaritalStatusImp] = React.useState(false);
+
+
+
   React.useEffect(()=>{
     if(data!==undefined && data!==null){
-
-    
     setMinAge(data.youngestageyouarelookingfor)
     setMaxAge(data.oldestageyouarelookingfor)
     setConsider(data.WouldyouconsidermarragetoaMuslimawhodoesnotwearNiqaab)
@@ -110,6 +142,55 @@ const BasicsForm = ({data}) => {
     marriageconsider , childrenconsider , mentalhealth ,  disability , partnercountries , partnerethnicity , revert , 
     yourcountry , yourcity , yourcitizenship , malemaritalstatus , femalemaritalstatus , dailyprayers , coverhair , 
     living , mydisabilty , mymentalhealth , mychildren , wantchildren ,relocate , revertconvert ] )
+
+
+
+    React.useEffect(()=>{
+      if(important!==undefined && important!==null){
+        setMinAgeImp(important.youngestageyouarelookingfor)
+        setMaxAgeImp(important.oldestageyouarelookingfor)
+        setConsiderImp(important.WouldyouconsidermarragetoaMuslimawhodoesnotwearNiqaab)
+        setMyChildrenImp(important.Doyouhaveanychildren)
+        setWantChildrenImp(important.Doyouwantchildrenaftermarriage)
+        setRevertConvertImp(important.DidyourevertconverttoIslam)
+        setRelocateImp(important.Areyouwillingtorelocateaftermarriage)
+        setRevertImp(important.WhatisyourpreferencewhenitcomestomarryingaMuslimwhofoundIslamlateroninlife)
+        setMyMentalHealthImp(important.Doyouhaveanymentalhealthproblems)
+        setMyDisabilityImp(important.Doyouhaveanyphysicaldisabilities)
+        setPartnerCountryImp(important.Whichcountrieswouldyoupreferyourmarriagepartnertoholdcitizenship)
+        setYourCountryImp(important.Whichcountryorcountriesdoyoulivein)
+        setYourCityImp(important.Whichcitytownvillagedoyoulivein)
+        setYourCitizenshipImp(important.Whichcountryorcountriesdoyouholdcitizenship)
+        setPartnerEthnicityImp(important.Doyouhavespecificrequirementswithregardstotheethnicityofafuturemarriagepartner)
+        setLivingImp(important.Whatareyourpreferredlivingarrangementsaftermarriage)
+        setCoverHairImp(important.Doyoucoveryourhairfromnonmahrams)
+        setDailyPrayerImp(important.Doyouprayallofthe5dailyprayers)
+        setFemaleMaritalStatusImp(important.Whatisyourmaritalstatuswomen)
+        setMaleMaritalStatusImp(important.Whatisyourmaritalstatusmen)
+        setMarriageConsiderImp(important.Wouldyouconsidermarryingsomeonewhoisalreadymarried)
+        setChildrenConsiderImp(important.Wouldyoumarrysomeonewhoalreadyhaschildren)
+        setMentalHealthImp(important.Wouldyoumarrysomeonewhohadmentalhealthproblems)
+        setDisabiltyImp(important.Wouldyoumarrysomeonewhohadphysicaldisabilities)
+        setHijabTypeImp(important.Whattypeofhijabmatcheswithwhatyourelookingforinawife)
+        setMenMaritalStatusImp(important.Whichmaritalstatusmatchwithwhatyouarelookingformen)
+        setWomenMaritalStatusImp(important.Whichmaritalstatusmatchwithwhatyouarelookingforwomen)
+      }
+  
+     } , [important])
+    React.useEffect(()=>{
+      dispatch(SubmitBasicsFormImp(minageImp , maxageImp , hijabtypeImp , considerImp , menmaritalstatusImp , womenmaritalstatusImp , 
+        marriageconsiderImp , childrenconsiderImp , mentalhealthImp ,  disabilityImp , partnercountriesImp , partnerethnicityImp , revertImp , 
+        yourcountryImp , yourcityImp , yourcitizenshipImp , malemaritalstatusImp , femalemaritalstatusImp , dailyprayersImp , coverhairImp , 
+        livingImp , mydisabiltyImp , mymentalhealthImp , mychildrenImp , wantchildrenImp ,relocateImp , revertconvertImp ))
+    }  , [minageImp , maxageImp , hijabtypeImp , considerImp , menmaritalstatusImp , womenmaritalstatusImp , 
+      marriageconsiderImp , childrenconsiderImp , mentalhealthImp ,  disabilityImp , partnercountriesImp , partnerethnicityImp , revertImp , 
+      yourcountryImp , yourcityImp , yourcitizenshipImp , malemaritalstatusImp , femalemaritalstatusImp , dailyprayersImp , coverhairImp , 
+      livingImp , mydisabiltyImp , mymentalhealthImp , mychildrenImp , wantchildrenImp ,relocateImp , revertconvertImp ] )
+
+
+
+
+
   
   const handleMinAgeChange = (event) => {
     console.log('minage' , event )

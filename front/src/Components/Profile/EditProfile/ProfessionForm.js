@@ -26,15 +26,23 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitProfressionForm } from '../../../actions/formActions';
+import { SubmitProfressionFormImp } from '../../../actions/importantActions';
 
 
 
-const ProfessionForm = ({data}) => {
+const ProfessionForm = ({data , important}) => {
   const [wifeprofession, setWifeProfession] = React.useState('');
   const [myprofession, setMyProfession] = React.useState('');
   const [husbandprofession, setHusbandProfession] = React.useState('');
   const [partnereducation, setPartnerEducation] = React.useState('');
   const [myeducation, setMyEducation] = React.useState('');
+
+
+  const [wifeprofessionImp, setWifeProfessionImp] = React.useState(false);
+  const [myprofessionImp, setMyProfessionImp] = React.useState(false);
+  const [husbandprofessionImp, setHusbandProfessionImp] = React.useState(false);
+  const [partnereducationImp, setPartnerEducationImp] = React.useState(false);
+  const [myeducationImp, setMyEducationImp] = React.useState(false);
   const dispatch = useDispatch();
   React.useEffect(()=>{
     dispatch(SubmitProfressionForm(
@@ -61,6 +69,36 @@ const ProfessionForm = ({data}) => {
      setMyEducation(data.Whatisyourlevelofeducation)
      }
    } , [data])
+
+
+
+
+
+   React.useEffect(()=>{
+    dispatch(SubmitProfressionFormImp(
+      wifeprofessionImp,
+      husbandprofessionImp,
+      partnereducationImp,
+      myprofessionImp,
+      myeducationImp,
+    ))
+  }, [wifeprofessionImp,
+    husbandprofessionImp,
+    partnereducationImp,
+    myprofessionImp,
+    myeducationImp,])
+  
+  React.useEffect(()=>{
+     if(important!==undefined && important!==null){
+
+     
+     setWifeProfessionImp(important.Whichprofessionstatusdescribewhatyouwantyourfuturewifetohaveselectallthatapply)
+     setMyProfessionImp(important.Whatisyourprofession)
+     setHusbandProfessionImp(important.Whichprofessionstatusdescribewhatyouwantyourfuturehusbandtohaveselectallthatapply)
+     setPartnerEducationImp(important.Theminimumlevelofeducationyouwantyourmarriagepartnertohavecompleted)
+     setMyEducationImp(important.Whatisyourlevelofeducation)
+     }
+   } , [important])
   const handleWifeProfessionChange = (event) => {
     setWifeProfession(event.target.value);
   }

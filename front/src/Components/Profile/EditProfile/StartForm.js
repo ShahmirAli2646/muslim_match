@@ -27,11 +27,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import PhoneInput from 'mui-phone-input';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitStartForm } from '../../../actions/formActions';
+import { SubmitStartFormImp } from '../../../actions/importantActions';
 import userService from '../../../services/user.service';
 
 
 
-const StartForm = ({data}) => {
+const StartForm = ({data , important}) => {
 
   const [purpose, setPurpose] = React.useState(
     ''
@@ -39,6 +40,14 @@ const StartForm = ({data}) => {
   const [gender, setGender] = React.useState('');
   const [startDate, setStartDate] = React.useState(new Date());
   const [phone, setPhone] = React.useState('');
+
+
+  const [purposeImp, setPurposeImp] = React.useState(
+    false
+  );
+  const [genderImp, setGenderImp] = React.useState(false);
+  const [startDateImp, setStartDateImp] = React.useState(false);
+  const [phoneImp, setPhoneImp] = React.useState(false);
   const dispatch = useDispatch();
   React.useEffect(()=>{
     dispatch(SubmitStartForm(phone,
@@ -56,6 +65,27 @@ const StartForm = ({data}) => {
     setStartDate(Date.parse(data.birthdate))
     }
    } , [data])
+
+
+
+
+
+   React.useEffect(()=>{
+    dispatch(SubmitStartFormImp(phoneImp,
+      purposeImp,
+      genderImp, startDateImp))
+  } , [phoneImp,
+    purposeImp,
+    genderImp, startDateImp] )
+ 
+  React.useEffect(()=>{
+    if(important!==undefined && important!==null){
+    setPurpose(important.purpose)
+    setGender(important.gender)
+    setPhone(important.phone)
+    setStartDate(Date.parse(important.birthdate))
+    }
+   } , [important])
 
   const handlePurposeChange = (event) => {
 
