@@ -151,6 +151,45 @@ const AppearanceForm = ({data ,important}) => {
   }
 
 
+  const handleShortestHeightChangeImp = (event) => {
+    setShortestHeightImp(event.target.value);
+  }
+  const handleWaistChangeImp = (event) => {
+    setWaistImp(event.target.value);
+  }
+  const handleBeardChangeImp = (event) => {
+    setBeardImp(event.target.value);
+  }
+  const handleEthnicityChangeImp = (event) => {
+    setEthnicityImp(event.target.value);
+  }
+  const handleMyWaistChangeImp = (event) => {
+    setMyWaistImp(event.target.value);
+  }
+  const handleMyDressChangeImp = (event) => {
+    setMyDressImp(event.target.value);
+  }
+  const handleMyHeightChangeImp = (event) => {
+    setMyHeightImp(event.target.value);
+  }
+  const handleBuildChangeImp = (event) => {
+    setBuildImp(event.target.value);
+  }
+  const handleMyBuildChangeImp = (event) => {
+    setMyBuildImp(event.target.value);
+  }
+  const handleSmallestDressChangeImp = (event) => {
+    setSmallestDress(event.target.value);
+  }
+  const handleLargestDressChangeImp = (event) => {
+    setLargestDressImp(event.target.value);
+  }
+  const handleTallestHeightChangeImp = (event) => {
+    setTallestHeightImp(event.target.value);
+  }
+
+
+
 
 
   return (

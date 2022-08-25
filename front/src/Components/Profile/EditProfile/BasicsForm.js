@@ -294,6 +294,89 @@ const BasicsForm = ({data , important}) => {
   };
 
 
+  const handleMinAgeChangeImp = (event) => {
+    console.log('minage' , event )
+    setMinAgeImp(event.value);
+  }
+  const handleYourCityChangeHandlerImp = value => {
+    setYourCityImp(value)
+  }
+  const handleYourCitizenshipChangeHandlerImp = value => {
+    setYourCitizenshipImp(value)
+  }
+  const handleYourCountryChangeHandlerImp = value => {
+    setYourCountryImp(value)
+  }
+  const handlePartnerCountryChangeHandlerImp = value => {
+    setPartnerCountryImp(value)
+  }
+  const handlePartnerEthnicityChangeHandlerImp = value => {
+    setPartnerEthnicityImp(value)
+  }
+  const handleMyMentalHealthChangeImp = (event) => {
+    setMyMentalHealthImp(event.target.value);
+  }
+  const handleRelocateChangeImp = (event) => {
+    setRelocateImp(event.target.value);
+  }
+  const handleMyChildrenChangeImp = (event) => {
+    setMyChildrenImp(event.target.value);
+  }
+  const handleWantChildrenChangeImp = (event) => {
+    setWantChildrenImp(event.target.value);
+  }
+  const handleRevertConvertChangeImp = (event) => {
+    setRevertConvertImp(event.target.value);
+  }
+  const handleMyDisabiltyChangeImp = (event) => {
+    setMyDisabilityImp(event.target.value);
+  }
+  const handleLivingChangeImp = (event) => {
+    setLivingImp(event.target.value);
+  }
+  const handleCoverHairChangeImp = (event) => {
+    setCoverHairImp(event.target.value);
+  }
+  const handleDailyPrayerChangeImp = (event) => {
+    setDailyPrayerImp(event.target.value);
+  }
+  const handleConsiderChangeImp = (event) => {
+    setConsiderImp(event.target.value);
+  }
+  const handleFemaleMaritalStatusChangeImp = (event) => {
+    setFemaleMaritalStatusImp(event.target.value);
+  }
+  const handleMaleMaritalStatusChangeImp = (event) => {
+    setMaleMaritalStatusImp(event.target.value);
+  }
+  const handleMaxAgeChangeImp = (event) => {
+    setMaxAgeImp(event.value);
+  }
+  const handleRevertChangeImp = (event) => {
+    setRevertImp(event.target.value);
+  }
+  const handleMarriageConsiderChangeImp = (event) => {
+    setMarriageConsiderImp(event.target.value);
+  }
+  const handleDisabiltyChangeImp = (event) => {
+    setDisabiltyImp(event.target.value);
+  }
+  const handleMentalHealthChangeImp = (event) => {
+    setMentalHealthImp(event.target.value);
+  }
+  const handleChildrenConsiderChangeImp = (event) => {
+    setChildrenConsiderImp(event.target.value);
+  }
+  const handleHijabTypeChangeImp = (event) => {
+    
+    setHijabTypeImp(event.target.value);
+  };
+  const handleMenMaritalStatusChangeImp = (event) => {
+    setMenMaritalStatusImp(event.target.value);
+  };
+  const handleWomenMaritalStatusChangeImp = (event) => {
+    setWomenMaritalStatusImp(event.target.value );
+  };
 
 
   return (

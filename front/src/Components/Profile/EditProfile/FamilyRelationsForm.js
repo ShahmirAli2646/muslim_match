@@ -86,6 +86,13 @@ const FamilyRelationsForm = ({data , important}) => {
   const handleFamilySectChange = (event) => {
     setFamilySect(event.target.value);
   }
+
+  const handleFamilyReligiousChangeImp = (event) => {
+    setFamilyReligiousImp(event.target.value);
+  }
+  const handleFamilySectChangeImp = (event) => {
+    setFamilySectImp(event.target.value);
+  }
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Typography>Are your family religious</Typography>
