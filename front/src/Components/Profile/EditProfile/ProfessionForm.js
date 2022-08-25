@@ -27,6 +27,9 @@ import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitProfressionForm } from '../../../actions/formActions';
 import { SubmitProfressionFormImp } from '../../../actions/importantActions';
+import Checkbox from '@mui/material/Checkbox';
+import Stack from '@mui/material/Stack';
+
 
 
 
@@ -128,7 +131,11 @@ const ProfessionForm = ({data , important}) => {
 
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
+      <Stack direction="row" justifyContent={'space-between'}>
       <Typography>Which profession status describe what you want your future wife to have (select all that apply)</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
+      
       <br></br>
 
       <Select
@@ -148,7 +155,10 @@ const ProfessionForm = ({data , important}) => {
         <MenuItem value={'Student'}>Student</MenuItem>
       </Select>
       <br></br>
+      <Stack direction="row" justifyContent={'space-between'}>
       <Typography>Which profession status/s describe what you want your future husband to have (select all that apply)</Typography>
+      <Checkbox sx={{ top:-8 }} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -179,7 +189,10 @@ const ProfessionForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>The minimum level of education you want your marriage partner to have completed</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
 
 
@@ -199,13 +212,19 @@ const ProfessionForm = ({data , important}) => {
         <MenuItem value={"Must have a degree"}>Must have a degree</MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What is your profession</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <TextField value={myprofession} onChange={(event) => {
         setMyProfession(event.target.value)
       }} variant="filled" />
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What is your level of education</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"

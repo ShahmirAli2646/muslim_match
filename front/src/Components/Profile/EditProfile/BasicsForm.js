@@ -38,6 +38,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitBasicsForm } from '../../../actions/formActions';
 import { SubmitBasicsFormImp } from '../../../actions/importantActions';
+import Checkbox from '@mui/material/Checkbox';
+import Stack from '@mui/material/Stack';
+
+
 
 const BasicsForm = ({data , important}) => {
   const [minage, setMinAge] = React.useState('');
@@ -412,7 +416,10 @@ const BasicsForm = ({data , important}) => {
 
       />
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What type of hijab matches with what you're looking for in a wife (Tick all that apply)</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -439,7 +446,10 @@ const BasicsForm = ({data , important}) => {
           doesn't wear what he want when in work but outside of working hours,wears Jubba or cultural clothing etc</MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you consider marrage to a Muslima who does not wear Niqaab? (this only gets asked if Niqaab is selected</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -456,7 +466,10 @@ const BasicsForm = ({data , important}) => {
 
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Which marital status match with what you are looking for (Select all that apply)</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -481,7 +494,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>- Which marital status match with what you are looking for (Select all that apply)</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -505,7 +521,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography> Would you consider marrying someone who is already married</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -532,7 +551,10 @@ const BasicsForm = ({data , important}) => {
 
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you marry someone who already has children</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -555,7 +577,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you marry someone who had mental health problems</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -578,7 +603,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you marry someone who had physical disabilities</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -601,20 +629,29 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Which countries would you prefer your marriage partner to hold citizenship</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <MYSelect options={options} value={partnercountries} onChange={handlePartnerCountryChangeHandler } />
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Do you have specific requirements with regards to the ethnicity of a future marriage partner?
       </Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <MYSelect options={options} value={partnerethnicity} onChange={handlePartnerEthnicityChangeHandler } />
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         What is your preference when it comes to marrying a Muslim who found Islam later on in
         life (a revert/covert to Islam)
       </Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -718,7 +755,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you pray all of the 5 daily prayers</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -745,7 +785,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you cover your hair from non-mahrams</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -771,7 +814,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What are your preferred living arrangements after marriage</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -791,7 +837,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you have any physical disabilities</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -811,7 +860,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you have any mental health problems</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -831,7 +883,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you have any children</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -866,7 +921,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you want children after marriage</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -893,7 +951,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Are you willing to relocate after marriage</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -916,7 +977,10 @@ const BasicsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Did you revert/convert to Islam</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"

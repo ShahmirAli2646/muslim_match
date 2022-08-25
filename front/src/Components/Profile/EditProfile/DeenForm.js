@@ -29,6 +29,8 @@ import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitDeenForm } from '../../../actions/formActions';
 import { SubmitDeenFormImp } from '../../../actions/importantActions';
+import Checkbox from '@mui/material/Checkbox';
+import Stack from '@mui/material/Stack';
 
 
 
@@ -197,9 +199,12 @@ const DeenForm = ({data , important}) => {
   }
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Which followings of Islam match with what you're looking for in a spouse - Please select all that apply
       </Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -229,9 +234,12 @@ const DeenForm = ({data , important}) => {
       <br></br>
       <TextField value={islamicstudying} onChange={handleIslamicStudyingChange} variant="filled" />
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         The Islamic teachings / sect that you follow
       </Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -262,7 +270,10 @@ const DeenForm = ({data , important}) => {
       <br></br>
       <TextField value={currentstudy} onChange={handleCurrentStudyChange} variant="filled" />
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>How many of the 5 prayers a day do you usually pray in the masjid</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -284,8 +295,11 @@ const DeenForm = ({data , important}) => {
         <MenuItem value={'I pray all the prayers in the Masjid when I am not in university'}>I pray all the prayers in the Masjid when I am not in university</MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you make dua TO the Prophet (SAW) or dua to pirs or saints (there is strong evidence
         that this type of dua is sinful shirk) </Typography>
+        <Checkbox sx={{top:-8}} color="secondary" />
+        </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -301,7 +315,10 @@ const DeenForm = ({data , important}) => {
         <MenuItem value={'No - I do not make dua TO the prophet'}>No - I do not make dua TO the prophet</MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you want to make hijra one day insha'Allah</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -321,7 +338,10 @@ const DeenForm = ({data , important}) => {
         <MenuItem value={'Maybe'}>Maybe</MenuItem>
       </Select>
       <br></br>
+      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you voluntary Fast</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -345,7 +365,10 @@ const DeenForm = ({data , important}) => {
       <br></br>
       <TextField value={arabic} onChange={handleArabicChange} id="standard-basic" variant="filled" />
       <br></br>
+      <Stack direction={'row'} justifyContent={'space=between'}>
       <Typography>Do you read Qur’an</Typography>
+      <Checkbox sx={{top:-8}} color="secondary" />
+      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
