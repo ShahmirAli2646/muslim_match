@@ -223,7 +223,7 @@ const ProfessionForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What is your level of education</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={myeducationImp} onChange={handleMyEducationChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select

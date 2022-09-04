@@ -17,6 +17,9 @@ const getpartialMatches = (userId , page) => {
   const getuserProfile = (userId) => {
     return axios.get(API_URL + "myprofile/"+userId);
   };
+  const getuserImportants = (userId) => {
+    return axios.get(API_URL + "get-important-questions/"+userId);
+  };
   const getuser = (userId) => {
     return axios.get(API_URL + "user/"+userId);
   };
@@ -62,5 +65,6 @@ export default {
     viewUserProfile,
     likeUserProfile,
     getLikes,
-    submitImportantData
+    submitImportantData,
+    getuserImportants
 };

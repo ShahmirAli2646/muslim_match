@@ -17,7 +17,7 @@ const {totalMembers , chartResponse , memberCards , getUser , getTotalMatches , 
 const {viewProfile} = require("./controllers/viewProfileController")
 const {likeProfile} = require("./controllers/likeProfileController")
 const {Likes} = require('./controllers/likesController')
-const {submitImportants} = require('./controllers/importantsController')
+const {submitImportants , FetchUserImportants} = require('./controllers/importantsController')
 
 const app = express();
 
@@ -53,6 +53,7 @@ app.get('/adminDashboard/ActivityPanel' , activityPanelResponse)
 app.get('/adminDashboard/ChartResponse' , chartResponse)
 app.get('/adminDashboard/MemberCards' , memberCards)
 app.get('/adminDashboard/Users/:user' , getUser)
+app.get('/get-important-questions/:user' , FetchUserImportants )
 
 app.get('/testMe' , async(req , res)=>{
   try{

@@ -45,6 +45,7 @@ const Forms = ()=>{
 
         const [age, setAge] = React.useState('');
         const [data , setData] = React.useState()
+        const [important , setImportant] = React.useState()
       
         const handleChange = (event) => {
           setAge(event.target.value);
@@ -61,8 +62,12 @@ const Forms = ()=>{
         React.useEffect(async() => {
           const user = JSON.parse(localStorage.getItem("user"));
           const resForm = await userService.getuserProfile(user?._id)
+          const resImportant = await userService.getuserImportants(user?._id)
           console.log('my response data' , resForm.data)
+          console.log('my importants data' , resImportant)
           setData(resForm.data)
+          setImportant(resImportant.data)
+          
         },[]);
        
     const Sections = [
@@ -137,23 +142,23 @@ const Forms = ()=>{
               {data!==undefined && (
                     <div style={{maxWidth:800}}>
                     {item.title==='Start'?
-                    ( <StartForm data={data}/>  ):
+                    ( <StartForm data={data} important={important}/>  ):
                     item.title==='Appearance'?
-                    (<AppearanceForm  data={data}/>):
+                    (<AppearanceForm  data={data} important={important}/>):
                     item.title==='LifeStyle'?
-                    (<LifeStyleForm  data={data}/>):
+                    (<LifeStyleForm  data={data} important={important} />):
                     item.title==='Profession'?
-                    (<ProfessionForm  data={data}/>):
+                    (<ProfessionForm  data={data} important={important} />):
                     item.title==='Family'?
-                    (<FamilyRelationsForm  data={data}/>):
+                    (<FamilyRelationsForm  data={data} important={important} />):
                     item.title==='Finish'?
-                    (<FinishForm  data={data}/>):
+                    (<FinishForm  data={data} important={important} />):
                     item.title==='Deen'?
-                    (<DeenForm  data={data}/>):
+                    (<DeenForm  data={data} important={important} />):
                     item.title==='Basics'?
-                    (<BasicsForm  data={data}/>):
+                    (<BasicsForm  data={data} important={important} />):
                     item.title==='Friendships'?
-                    (<FriendShipsForm  data={data}/>):null
+                    (<FriendShipsForm  data={data} important={important} />):null
                     
                 }
                 </div>

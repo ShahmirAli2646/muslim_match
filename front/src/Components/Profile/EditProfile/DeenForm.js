@@ -77,6 +77,7 @@ const DeenForm = ({data , important}) => {
     setCurrentStudyChange(data.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails)
     setArabicChange(data.CanyoureadandorunderstandanyArabic)
     setMemorizedQuran(data.MemorizedanyQuranifsohowmuch)
+    setFollowings(data.followingforspouse)
   }
    } , [data])
   const dispatch = useDispatch();
@@ -107,6 +108,7 @@ const DeenForm = ({data , important}) => {
     setCurrentStudyChangeImp(important.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails)
     setArabicChangeImp(important.CanyoureadandorunderstandanyArabic)
     setMemorizedQuranImp(important.MemorizedanyQuranifsohowmuch)
+    setFollowingsImp(important.followingforspouse)
   }
    } , [important])
   React.useEffect(()=>{
