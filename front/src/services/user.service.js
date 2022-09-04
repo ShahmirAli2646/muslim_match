@@ -24,7 +24,6 @@ const getpartialMatches = (userId , page) => {
     return axios.get(API_URL + "my-matches/potential-matches/"+userId + "/"+page);
   };
 const submitProfileData = (formdata) => {
-    toast('data submitted successfully')
     return axios
     .post(API_URL + "submit-profile-data", 
       formdata

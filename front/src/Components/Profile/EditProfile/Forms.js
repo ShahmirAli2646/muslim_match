@@ -33,12 +33,14 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import {FinishAndSubmitForm} from '../../../actions/formActions'
 import userService from '../../../services/user.service';
+import { FinishAndSubmitFormImp } from '../../../actions/importantActions';
 
 
 
 
 const Forms = ()=>{
   const formData = useSelector(state => state.forms)
+  const checkData = useSelector(state => state.important)
   const Dispatch = useDispatch();
 
         const [age, setAge] = React.useState('');
@@ -49,16 +51,18 @@ const Forms = ()=>{
         }
         React.useEffect(()=>{
              console.log('formdata' , formData)
+             console.log('checkData' , checkData)
         })
 
         const SubmitHandler = ()=>{
            Dispatch(FinishAndSubmitForm(formData))
+           Dispatch(FinishAndSubmitFormImp(checkData))
         }
         React.useEffect(async() => {
           const user = JSON.parse(localStorage.getItem("user"));
-          const res = await userService.getuserProfile(user?._id)
-          console.log('my response data' , res.data)
-          setData(res.data)
+          const resForm = await userService.getuserProfile(user?._id)
+          console.log('my response data' , resForm.data)
+          setData(resForm.data)
         },[]);
        
     const Sections = [

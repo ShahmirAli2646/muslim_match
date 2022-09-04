@@ -116,16 +116,16 @@ const ProfessionForm = ({data , important}) => {
   }
 
   const handleWifeProfessionChangeImp = (event) => {
-    setWifeProfessionImp(event.target.value);
+    setWifeProfessionImp(event.target.checked);
   }
   const handleMyEducationChangeImp = (event) => {
-    setMyEducationImp(event.target.value);
+    setMyEducationImp(event.target.checked);
   }
   const handleHusbandProfessionChangeImp = (event) => {
-    setHusbandProfessionImp(event.target.value);
+    setHusbandProfessionImp(event.target.checked);
   }
   const handlePartnerEducationChangeImp = (event) => {
-    setPartnerEducationImp(event.target.value);
+    setPartnerEducationImp(event.target.checked);
   }
 
 
@@ -133,7 +133,7 @@ const ProfessionForm = ({data , important}) => {
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Stack direction="row" justifyContent={'space-between'}>
       <Typography>Which profession status describe what you want your future wife to have (select all that apply)</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={wifeprofessionImp} onChange={handleWifeProfessionChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       
       <br></br>
@@ -157,7 +157,7 @@ const ProfessionForm = ({data , important}) => {
       <br></br>
       <Stack direction="row" justifyContent={'space-between'}>
       <Typography>Which profession status/s describe what you want your future husband to have (select all that apply)</Typography>
-      <Checkbox sx={{ top:-8 }} color="secondary" />
+      <Checkbox checked={husbandprofessionImp} onChange={handleHusbandProfessionChangeImp} sx={{ top:-8 }} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -191,7 +191,7 @@ const ProfessionForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>The minimum level of education you want your marriage partner to have completed</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={partnereducationImp} onChange={handlePartnerEducationChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
 
@@ -214,7 +214,7 @@ const ProfessionForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What is your profession</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={myprofessionImp} onChange={(event)=>{setMyProfessionImp(event.target.checked)}} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <TextField value={myprofession} onChange={(event) => {

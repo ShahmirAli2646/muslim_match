@@ -468,7 +468,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Which marital status match with what you are looking for (Select all that apply)</Typography>
-      <Checkbox checked={menmaritalstatusImp} onChange={handleMenMaritalStatusChange} sx={{top:-8}} color="secondary" />
+      <Checkbox checked={menmaritalstatusImp} onChange={handleMenMaritalStatusChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -496,7 +496,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>- Which marital status match with what you are looking for (Select all that apply)</Typography>
-      <Checkbox checked={womenmaritalstatus} onChange={handleWomenMaritalStatusChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox checked={womenmaritalstatusImp} onChange={handleWomenMaritalStatusChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -640,7 +640,7 @@ const BasicsForm = ({data , important}) => {
       <Typography>
         Do you have specific requirements with regards to the ethnicity of a future marriage partner?
       </Typography>
-      <Checkbox checked={partnerethnicityImp} onChange={handlePartnerCountryChangeHandlerImp} sx={{top:-8}} color="secondary" />
+      <Checkbox checked={partnerethnicityImp} onChange={handlePartnerEthnicityChangeHandlerImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <MYSelect options={options} value={partnerethnicity} onChange={handlePartnerEthnicityChangeHandler } />
@@ -757,7 +757,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you pray all of the 5 daily prayers</Typography>
-      <Checkbox checked={dailyprayers} onChange={handleDailyPrayerChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox checked={dailyprayersImp} onChange={handleDailyPrayerChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select

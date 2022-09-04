@@ -206,7 +206,6 @@ import {
       return UserService.submitImportantData(formdata).then(
         (response) => {
           console.log('response' , response)
-          toast('form submitted succesfully')
           return Promise.resolve();
         },
         (error) => {

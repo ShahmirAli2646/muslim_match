@@ -90,16 +90,16 @@ const FamilyRelationsForm = ({data , important}) => {
   }
 
   const handleFamilyReligiousChangeImp = (event) => {
-    setFamilyReligiousImp(event.target.value);
+    setFamilyReligiousImp(event.target.checked);
   }
   const handleFamilySectChangeImp = (event) => {
-    setFamilySectImp(event.target.value);
+    setFamilySectImp(event.target.checked);
   }
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Are your family religious</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={familyreligiousImp} onChange={handleFamilyReligiousChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
 
@@ -119,7 +119,7 @@ const FamilyRelationsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What sect/following of Islam are your family practising</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={familysectImp} onChange={handleFamilySectChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
