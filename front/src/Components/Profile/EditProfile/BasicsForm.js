@@ -300,86 +300,86 @@ const BasicsForm = ({data , important}) => {
 
   const handleMinAgeChangeImp = (event) => {
     console.log('minage' , event )
-    setMinAgeImp(event.value);
+    setMinAgeImp(event.target.checked);
   }
-  const handleYourCityChangeHandlerImp = value => {
-    setYourCityImp(value)
+  const handleYourCityChangeHandlerImp = (event) => {
+    setYourCityImp(event.target.checked)
   }
-  const handleYourCitizenshipChangeHandlerImp = value => {
-    setYourCitizenshipImp(value)
+  const handleYourCitizenshipChangeHandlerImp = (event) => {
+    setYourCitizenshipImp(event.target.checked)
   }
-  const handleYourCountryChangeHandlerImp = value => {
-    setYourCountryImp(value)
+  const handleYourCountryChangeHandlerImp = (event) => {
+    setYourCountryImp(event.target.checked)
   }
-  const handlePartnerCountryChangeHandlerImp = value => {
-    setPartnerCountryImp(value)
+  const handlePartnerCountryChangeHandlerImp = (event) => {
+    setPartnerCountryImp(event.target.checked)
   }
-  const handlePartnerEthnicityChangeHandlerImp = value => {
-    setPartnerEthnicityImp(value)
+  const handlePartnerEthnicityChangeHandlerImp = (event) => {
+    setPartnerEthnicityImp(event.target.checked)
   }
   const handleMyMentalHealthChangeImp = (event) => {
-    setMyMentalHealthImp(event.target.value);
+    setMyMentalHealthImp(event.target.checked);
   }
   const handleRelocateChangeImp = (event) => {
-    setRelocateImp(event.target.value);
+    setRelocateImp(event.target.checked);
   }
   const handleMyChildrenChangeImp = (event) => {
-    setMyChildrenImp(event.target.value);
+    setMyChildrenImp(event.target.checked);
   }
   const handleWantChildrenChangeImp = (event) => {
-    setWantChildrenImp(event.target.value);
+    setWantChildrenImp(event.target.checked);
   }
   const handleRevertConvertChangeImp = (event) => {
-    setRevertConvertImp(event.target.value);
+    setRevertConvertImp(event.target.checked);
   }
   const handleMyDisabiltyChangeImp = (event) => {
-    setMyDisabilityImp(event.target.value);
+    setMyDisabilityImp(event.target.checked);
   }
   const handleLivingChangeImp = (event) => {
-    setLivingImp(event.target.value);
+    setLivingImp(event.target.checked);
   }
   const handleCoverHairChangeImp = (event) => {
-    setCoverHairImp(event.target.value);
+    setCoverHairImp(event.target.checked);
   }
   const handleDailyPrayerChangeImp = (event) => {
-    setDailyPrayerImp(event.target.value);
+    setDailyPrayerImp(event.target.checked);
   }
   const handleConsiderChangeImp = (event) => {
-    setConsiderImp(event.target.value);
+    setConsiderImp(event.target.checked);
   }
   const handleFemaleMaritalStatusChangeImp = (event) => {
-    setFemaleMaritalStatusImp(event.target.value);
+    setFemaleMaritalStatusImp(event.target.checked);
   }
   const handleMaleMaritalStatusChangeImp = (event) => {
-    setMaleMaritalStatusImp(event.target.value);
+    setMaleMaritalStatusImp(event.target.checked);
   }
   const handleMaxAgeChangeImp = (event) => {
-    setMaxAgeImp(event.value);
+    setMaxAgeImp(event.target.checked);
   }
   const handleRevertChangeImp = (event) => {
-    setRevertImp(event.target.value);
+    setRevertImp(event.target.checked);
   }
   const handleMarriageConsiderChangeImp = (event) => {
-    setMarriageConsiderImp(event.target.value);
+    setMarriageConsiderImp(event.target.checked);
   }
   const handleDisabiltyChangeImp = (event) => {
-    setDisabiltyImp(event.target.value);
+    setDisabiltyImp(event.target.checked);
   }
   const handleMentalHealthChangeImp = (event) => {
-    setMentalHealthImp(event.target.value);
+    setMentalHealthImp(event.target.checked);
   }
   const handleChildrenConsiderChangeImp = (event) => {
-    setChildrenConsiderImp(event.target.value);
+    setChildrenConsiderImp(event.target.checked);
   }
   const handleHijabTypeChangeImp = (event) => {
     
-    setHijabTypeImp(event.target.value);
+    setHijabTypeImp(event.target.checked);
   };
   const handleMenMaritalStatusChangeImp = (event) => {
-    setMenMaritalStatusImp(event.target.value);
+    setMenMaritalStatusImp(event.target.checked);
   };
   const handleWomenMaritalStatusChangeImp = (event) => {
-    setWomenMaritalStatusImp(event.target.value );
+    setWomenMaritalStatusImp(event.target.checked );
   };
 
 
@@ -418,7 +418,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What type of hijab matches with what you're looking for in a wife (Tick all that apply)</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={hijabtypeImp} onChange={handleHijabTypeChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -448,7 +448,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you consider marrage to a Muslima who does not wear Niqaab? (this only gets asked if Niqaab is selected</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={considerImp} onChange={handleConsiderChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -468,7 +468,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Which marital status match with what you are looking for (Select all that apply)</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={menmaritalstatusImp} onChange={handleMenMaritalStatusChange} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -496,7 +496,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>- Which marital status match with what you are looking for (Select all that apply)</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={womenmaritalstatus} onChange={handleWomenMaritalStatusChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -523,7 +523,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography> Would you consider marrying someone who is already married</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={marriageconsiderImp} onChange={handleMarriageConsiderChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -553,7 +553,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you marry someone who already has children</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={childrenconsiderImp} onChange={handleChildrenConsiderChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -579,7 +579,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you marry someone who had mental health problems</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={mentalhealthImp} onChange={handleMentalHealthChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -605,7 +605,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you marry someone who had physical disabilities</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={disabilityImp} onChange={handleDisabiltyChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -631,7 +631,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Which countries would you prefer your marriage partner to hold citizenship</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={partnercountriesImp} onChange={handlePartnerCountryChangeHandlerImp}  sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <MYSelect options={options} value={partnercountries} onChange={handlePartnerCountryChangeHandler } />
@@ -640,7 +640,7 @@ const BasicsForm = ({data , important}) => {
       <Typography>
         Do you have specific requirements with regards to the ethnicity of a future marriage partner?
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={partnerethnicityImp} onChange={handlePartnerCountryChangeHandlerImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <MYSelect options={options} value={partnerethnicity} onChange={handlePartnerEthnicityChangeHandler } />
@@ -650,7 +650,7 @@ const BasicsForm = ({data , important}) => {
         What is your preference when it comes to marrying a Muslim who found Islam later on in
         life (a revert/covert to Islam)
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={revertImp} onChange={handleRevertChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -757,7 +757,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you pray all of the 5 daily prayers</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={dailyprayers} onChange={handleDailyPrayerChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -787,7 +787,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you cover your hair from non-mahrams</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={coverhairImp} onChange={handleCoverHairChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -816,7 +816,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What are your preferred living arrangements after marriage</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={livingImp} onChange={handleLivingChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -839,7 +839,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you have any physical disabilities</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={mydisabiltyImp} onChange={handleMyDisabiltyChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -862,7 +862,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you have any mental health problems</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={mymentalhealthImp} onChange={handleMyMentalHealthChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -885,7 +885,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you have any children</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={mychildrenImp} onChange={handleMyChildrenChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -923,7 +923,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you want children after marriage</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={wantchildrenImp} onChange={handleWantChildrenChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -953,7 +953,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Are you willing to relocate after marriage</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={relocateImp} onChange={handleRelocateChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -979,7 +979,7 @@ const BasicsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Did you revert/convert to Islam</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
+      <Checkbox checked={revertconvertImp} onChange={handleRevertConvertChangeImp} sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
