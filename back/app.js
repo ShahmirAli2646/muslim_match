@@ -41,10 +41,10 @@ app.post("/submit-profile-data",ProfileSubmit.submitProfile );
 app.post("/submit-important-data",submitImportants );
 app.post("/view-user-profile" , viewProfile)
 app.post("/like-user-profile" , likeProfile)
-app.get('/my-matches/full-matches/:userId/:page',FullMatches.FullMatches);
-app.get('/my-matches/partial-matches/:userId/:page',PartialMatches );
+app.get('/my-matches/full-matches/:userId/:page/:important',FullMatches.FullMatches);
+app.get('/my-matches/partial-matches/:userId/:page/:important',PartialMatches );
 app.get('/my-likes/likes/:userId/:page', Likes );
-app.get('/my-matches/potential-matches/:userId/:page',PotentialMatches.PotentialMatches);
+app.get('/my-matches/potential-matches/:userId/:page/:important',PotentialMatches.PotentialMatches);
 app.get('/adminDashboard/TotalMembers' , totalMembers)
 app.get('/adminDashboard/TotalMatches' , getTotalMatches)
 app.get('/adminDashboard/TotalLikes' , getTotalLikes)
