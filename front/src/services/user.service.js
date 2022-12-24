@@ -5,14 +5,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const API_URL = "https://muslim-match-api.herokuapp.com/";
 
 
-const getfullMatches = (userId , page , important) => {
-  return axios.get(API_URL + "my-matches/full-matches/"+userId + "/"+page +"/"+important);
+const getfullMatches = (userId , page) => {
+  return axios.get(API_URL + "my-matches/full-matches/"+userId + "/"+page);
 };
 const getLikes = (userId , page) => {
   return axios.get(API_URL + "my-likes/likes/"+userId + "/"+page);
 };
-const getpartialMatches = (userId , page , important) => {
-    return axios.get(API_URL + "my-matches/partial-matches/"+userId + "/"+page+"/"+important);
+const getpartialMatches = (userId , page) => {
+    return axios.get(API_URL + "my-matches/partial-matches/"+userId + "/"+page);
   };
   const getuserProfile = (userId) => {
     return axios.get(API_URL + "myprofile/"+userId);
@@ -23,8 +23,8 @@ const getpartialMatches = (userId , page , important) => {
   const getuser = (userId) => {
     return axios.get(API_URL + "user/"+userId);
   };
-  const getpotentialMatches = (userId , page , important) => {
-    return axios.get(API_URL + "my-matches/potential-matches/"+userId + "/"+page+"/"+important);
+  const getpotentialMatches = (userId , page) => {
+    return axios.get(API_URL + "my-matches/potential-matches/"+userId + "/"+page);
   };
 const submitProfileData = (formdata) => {
     return axios

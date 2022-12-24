@@ -8,13 +8,3 @@
       display: none;
     }
   }
-  .button-label {
-    background: rgb(255, 74, 131) !important;
-    color: rgb(255, 255, 255) !important;
-    text-transform: capitalize !important;
-    border-radius: 20px !important;
-    box-shadow: rgb(0 0 0 / 30%) 0px 2px 13px 0px !important;
-    border: 2px solid !important;
-    width: 158px !important;
-    margin-bottom: 20px !important;
-  }
