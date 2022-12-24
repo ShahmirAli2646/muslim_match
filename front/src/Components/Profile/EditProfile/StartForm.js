@@ -94,14 +94,6 @@ const StartForm = ({data , important}) => {
   const handleGenderChange = (event) => {
     setGender(event.target.value);
   }
-
-  const handlePurposeChangeImp = (event) => {
-
-    setPurposeImp(event.target.value);
-  }
-  const handleGenderChangeImp = (event) => {
-    setGenderImp(event.target.value);
-  }
  
 
   return (

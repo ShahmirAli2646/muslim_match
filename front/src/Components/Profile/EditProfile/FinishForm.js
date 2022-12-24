@@ -97,20 +97,6 @@ const FinishForm = ({data , important}) => {
   const handleSuggestionsChange = (event) => {
     setSuggestions(event.target.value);
   }
-
-
-  const handleAddInformationChangeImp = (event) => {
-    setAddInformationImp(event.target.value);
-  }
-  const handleNewsChangeImp = (event) => {
-    setNewsImp(event.target.value);
-  }
-  const handleHusbandRoleChangeImp = (event) => {
-    setHusbandRoleImp(event.target.value);
-  }
-  const handleSuggestionsChangeImp = (event) => {
-    setSuggestionsImp(event.target.value);
-  }
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Typography>What do you believe the role of the husband is? What do you believe the role of the

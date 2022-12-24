@@ -112,19 +112,6 @@ const ProfessionForm = ({data , important}) => {
     setPartnerEducation(event.target.value);
   }
 
-  const handleWifeProfessionChangeImp = (event) => {
-    setWifeProfessionImp(event.target.value);
-  }
-  const handleMyEducationChangeImp = (event) => {
-    setMyEducationImp(event.target.value);
-  }
-  const handleHusbandProfessionChangeImp = (event) => {
-    setHusbandProfessionImp(event.target.value);
-  }
-  const handlePartnerEducationChangeImp = (event) => {
-    setPartnerEducationImp(event.target.value);
-  }
-
 
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>

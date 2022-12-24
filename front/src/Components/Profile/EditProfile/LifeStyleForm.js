@@ -224,48 +224,6 @@ const LifeStyleForm = ({data , important}) => {
     );
   };
 
-
-
-  const handleHaramChangeImp = (event) => {
-    
-    setHaramImp(event.target.value);
-  };
-  const handleNonMahramWomenClothingChangeImp = (event) => {
-    
-    setNonMahramWomenClothingImp(event.target.value);
-  };
-  const handleNonMahramMenClothingChangeImp = (event) => {
-    setNonMahramMenClothingImp(event.target.value);
-  };
-  const handleMakeUpChangeImp = (event) => {
-    setMakeUpImp(event.target.value);
-  }
-  const handleTVChangeImp = (event) => {
-    setTVImp(event.target.value);
-  }
-  const handleMusicChangeImp = (event) => {
-    setMusicImp(event.target.value);
-  }
-  const handleNonMahramMakeUpChangeImp = (event) => {
-    setNonMahramMakeupImp(event.target.value);
-  }
-  const handleNonMahramWomenChangeImp = (event) => {
-    setNonMahramWomenImp(event.target.value);
-  }
-  const handleNonMahramMenChangeImp = (event) => {
-    setNonMahramMenImp(event.target.value);
-  }
-  const handleBeardChangeImp = (event) => {
-   
-    setBeardImp(event.target.value );
-  };
-  const handleWomenClothingChangeImp = (event) => {
-    setWomenClothingImp(event.target.value);
-  };
-  const handleMenClothingChangeImp = (event) => {
-    setMenClothingImp(event.target.value );
-  };
-
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Typography>What style of men's clothing would you prefer your future husband wear when around non

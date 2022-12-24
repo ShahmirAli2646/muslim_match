@@ -154,47 +154,6 @@ const DeenForm = ({data , important}) => {
   const handleQuranChange = (event) => {
     setQuran(event.target.value);
   }
-
-
-
-
-  const handleArabicChangeImp = (event) => {
-    setArabicChangeImp(event.target.value);
-  }
-  const handleMemorizedQuranChangeImp = (event) => {
-    setMemorizedQuranImp(event.target.value);
-  }
-
-  const handleFollowingsChangeImp = (event) => {
-    setFollowingsImp(event.target.value);
-  };
-  const handleCurrentStudyChangeImp = (event) => {
-    setCurrentStudyChangeImp(event.target.value);
-  }
-  const handleSectChangeImp = (event) => {
-    setSectImp(event.target.value);
-  }
-  const handleScholarChangeImp = (event) => {
-    setScholarChangeImp(event.target.value);
-  }
-  const handleIslamicStudyingChangeImp = (event) => {
-    setIslamicStudingImp(event.target.value);
-  }
-  const handlePrayerChangeImp = (event) => {
-    setPrayersImp(event.target.value);
-  }
-  const handleDuaChangeImp = (event) => {
-    setDuaImp(event.target.value);
-  }
-  const handleHijraChangeImp = (event) => {
-    setHijraImp(event.target.value);
-  }
-  const handleFastChangeImp = (event) => {
-    setFastImp(event.target.value);
-  }
-  const handleQuranChangeImp = (event) => {
-    setQuranImp(event.target.value);
-  }
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Typography>

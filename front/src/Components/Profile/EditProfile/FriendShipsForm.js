@@ -111,13 +111,6 @@ const FriendShipsForm = ({data , important}) => {
   const handleFreeMixMenChange = (event) => {
     setFreeMixMen(event.target.value);
   }
-
-  const handleFreeMixWomenChangeImp = (event) => {
-    setFreeMixWomenImp(event.target.value);
-  }
-  const handleFreeMixMenChangeImp = (event) => {
-    setFreeMixMenImp(event.target.value);
-  }
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Typography>Do you spend a lot of time with friends What activities do you do with your friends</Typography>
