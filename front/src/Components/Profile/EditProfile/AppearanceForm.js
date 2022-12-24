@@ -106,7 +106,6 @@ const AppearanceForm = ({data ,important}) => {
       setEthnicityImp(important.Whatisyourethnicity)}
      } , [important])
     React.useEffect(()=>{
-      console.log('changed')
       dispatch(SubmitAppearanceFormImp(shortestheightImp, tallestheightImp, waistImp, smallestdressImp,
         largestdressImp, buildImp, myheightImp, mydressImp,
         mywaistImp, mybuildImp, beardImp, ethnicityImp))
@@ -154,41 +153,40 @@ const AppearanceForm = ({data ,important}) => {
 
 
   const handleShortestHeightChangeImp = (event) => {
-    console.log('checkboxevent' , event)
-    setShortestHeightImp(event.target.checked);
+    setShortestHeightImp(event.target.value);
   }
   const handleWaistChangeImp = (event) => {
-    setWaistImp(event.target.checked);
+    setWaistImp(event.target.value);
   }
   const handleBeardChangeImp = (event) => {
-    setBeardImp(event.target.checked);
+    setBeardImp(event.target.value);
   }
   const handleEthnicityChangeImp = (event) => {
-    setEthnicityImp(event.target.checked);
+    setEthnicityImp(event.target.value);
   }
   const handleMyWaistChangeImp = (event) => {
-    setMyWaistImp(event.target.checked);
+    setMyWaistImp(event.target.value);
   }
   const handleMyDressChangeImp = (event) => {
-    setMyDressImp(event.target.checked);
+    setMyDressImp(event.target.value);
   }
   const handleMyHeightChangeImp = (event) => {
-    setMyHeightImp(event.target.checked);
+    setMyHeightImp(event.target.value);
   }
   const handleBuildChangeImp = (event) => {
-    setBuildImp(event.target.checked);
+    setBuildImp(event.target.value);
   }
   const handleMyBuildChangeImp = (event) => {
-    setMyBuildImp(event.target.checked);
+    setMyBuildImp(event.target.value);
   }
   const handleSmallestDressChangeImp = (event) => {
-    setSmallestDress(event.target.checked);
+    setSmallestDress(event.target.value);
   }
   const handleLargestDressChangeImp = (event) => {
-    setLargestDressImp(event.target.checked);
+    setLargestDressImp(event.target.value);
   }
   const handleTallestHeightChangeImp = (event) => {
-    setTallestHeightImp(event.target.checked);
+    setTallestHeightImp(event.target.value);
   }
 
 
@@ -199,7 +197,7 @@ const AppearanceForm = ({data ,important}) => {
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What is the shortest height you find compatible</Typography>
-      <Checkbox checked={shortestheightImp} onChange={handleShortestHeightChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
 
@@ -245,7 +243,7 @@ const AppearanceForm = ({data ,important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What's the tallest height you find compatible?</Typography>
-      <Checkbox checked={tallestheightImp} onChange={handleTallestHeightChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
 
@@ -291,7 +289,7 @@ const AppearanceForm = ({data ,important}) => {
       <br></br>
        <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What is your preference when it comes to the waist size of your future husband insha'Allah (in inches)</Typography>
-      <Checkbox checked={waistImp} onChange={handleWaistChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -329,7 +327,7 @@ const AppearanceForm = ({data ,important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Smallest dress size that meets your requirements for a wife</Typography>
-      <Checkbox checked={smallestdressImp} onChange={handleSmallestDressChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -365,7 +363,7 @@ const AppearanceForm = ({data ,important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Largest dress size that meets your requirements for a wife</Typography>
-      <Checkbox checked={largestdressImp} onChange={handleLargestDressChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -405,7 +403,7 @@ const AppearanceForm = ({data ,important}) => {
       <Typography>
         Which build matches your preference
       </Typography>
-      <Checkbox checked={buildImp} onChange={handleBuildChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -583,7 +581,7 @@ const AppearanceForm = ({data ,important}) => {
       <Typography>
         What is your ethnicity
       </Typography>
-      <Checkbox checked={ethnicityImp} onChange={handleEthnicityChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
