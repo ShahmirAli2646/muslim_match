@@ -30,12 +30,6 @@ const submitProfileData = (formdata) => {
       formdata
     )
     };
-    const submitImportantData = (formdata) => {
-      return axios
-      .post(API_URL + "submit-important-data", 
-        formdata
-      )
-      };
 
  const viewUserProfile = (formdata) => {
     toast('Welcome to profile')
@@ -62,6 +56,5 @@ export default {
     getuser,
     viewUserProfile,
     likeUserProfile,
-    getLikes,
-    submitImportantData
+    getLikes
 };

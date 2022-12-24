@@ -28,11 +28,10 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitDeenForm } from '../../../actions/formActions';
-import { SubmitDeenFormImp } from '../../../actions/importantActions';
 
 
 
-const DeenForm = ({data , important}) => {
+const DeenForm = ({data}) => {
 
   const [followings, setFollowings] = React.useState([]);
   const [sect, setSect] = React.useState('');
@@ -46,20 +45,6 @@ const DeenForm = ({data , important}) => {
   const [currentstudy, setCurrentStudyChange] = React.useState('');
   const [arabic, setArabicChange] = React.useState('');
   const [memorizedquran, setMemorizedQuran] = React.useState('');
-
-
-  const [followingsImp, setFollowingsImp] = React.useState(false);
-  const [sectImp , setSectImp] = React.useState(false);
-  const [prayersImp, setPrayersImp] = React.useState(false);
-  const [duaImp, setDuaImp] = React.useState(false);
-  const [hijraImp, setHijraImp] = React.useState(false);
-  const [fastImp, setFastImp] = React.useState(false);
-  const [quranImp, setQuranImp] = React.useState(false);
-  const [islamicstudyingImp, setIslamicStudingImp] = React.useState(false);
-  const [scholarsImp, setScholarChangeImp] = React.useState(false);
-  const [currentstudyImp, setCurrentStudyChangeImp] = React.useState(false);
-  const [arabicImp, setArabicChangeImp] = React.useState(false);
-  const [memorizedquranImp, setMemorizedQuranImp] = React.useState(false);
   React.useEffect(()=>{
     if(data!==undefined && data!==null){
 
@@ -81,35 +66,6 @@ const DeenForm = ({data , important}) => {
   React.useEffect(()=>{
     dispatch(SubmitDeenForm(followings , islamicstudying, sect ,scholars, currentstudy,prayers , dua,hijra ,fast, arabic ,  quran , memorizedquran ))
   } , [followings , islamicstudying, sect ,scholars, currentstudy,prayers , dua,hijra ,fast, arabic ,  quran , memorizedquran ])
-
-
-
-
-
-
-
-
-
-  React.useEffect(()=>{
-    if(important!==undefined && important!==null){
-
-    
-    setSectImp(important.TheIslamicteachingssectthatyoufollow)
-    setPrayersImp(important.Howmanyofthe5prayersadaydoyouusuallyprayinthemasjid)
-    setDuaImp(important.DoyoumakeduaTOtheProphetSAWorduatopirsorsaintsthereisstrongevidencethatthistypeofduaissinfulshirk)
-    setHijraImp(important.DoyouwanttomakehijraonedayinshaAllah)
-    setFastImp(important.DoyouvoluntaryFast)
-    setQuranImp(important.DoyoureadQuran)
-    setIslamicStudingImp(important.WhattypeandlevelofIslamicstudyingwouldyouwantamarriagematchtohavecompleted)
-    setScholarChangeImp(important.Whichscholarsdoyoutakeknowledgefrom)
-    setCurrentStudyChangeImp(important.AreyoucurrentlystudyingIslamorhaveyouinthepastDoyouhavetheintentiontostudyIslamicstudiesinthefutureIfyestoanyofthesequestionspleaseprovidedetails)
-    setArabicChangeImp(important.CanyoureadandorunderstandanyArabic)
-    setMemorizedQuranImp(important.MemorizedanyQuranifsohowmuch)
-  }
-   } , [important])
-  React.useEffect(()=>{
-    dispatch(SubmitDeenFormImp(followingsImp , islamicstudyingImp, sectImp ,scholarsImp, currentstudyImp,prayersImp , duaImp,hijraImp ,fastImp, arabicImp ,  quranImp , memorizedquranImp ))
-  } , [followingsImp , islamicstudyingImp, sectImp ,scholarsImp, currentstudyImp,prayersImp , duaImp,hijraImp ,fastImp, arabicImp ,  quranImp , memorizedquranImp ])
   
   const handleArabicChange = (event) => {
     setArabicChange(event.target.value);

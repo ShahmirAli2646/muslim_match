@@ -17,7 +17,6 @@ const {totalMembers , chartResponse , memberCards , getUser , getTotalMatches , 
 const {viewProfile} = require("./controllers/viewProfileController")
 const {likeProfile} = require("./controllers/likeProfileController")
 const {Likes} = require('./controllers/likesController')
-const {submitImportants} = require('./controllers/importantsController')
 
 const app = express();
 
@@ -38,7 +37,6 @@ app.get('/user/:userId' , async (req, res) => {
 
 },)
 app.post("/submit-profile-data",ProfileSubmit.submitProfile );
-app.post("/submit-important-data",submitImportants );
 app.post("/view-user-profile" , viewProfile)
 app.post("/like-user-profile" , likeProfile)
 app.get('/my-matches/full-matches/:userId/:page',FullMatches.FullMatches);

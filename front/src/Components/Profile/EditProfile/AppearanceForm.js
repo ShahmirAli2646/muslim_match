@@ -24,7 +24,6 @@ import { useState } from 'react';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
-import Checkbox from '@mui/material';
 import {
 
   APPEARANCE_FORM,
@@ -32,12 +31,9 @@ import {
 } from "../../../actions/types";
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitAppearanceForm } from '../../../actions/formActions';
-import { SubmitAppearanceFormImp } from '../../../actions/importantActions';
 
 
-
-
-const AppearanceForm = ({data ,important}) => {
+const AppearanceForm = ({data}) => {
   const [shortestheight, setShortestHeight] = React.useState('');
   const [tallestheight, setTallestHeight] = React.useState('');
   const [myheight, setMyHeight] = React.useState('');
@@ -50,21 +46,10 @@ const AppearanceForm = ({data ,important}) => {
   const [mybuild, setMyBuild] = React.useState('');
   const [beard, setBeard] = React.useState('');
   const [ethnicity, setEthnicity] = React.useState('');
-
-  const [shortestheightImp, setShortestHeightImp] = React.useState(false);
-  const [tallestheightImp, setTallestHeightImp] = React.useState(false);
-  const [myheightImp, setMyHeightImp] = React.useState(false);
-  const [waistImp, setWaistImp] = React.useState(false);
-  const [mywaistImp, setMyWaistImp] = React.useState(false);
-  const [smallestdressImp, setSmallestDressImp] = React.useState(false);
-  const [largestdressImp, setLargestDressImp] = React.useState(false);
-  const [mydressImp, setMyDressImp] = React.useState(false);
-  const [buildImp, setBuildImp] = React.useState(false);
-  const [mybuildImp, setMyBuildImp] = React.useState(false);
-  const [beardImp, setBeardImp] = React.useState(false);
-  const [ethnicityImp, setEthnicityImp] = React.useState(false);
   React.useEffect(()=>{
     if(data!==undefined && data!==null){
+
+    
     setShortestHeight(data.Whatistheshortestheightyoufindcompatible)
     setTallestHeight(data.Whatsthetallestheightyoufindcompatible)
     setMyHeight(data.Whatisyourheight)
@@ -86,31 +71,6 @@ const AppearanceForm = ({data ,important}) => {
   } ,[shortestheight, tallestheight, waist, smallestdress,
     largestdress, build, myheight, mydress,
     mywaist, mybuild, beard, ethnicity] )
-
-
-
-    React.useEffect(()=>{
-      if(important!==undefined && important!==null){
-      setShortestHeightImp(important.Whatistheshortestheightyoufindcompatible)
-      setTallestHeightImp(important.Whatsthetallestheightyoufindcompatible)
-      setMyHeightImp(important.Whatisyourheight)
-      setWaistImp(important.WhatisyourpreferencewhenitcomestothewaistsizeofyourfuturehusbandinshaAllahininches)
-      setMyWaistImp(important.Yourwaistsizeininches)
-      setSmallestDressImp(important.Smallestdresssizethatmeetsyourrequirementsforawife)
-      setLargestDressImp(important.Largestdresssizethatmeetsyourrequirementsforawife)
-      setMyDressImp(important.Yourdresssize)
-      setBuildImp(important.Whichbuildmatchesyourpreference)
-      setMyBuildImp(important.Whichbuildbestdescribesyou)
-      setBeardImp(important.Whichstyleofbearddoyouhave)
-      setEthnicityImp(important.Whatisyourethnicity)}
-     } , [important])
-    React.useEffect(()=>{
-      dispatch(SubmitAppearanceFormImp(shortestheightImp, tallestheightImp, waistImp, smallestdressImp,
-        largestdressImp, buildImp, myheightImp, mydressImp,
-        mywaistImp, mybuildImp, beardImp, ethnicityImp))
-    } ,[shortestheightImp, tallestheightImp, waistImp, smallestdressImp,
-      largestdressImp, buildImp, myheightImp, mydressImp,
-      mywaistImp, mybuildImp, beardImp, ethnicityImp] )
   
 
   const handleShortestHeightChange = (event) => {

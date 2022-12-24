@@ -25,21 +25,16 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitFamilyRelationsForm } from '../../../actions/formActions';
-import { SubmitFamilyRelationsFormImp } from '../../../actions/importantActions';
 
-const FamilyRelationsForm = ({data , important}) => {
+const FamilyRelationsForm = ({data}) => {
   const [familyreligious, setFamilyReligious] = React.useState('');
   const [yourrelation, setYourRelation] = React.useState('');
   const [partnerrelation, setPartnerRelation] = React.useState('');
   const [familysect, setFamilySect] = React.useState('');
-
-
-  const [familyreligiousImp, setFamilyReligiousImp] = React.useState(false);
-  const [yourrelationImp, setYourRelationImp] = React.useState(false);
-  const [partnerrelationImp, setPartnerRelationImp] = React.useState(false);
-  const [familysectImp, setFamilySectImp] = React.useState(false);
   React.useEffect(()=>{
     if(data!==undefined && data!==null){
+
+    
     setFamilyReligious(data.Areyourfamilyreligious)
     setYourRelation(data.Howisyourrelationshipwithyourfamily)
     setPartnerRelation(data.WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah)
@@ -57,28 +52,6 @@ const FamilyRelationsForm = ({data , important}) => {
     familysect,
     yourrelation,
     partnerrelation])
-
-
-
-
-    React.useEffect(()=>{
-      if(important!==undefined && important!==null){
-      setFamilyReligiousImp(important.Areyourfamilyreligious)
-      setYourRelationImp(important.Howisyourrelationshipwithyourfamily)
-      setPartnerRelationImp(important.WhatmighttherelationshipbetweenyourfamilyandyournewmarriagepartnerbelikeinshaAllah)
-      setFamilySectImp(important.WhatsectfollowingofIslamareyourfamilypractising)
-      }
-     } , [important])
-    React.useEffect(()=>{
-      dispatch(SubmitFamilyRelationsFormImp(familyreligiousImp,
-        familysectImp,
-        yourrelationImp,
-        partnerrelationImp
-      ))
-    }, [familyreligiousImp,
-      familysectImp,
-      yourrelationImp,
-      partnerrelationImp])
   
   const handleFamilyReligiousChange = (event) => {
     setFamilyReligious(event.target.value);
