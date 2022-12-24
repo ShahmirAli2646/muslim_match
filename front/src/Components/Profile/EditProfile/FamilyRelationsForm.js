@@ -26,8 +26,6 @@ import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitFamilyRelationsForm } from '../../../actions/formActions';
 import { SubmitFamilyRelationsFormImp } from '../../../actions/importantActions';
-import Checkbox from '@mui/material/Checkbox';
-import Stack from '@mui/material/Stack';
 
 const FamilyRelationsForm = ({data , important}) => {
   const [familyreligious, setFamilyReligious] = React.useState('');
@@ -97,10 +95,7 @@ const FamilyRelationsForm = ({data , important}) => {
   }
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Are your family religious</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
 
       <Select
@@ -117,10 +112,7 @@ const FamilyRelationsForm = ({data , important}) => {
         <MenuItem value={'no'}>No</MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What sect/following of Islam are your family practising</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -141,7 +133,6 @@ const FamilyRelationsForm = ({data , important}) => {
       </Select>
       <br></br>
       <Typography>How is your relationship with your family</Typography>
-      
       <br></br>
 
       <TextField value={yourrelation} onChange={(event) => {

@@ -24,6 +24,7 @@ import { useState } from 'react';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
+import Checkbox from '@mui/material';
 import {
 
   APPEARANCE_FORM,
@@ -32,8 +33,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitAppearanceForm } from '../../../actions/formActions';
 import { SubmitAppearanceFormImp } from '../../../actions/importantActions';
-import Checkbox from '@mui/material/Checkbox';
-import Stack from '@mui/material/Stack';
 
 
 
@@ -195,10 +194,7 @@ const AppearanceForm = ({data ,important}) => {
 
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What is the shortest height you find compatible</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
 
       <Select
@@ -241,10 +237,7 @@ const AppearanceForm = ({data ,important}) => {
         <MenuItem value={"7’2” (218cm)"}>7’2” (218cm)</MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What's the tallest height you find compatible?</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
 
       <Select
@@ -287,10 +280,8 @@ const AppearanceForm = ({data ,important}) => {
         <MenuItem value={"7’2” (218cm)"}>7’2” (218cm)</MenuItem>
       </Select>
       <br></br>
-       <Stack direction={'row'} justifyContent={'space-between'}>
+
       <Typography>What is your preference when it comes to the waist size of your future husband insha'Allah (in inches)</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -325,10 +316,7 @@ const AppearanceForm = ({data ,important}) => {
 
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Smallest dress size that meets your requirements for a wife</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -361,10 +349,7 @@ const AppearanceForm = ({data ,important}) => {
         <MenuItem value={"40"}>40</MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Largest dress size that meets your requirements for a wife</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -399,12 +384,9 @@ const AppearanceForm = ({data ,important}) => {
 
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Which build matches your preference
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -577,12 +559,9 @@ const AppearanceForm = ({data ,important}) => {
 
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         What is your ethnicity
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"

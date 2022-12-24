@@ -28,8 +28,7 @@ import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitLifestyleForm } from '../../../actions/formActions';
 import { SubmitLifestyleFormImp } from '../../../actions/importantActions';
-import Checkbox from '@mui/material/Checkbox';
-import Stack from '@mui/material/Stack';
+
 
 
 const LifeStyleForm = ({data , important}) => {
@@ -269,11 +268,8 @@ const LifeStyleForm = ({data , important}) => {
 
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What style of men's clothing would you prefer your future husband wear when around non
         mahrams (i.e. when going to the shop or at work etc.) - Please select all that apply</Typography>
-        <Checkbox sx={{top:-8}} color="secondary" />
-        </Stack>
       <br></br>
 
       <Select
@@ -301,12 +297,9 @@ const LifeStyleForm = ({data , important}) => {
           doesn't wear what he want when in work but outside of working hours,wears Jubba or cultural clothing etc</MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         What style of women's clothing would you prefer your future wife to wear when around non-mahrams (i.e. when going to the shop, or park etc.) - Please select all that apply
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -336,10 +329,7 @@ const LifeStyleForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Which beard style/s meet your preferences</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -362,10 +352,7 @@ const LifeStyleForm = ({data , important}) => {
         <MenuItem value={"I do not mind"}>I do not mind</MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you want a wife who wears makeup in front of non-mahrams</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -386,11 +373,8 @@ const LifeStyleForm = ({data , important}) => {
           after marriage</MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'} >
       <Typography>Do you eat haram, drink alcohol, smoke cigarettes, smoke shisha, or use e-cigarettes - Select
         all that apply</Typography>
-        <Checkbox sx={{top:-8}} color="secondary" />
-        </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -412,12 +396,9 @@ const LifeStyleForm = ({data , important}) => {
         <MenuItem value={"Use e-cigarettes"}>Use e-cigarettes</MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Do you free-mix with non-mahram females?
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -439,12 +420,9 @@ const LifeStyleForm = ({data , important}) => {
 
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Do you free-mix with non-mahram men?
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -465,12 +443,9 @@ const LifeStyleForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Type of clothing worn in front of non-mahram men (i.e. when going to the shop, work, or park etc.) - select all that apply
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
 
       <Select
@@ -506,13 +481,10 @@ const LifeStyleForm = ({data , important}) => {
         <MenuItem value={"Use e-cigarettes"}>Use e-cigarettes</MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Type of clothing worn in front of non-mahram woman (i.e. when going to the shop or work
         etc.) - select all that apply
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -548,12 +520,9 @@ const LifeStyleForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Do you watch TV
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -576,12 +545,10 @@ const LifeStyleForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Do you listen to Music
+
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
@@ -601,12 +568,9 @@ const LifeStyleForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Do you wear makeup in front of non-mahrams
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"

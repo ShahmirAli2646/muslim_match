@@ -27,8 +27,6 @@ import DatePicker from '@mui/lab/DatePicker';
 import { useDispatch, useSelector } from "react-redux";
 import { SubmitFriendshipsForm } from '../../../actions/formActions';
 import { SubmitFriendshipsFormImp } from '../../../actions/importantActions';
-import Checkbox from '@mui/material/Checkbox';
-import Stack from '@mui/material/Stack';
 
 
 const FriendShipsForm = ({data , important}) => {
@@ -122,49 +120,34 @@ const FriendShipsForm = ({data , important}) => {
   }
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you spend a lot of time with friends What activities do you do with your friends</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <TextField value={timefriends} onChange={(event) => {
         setTimeFriends(event.target.value)
       }} variant="filled" />
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>
         Are your friends religious
       </Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
 
       <TextField value={religiousfriends} onChange={(event) => {
         setReligiousFriends(event.target.value)
       }} variant="filled" />
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What sect/following of Islam do your friends practice</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <TextField value={sectfriends} onChange={(event) => {
         setSectFriends(event.target.value)
       }} variant="filled" />
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>How might your friends describe your personality</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <TextField value={personality} onChange={(event) => {
         setPersonality(event.target.value)
       }} variant="filled" />
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you want your future husband to free-mix with your friends</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
 
       <Select
@@ -189,10 +172,7 @@ const FriendShipsForm = ({data , important}) => {
         </MenuItem>
       </Select>
       <br></br>
-      <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you want your future wife to free-mix with your friends</Typography>
-      <Checkbox sx={{top:-8}} color="secondary" />
-      </Stack>
       <br></br>
       <Select
         labelId="demo-simple-select-standard-label"
