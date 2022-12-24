@@ -3,7 +3,7 @@ import jwt from 'jwt-decode'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL = "http://localhost:4001/";
+const API_URL = "https://muslim-match-api.herokuapp.com/";
 
 const register = (first_name,last_name ,  email, password) => {
   return axios.post(API_URL + "register", {

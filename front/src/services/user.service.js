@@ -2,7 +2,7 @@ import axios from "axios";
 import authHeader from "./auth-header";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const API_URL = "http://localhost:4001/";
+const API_URL = "https://muslim-match-api.herokuapp.com/";
 
 
 const getfullMatches = (userId , page , important) => {
