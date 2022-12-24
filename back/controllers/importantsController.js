@@ -194,16 +194,4 @@ module.exports={
        
       },
 
-      FetchUserImportants :async (req, res) => {
-        try{
-            const userId = req.params.user;
-            const important = await importants.findOne({user:userId},);
-            res.status(201).json(important);
-        }
-        catch(err){
-          console.log(err)
-        }
-
-    },
-
 }
