@@ -229,42 +229,42 @@ const LifeStyleForm = ({data , important}) => {
 
   const handleHaramChangeImp = (event) => {
     
-    setHaramImp(event.target.checked);
+    setHaramImp(event.target.value);
   };
   const handleNonMahramWomenClothingChangeImp = (event) => {
     
-    setNonMahramWomenClothingImp(event.target.checked);
+    setNonMahramWomenClothingImp(event.target.value);
   };
   const handleNonMahramMenClothingChangeImp = (event) => {
-    setNonMahramMenClothingImp(event.target.checked);
+    setNonMahramMenClothingImp(event.target.value);
   };
   const handleMakeUpChangeImp = (event) => {
-    setMakeUpImp(event.target.checked);
+    setMakeUpImp(event.target.value);
   }
   const handleTVChangeImp = (event) => {
-    setTVImp(event.target.checked);
+    setTVImp(event.target.value);
   }
   const handleMusicChangeImp = (event) => {
-    setMusicImp(event.target.checked);
+    setMusicImp(event.target.value);
   }
   const handleNonMahramMakeUpChangeImp = (event) => {
-    setNonMahramMakeupImp(event.target.checked);
+    setNonMahramMakeupImp(event.target.value);
   }
   const handleNonMahramWomenChangeImp = (event) => {
-    setNonMahramWomenImp(event.target.checked);
+    setNonMahramWomenImp(event.target.value);
   }
   const handleNonMahramMenChangeImp = (event) => {
-    setNonMahramMenImp(event.target.checked);
+    setNonMahramMenImp(event.target.value);
   }
   const handleBeardChangeImp = (event) => {
    
-    setBeardImp(event.target.checked );
+    setBeardImp(event.target.value );
   };
   const handleWomenClothingChangeImp = (event) => {
-    setWomenClothingImp(event.target.checked);
+    setWomenClothingImp(event.target.value);
   };
   const handleMenClothingChangeImp = (event) => {
-    setMenClothingImp(event.target.checked );
+    setMenClothingImp(event.target.value );
   };
 
   return (
@@ -272,7 +272,7 @@ const LifeStyleForm = ({data , important}) => {
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What style of men's clothing would you prefer your future husband wear when around non
         mahrams (i.e. when going to the shop or at work etc.) - Please select all that apply</Typography>
-        <Checkbox checked={menclothingImp} onChange={handleMenClothingChangeImp} sx={{top:-8}} color="secondary" />
+        <Checkbox sx={{top:-8}} color="secondary" />
         </Stack>
       <br></br>
 
@@ -305,7 +305,7 @@ const LifeStyleForm = ({data , important}) => {
       <Typography>
         What style of women's clothing would you prefer your future wife to wear when around non-mahrams (i.e. when going to the shop, or park etc.) - Please select all that apply
       </Typography>
-      <Checkbox checked={womenclothingImp} onChange={handleWomenClothingChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -338,7 +338,7 @@ const LifeStyleForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Which beard style/s meet your preferences</Typography>
-      <Checkbox checked={beardImp} onChange={handleBeardChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -364,7 +364,7 @@ const LifeStyleForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you want a wife who wears makeup in front of non-mahrams</Typography>
-      <Checkbox checked={makeupImp} onChange={handleMakeUpChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -389,7 +389,7 @@ const LifeStyleForm = ({data , important}) => {
       <Stack direction={'row'} justifyContent={'space-between'} >
       <Typography>Do you eat haram, drink alcohol, smoke cigarettes, smoke shisha, or use e-cigarettes - Select
         all that apply</Typography>
-        <Checkbox checked={haramImp} onChange={handleHaramChangeImp} sx={{top:-8}} color="secondary" />
+        <Checkbox sx={{top:-8}} color="secondary" />
         </Stack>
       <br></br>
       <Select
@@ -416,7 +416,7 @@ const LifeStyleForm = ({data , important}) => {
       <Typography>
         Do you free-mix with non-mahram females?
       </Typography>
-      <Checkbox checked={nonmahramwomenImp} onChange={handleNonMahramWomenChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -443,7 +443,7 @@ const LifeStyleForm = ({data , important}) => {
       <Typography>
         Do you free-mix with non-mahram men?
       </Typography>
-      <Checkbox checked={nonmahrammenImp} onChange={handleNonMahramMenChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -469,7 +469,7 @@ const LifeStyleForm = ({data , important}) => {
       <Typography>
         Type of clothing worn in front of non-mahram men (i.e. when going to the shop, work, or park etc.) - select all that apply
       </Typography>
-      <Checkbox checked={nonmahrammenclothingImp} onChange={handleNonMahramMenClothingChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
 
@@ -511,7 +511,7 @@ const LifeStyleForm = ({data , important}) => {
         Type of clothing worn in front of non-mahram woman (i.e. when going to the shop or work
         etc.) - select all that apply
       </Typography>
-      <Checkbox checked={nonmahramwomenclothingImp} onChange={handleNonMahramWomenClothingChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -552,7 +552,7 @@ const LifeStyleForm = ({data , important}) => {
       <Typography>
         Do you watch TV
       </Typography>
-      <Checkbox checked={tvImp} onChange={handleTVChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -580,7 +580,7 @@ const LifeStyleForm = ({data , important}) => {
       <Typography>
         Do you listen to Music
       </Typography>
-      <Checkbox checked={musicImp} onChange={handleMusicChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -605,7 +605,7 @@ const LifeStyleForm = ({data , important}) => {
       <Typography>
         Do you wear makeup in front of non-mahrams
       </Typography>
-      <Checkbox checked={nonmahrammakeupImp} onChange={handleNonMahramMakeUpChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select

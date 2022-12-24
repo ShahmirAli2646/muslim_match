@@ -168,35 +168,34 @@ const DeenForm = ({data , important}) => {
   }
 
   const handleFollowingsChangeImp = (event) => {
-    console.log('event' , event)
-    setFollowingsImp(event.target.checked);
+    setFollowingsImp(event.target.value);
   };
   const handleCurrentStudyChangeImp = (event) => {
-    setCurrentStudyChangeImp(event.target.checked);
+    setCurrentStudyChangeImp(event.target.value);
   }
   const handleSectChangeImp = (event) => {
-    setSectImp(event.target.checked);
+    setSectImp(event.target.value);
   }
   const handleScholarChangeImp = (event) => {
-    setScholarChangeImp(event.target.checked);
+    setScholarChangeImp(event.target.value);
   }
   const handleIslamicStudyingChangeImp = (event) => {
-    setIslamicStudingImp(event.target.checked);
+    setIslamicStudingImp(event.target.value);
   }
   const handlePrayerChangeImp = (event) => {
-    setPrayersImp(event.target.checked);
+    setPrayersImp(event.target.value);
   }
   const handleDuaChangeImp = (event) => {
-    setDuaImp(event.target.checked);
+    setDuaImp(event.target.value);
   }
   const handleHijraChangeImp = (event) => {
-    setHijraImp(event.target.checked);
+    setHijraImp(event.target.value);
   }
   const handleFastChangeImp = (event) => {
-    setFastImp(event.target.checked);
+    setFastImp(event.target.value);
   }
   const handleQuranChangeImp = (event) => {
-    setQuranImp(event.target.checked);
+    setQuranImp(event.target.value);
   }
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
@@ -204,7 +203,7 @@ const DeenForm = ({data , important}) => {
       <Typography>
         Which followings of Islam match with what you're looking for in a spouse - Please select all that apply
       </Typography>
-      <Checkbox checked={followingsImp} onChange={handleFollowingsChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -239,7 +238,7 @@ const DeenForm = ({data , important}) => {
       <Typography>
         The Islamic teachings / sect that you follow
       </Typography>
-      <Checkbox checked={sectImp} onChange={handleSectChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -273,7 +272,7 @@ const DeenForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>How many of the 5 prayers a day do you usually pray in the masjid</Typography>
-      <Checkbox checked={prayersImp} onChange={handlePrayerChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -299,7 +298,7 @@ const DeenForm = ({data , important}) => {
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you make dua TO the Prophet (SAW) or dua to pirs or saints (there is strong evidence
         that this type of dua is sinful shirk) </Typography>
-        <Checkbox checked={duaImp} onChange={handleDuaChangeImp} sx={{top:-8}} color="secondary" />
+        <Checkbox sx={{top:-8}} color="secondary" />
         </Stack>
       <br></br>
       <Select
@@ -318,7 +317,7 @@ const DeenForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you want to make hijra one day insha'Allah</Typography>
-      <Checkbox checked={hijraImp} onChange={handleHijraChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -341,7 +340,7 @@ const DeenForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you voluntary Fast</Typography>
-      <Checkbox checked={fastImp} onChange={handleFastChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
@@ -368,7 +367,7 @@ const DeenForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space=between'}>
       <Typography>Do you read Qur’an</Typography>
-      <Checkbox checked={quranImp} onChange={handleQuranChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select

@@ -182,7 +182,7 @@ const AppearanceForm = ({data ,important}) => {
     setMyBuildImp(event.target.checked);
   }
   const handleSmallestDressChangeImp = (event) => {
-    setSmallestDressImp(event.target.checked);
+    setSmallestDress(event.target.checked);
   }
   const handleLargestDressChangeImp = (event) => {
     setLargestDressImp(event.target.checked);

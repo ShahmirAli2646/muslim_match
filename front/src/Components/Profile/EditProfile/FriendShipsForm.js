@@ -115,16 +115,16 @@ const FriendShipsForm = ({data , important}) => {
   }
 
   const handleFreeMixWomenChangeImp = (event) => {
-    setFreeMixWomenImp(event.target.checked);
+    setFreeMixWomenImp(event.target.value);
   }
   const handleFreeMixMenChangeImp = (event) => {
-    setFreeMixMenImp(event.target.checked);
+    setFreeMixMenImp(event.target.value);
   }
   return (
     <FormControl variant="filled" sx={{ m: 1, width: '100%' }}>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Do you spend a lot of time with friends What activities do you do with your friends</Typography>
-      <Checkbox checked={timefriendsImp} onChange={(event)=>{setTimeFriendsImp(event.target.checked)}} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <TextField value={timefriends} onChange={(event) => {
@@ -135,9 +135,7 @@ const FriendShipsForm = ({data , important}) => {
       <Typography>
         Are your friends religious
       </Typography>
-      <Checkbox checked={religiousfriendsImp} onChange={(event)=>{
-          setReligiousFriendsImp(event.target.checked)
-      }} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
 
@@ -147,7 +145,7 @@ const FriendShipsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>What sect/following of Islam do your friends practice</Typography>
-      <Checkbox checked={sectfriendsImp} onChange={(event)=>{setSectFriendsImp(event.target.checked)}} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <TextField value={sectfriends} onChange={(event) => {
@@ -156,7 +154,7 @@ const FriendShipsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>How might your friends describe your personality</Typography>
-      <Checkbox checked={personalityImp} onChange={(event)=>{setPersonalityImp(event.target.checked)}} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <TextField value={personality} onChange={(event) => {
@@ -165,7 +163,7 @@ const FriendShipsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you want your future husband to free-mix with your friends</Typography>
-      <Checkbox checked={freemixwomenImp} onChange={handleFreeMixWomenChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
 
@@ -193,7 +191,7 @@ const FriendShipsForm = ({data , important}) => {
       <br></br>
       <Stack direction={'row'} justifyContent={'space-between'}>
       <Typography>Would you want your future wife to free-mix with your friends</Typography>
-      <Checkbox checked={freemixmenImp} onChange={handleFreeMixMenChangeImp} sx={{top:-8}} color="secondary" />
+      <Checkbox sx={{top:-8}} color="secondary" />
       </Stack>
       <br></br>
       <Select
